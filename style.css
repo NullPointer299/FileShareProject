@@ -1,0 +1,40 @@
+.topBarCon{
+    float:left;
+    margin: 20px 0 10px 0;
+}
+
+#sideBar{
+    clear: both;
+}
+
+#sideBar{
+    width: 220px;
+}
+
+.sideBarCon{
+    
+}
+
+#title{
+    font-size: 50px;
+    padding: 0 20px 0 20px;
+    float: left;
+    
+}
+body{
+    min-width:5555px;
+    background-color: #fff;
+}
+
+input[type="button"] {
+    border: 0;
+    background: none;
+    font-size: 30px;
+    padding: 0 20px ;
+    width: 200px;
+}
+
+input[type="button"]:hover{
+    background-color: lightgray;
+}
+
