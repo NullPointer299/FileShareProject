@@ -1,0 +1,108 @@
+@import url("style.css");
+
+.wrapper {
+     width: 100vw;
+  height: 100vh;
+  background: #666 url(https://bcrikko.github.io/web-design-practices/single-page-layout/asset/header.jpg) no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 0;
+}
+
+.wrapper::before{
+    content: '';
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: -5px;
+  right: -5px;
+  background: inherit;
+  filter: blur(5px);
+  /* position:absoluteのせいで最前面に来てしまうため */
+  z-index: -1;
+}
+.register {
+    width: 510px;
+    height: 530px;
+    background-color: rgba(255,255,255,0.8);
+}
+
+.form {
+    padding: 15px 0;
+    font-size: 20px;
+}
+
+.form input[type="text"],input[type="password"]{
+    height: 40px;
+}
+
+.content {
+    height: auto;
+    width: 540px;
+    margin: auto;
+}
+
+.register input[type="submit"] {
+    padding: 6px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    width: 200px;
+    height: 50px;
+    background-color: whitesmoke;
+    border: 4px solid orange;
+    margin: auto;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+}
+
+.register input[type="submit"]:hover {
+    background-color: orange;
+    border:2px solid black;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 300px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid black;
+    background-color: transparent;
+}
+
+label {
+    display: inline-block;
+    width: 5em;
+    text-align: center;
+}
+
+.info{
+    margin-left: 40px;
+}
+
+div.empty {
+    color: aqua;
+    height: 200px;
+    min-height: 30px;
+}
+
+.submit {
+    width: 200px;
+    height: 60px;
+    margin: auto;
+    padding: 20px;
+}
+
+.title{
+    margin: 20px 195px;
+    font-size: 30px; 
+    color: navy;
+}
+
+h1{
+    float: left;
+    margin: 10px;
+    border: 2px solid navy;
+    padding: 5px;
+}

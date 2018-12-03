@@ -1,40 +1,47 @@
-.topBarCon{
-    float:left;
-    margin: 20px 0 10px 0;
+/*
+-------------------------------------------------------------
+header
+-------------------------------------------------------------
+*/
+
+font.M{
+    color: orange;
+}
+font.D{
+    color: lightgreen;
 }
 
-#sideBar{
-    clear: both;
+
+header h1{
+    margin:0;
+    font-size: 40px;   
+    width: 170px;
+    height: 70px;  
 }
 
-#sideBar{
-    width: 220px;
+header h1:hover{
+     transform: rotate(-12deg);
 }
 
-.sideBarCon{
-    
+header hr{
+    margin: 2px;
 }
 
-#title{
-    font-size: 50px;
-    padding: 0 20px 0 20px;
-    float: left;
-    
-}
+/*
+-----------------------------------------------------------------
+body
+-----------------------------------------------------------------
+*/
+
 body{
-    min-width:5555px;
-    background-color: #fff;
+    margin: 0;
+    min-width: 710px;
 }
 
-input[type="button"] {
-    border: 0;
-    background: none;
-    font-size: 30px;
-    padding: 0 20px ;
-    width: 200px;
+input[type="submit"]{
+    outline: 0;
 }
 
-input[type="button"]:hover{
-    background-color: lightgray;
+input[type="text"],input[type="password"]{
+    padding: 2px;
 }
-
