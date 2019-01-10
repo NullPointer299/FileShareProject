@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/upload.css">
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <font class="M">M</font>y<font class="D">D</font>rive
+        </h1>
+    </header>
+    <div class="wrapper">
+        <div class="main">
+            <fieldset>
+                <p>ファイルをアップロード</p>
+                <hr>
+                <form class="form" action="#">
+                    <input id="filePosition"placeholder="未選択です"type="text" readonly>
+                    <label for="file" class="fileSelect">参照...</label>
+                    <input id="file" type="file" onchange="fileChange()">
+                    <br>
+                    <div id="text">ファイル名を入力</div>
+                    <input id="filename"type="text" name="filename"placeholder="200文字以上は登録できません" maxlength="199"><br>
+                    <input id="newFolder" type="submit" value="アップロード" onclick="upload()">
+                </form>
+            </fieldset>
+        </div>
+    </div>
+</body>
+
+</html>

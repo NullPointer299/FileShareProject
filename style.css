@@ -10,8 +10,6 @@ font.M{
 font.D{
     color: lightgreen;
 }
-
-
 header h1{
     margin:0;
     font-size: 40px;   
@@ -25,6 +23,14 @@ header h1:hover{
 
 header hr{
     margin: 2px;
+}
+
+header a{
+    text-decoration: none;   
+}
+
+header a:visited{
+    color: black;
 }
 
 /*
