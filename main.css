@@ -1,0 +1,101 @@
+@import url("style.css");
+
+/*
+-----------------------------------------------------------------
+top_bar
+----------------------------------------------------------------
+*/
+.top_bar {
+    height: 25px;
+    margin: 4px 0 5px 0;
+    padding: 0 0 4px 0;
+    overflow: hidden;
+    background-color: #f7f7f7;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+.top_con {
+    color: black;
+    float: right;
+    margin: 3px;
+    padding: 2px;
+}
+
+.top_bar input[type="submit"] {
+    border: 0;
+    background: none;
+    width: 80px;
+    height: 23px;
+}
+
+.top_bar input[type="text"].top_con{
+    max-width: 400px;
+    width: 30%;
+    border-radius: 6px;
+}
+
+.top_bar input[type="submit"]:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 2px 2px 3px 1px #666;
+    -moz-box-shadow: 2px 2px 3px 1px #666;
+    -webkit-box-shadow: 2px 2px 3px 1px #666;
+}
+
+
+.top_bar input.login_con {
+    width: 90px;
+}
+
+/*
+------------------------------------------------------------------
+side_bar
+--------------------------------------------------------------------
+*/
+
+.side_bar {
+    width: 170px;
+    height: -webkit-calc(100vh-170px);
+    float: left;
+}
+
+.side_bar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+.side_bar li {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    background: url(../picture/arrow.png)right 20px center no-repeat;
+    z-index: 1;
+}
+
+.side_bar li:hover {
+    background-color: lightgray;
+}
+
+.side_bar a {
+    display: block;
+    padding: 10px 30px;
+    text-decoration: none;
+    color: #406485;
+    text-align: center;
+}
+
+.side_bar a:hover {
+    transform: rotate(10deg);
+}
+
+/*
+----------------------------------------------------------------------
+content,wrapper
+--------------------------------------------------------------------------
+*/
+
+.content {
+    float: left;
+}
+
+
