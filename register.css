@@ -24,6 +24,12 @@
 .register {
     width: 510px;
     height: 530px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
     background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -78,13 +84,6 @@ label {
 .info {
     margin-left: 40px;
 }
-
-div.empty { 
-    color: aqua;
-    height: 200px;
-    min-height: 30px;
-}
-
 .submit {
     width: 200px;
     height: 60px;
