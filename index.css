@@ -3,6 +3,7 @@
 .wrapper {
     width: 100vw;
     height: 100vh;
+    position: relative;
     background: #666 url(https://bcrikko.github.io/web-design-practices/single-page-layout/asset/header.jpg) no-repeat;
     background-size: cover;
     position: relative;
@@ -43,8 +44,13 @@ input[type="password"] {
 }
 
 .content {
-    height: auto;
+    height: 520px;
     width: 540px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
     margin: auto;
 }
 
@@ -87,12 +93,6 @@ label {
     margin-left: 40px;
 }
 
-div.empty {
-    height: 200px;
-    color: aqua;
-    min-height: 30px;
-}
-
 .submit {
     width: 200px;
     height: 60px;
@@ -114,12 +114,11 @@ h1 {
     padding: 5px;
 }
 
-
 body{
     overflow: hidden;
 }
 .registerbox {
-    height: auto;
+    height: 160px;
 }
 
 .register_button {
