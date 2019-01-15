@@ -18,10 +18,10 @@
             <fieldset>
                 <p>ファイルをアップロード</p>
                 <hr>
-                <form class="form" action="#">
+                <form class="form" enctype="multipart/form-data" action="Upload?path=< %current% >" method="post">
                     <input id="filePosition"placeholder="未選択です"type="text" readonly>
                     <label for="file" class="fileSelect">参照...</label>
-                    <input id="file" type="file" onchange="fileChange()">
+                    <input id="file" name="file" type="file" onchange="fileChange()" required>
                     <br>
                     <div id="text">ファイル名を入力</div>
                     <input id="filename"type="text" name="filename"placeholder="200文字以上は登録できません" maxlength="199"><br>

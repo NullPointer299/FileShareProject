@@ -18,9 +18,9 @@
             <fieldset>
                 <p>新規フォルダ作成</p>
                 <hr>
-                <form class="form" action="#">
+                <form class="form" action="Main?req=mkdir&path=< %=current% >" method="post">>
                     <div id="text">フォルダ名を入力</div>
-                    <input id="foldername"type="text" name="filename"placeholder="200文字以上は登録できません" maxlength="199"required><br>
+                    <input id="foldername"type="text" name="name"placeholder="200文字以上は登録できません" maxlength="199"required><br>
                     <input id="newFolder" type="submit" value="作成" onclick="createFolder()">
                 </form>
             </fieldset>

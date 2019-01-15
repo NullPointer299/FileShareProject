@@ -1,13 +1,5 @@
 @import url("style.css");
 
-.error{
-	width:100%;
-	text-align:center;
-	margin:auto;
-	color:red;
-	padding:0;
-}
-
 .wrapper {
     width: 100vw;
     height: 100vh;
@@ -160,4 +152,3 @@ body{
     color: rgba(0, 0, 0, 0.6);
     font-weight: 600;
 }
-
