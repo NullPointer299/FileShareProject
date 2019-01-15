@@ -62,13 +62,13 @@
             </form>
         </div>
         <div class="side_bar">
-            <ul>
-                <li id="myFolder" onclick="closeWindow()"><a href="home.html">マイフォルダ</a></li>
-                <li id="serchUser" onclick="closeWindow()"><a href="search_user.html">ユーザ検索</a></li>
-                <li id="serchUser" onclick="closeWindow()"><a href="#">お気に入り</a></li>
-                <li id="trush"><a>ゴミ箱</a></li>
-            </ul>
-        </div>
+        <ul>
+            <li id="myFolder"><a onclick="jump(\'Main?req=home\',\'post\')">マイフォルダ</a></li>
+            <li id="serchUser"><a onclick="jump(\'Main?req=sear_user\',\'post\')">ユーザ検索</a></li>
+            <li id="favorite"><a onclick="jump(\'Main?req=fav\',\'post\')">お気に入り</a></li>
+            <li id="trush"><a onclick="jump(\'Main?req=trash\',\'post\')">ゴミ箱</a></li>
+        </ul>
+    </div>
         <div class="content" id="content">
             <div class="content_top_bar">
                 <div class="content_top_bar_left">
