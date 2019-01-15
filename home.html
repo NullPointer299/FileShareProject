@@ -65,7 +65,7 @@
             <ul>
                 <li id="myFolder"><a>マイフォルダ</a></li>
                 <li id="serchUser"><a href="search_user.html">ユーザ検索</a></li>
-                <li id="favorite"><a href="#">お気に入り</a></li>
+                <li id="serchUser"><a href="#">お気に入り</a></li>
                 <li id="trush"><a href="trash.html" onclick="closeWindow()">ゴミ箱</a></li>
             </ul>
         </div>
@@ -73,7 +73,7 @@
             <div class="content_top_bar">
                 <div class="content_top_bar_left">
                     <ul class="menu">
-                        <li><a href="#" onclick="openDownWindow(['checkbox1','checkbox2','checkbox3','checkbox4','checkbox5'])"><i class="material-icons">
+                        <li><a href="#" onclick="openDownload()"><i class="material-icons">
                                     cloud_download
                                 </i></a>
                             <div class="tooltips">ダウンロード</div>
@@ -99,7 +99,7 @@
                                 <li><a href="#" onclick="selectDesc()"><span id="desc">✓</span>降順</a></li>
                             </ul>
                         </li>
-                    </ul>
+                    </ul><span id="name"></span>
                 </div>
             </div>
             <div class="breadcrumb">

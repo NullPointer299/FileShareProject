@@ -70,7 +70,7 @@
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/sort.js"></script>
     <script type="text/javascript">
-        window.onload = function() { <!----スコープからフォルダとファイルの----->
+        window.onload = function() { <!----スコープからフォルダとファイルの配列を渡す----->
             sortLoad([new Folder('A',0), new Folder('B',0), new Folder('C',0), new Folder('D',0), new Folder('E',0)], [new File('checkbox1'), new File('checkbox2'), new File('checseffekbox3'), new File('checkbox4'), new File('checkbox5')]);
 
             var box = document.getElementById("content");
@@ -101,25 +101,25 @@
 
 <div class="wrapper">
     <div class="top_bar">
-        <input type="submit" class="top_con login_con" value="ログアウト">
-        <input type="submit" class="top_con" value="設定">
+        <input type="submit" class="top_con login_con" value="ログアウト"onclick="jump(\'Configuration\',\'get\')">
+        <input type="submit" class="top_con" value="設定"onclick="jump(\'Logout\',\'post\')">
         <form action="#">
             <input id="topText" type="text" class="top_con" onkeyup="charFilter()" placeholder="ファイルの検索">
         </form>
     </div>
     <div class="side_bar">
         <ul>
-            <li id="myFolder"><a>マイフォルダ</a></li>
-            <li id="serchUser"><a href="search_user.html">ユーザ検索</a></li>
-            <li id="favorite"><a href="#">お気に入り</a></li>
-            <li id="trush"><a href="trash.html" onclick="closeWindow()">ゴミ箱</a></li>
+            <li id="myFolder"><a onclick="jump(\'Main?req=home\',\'post\')">マイフォルダ</a></li>
+            <li id="serchUser"><a onclick="jump(\'Main?req=sear_user\',\'post\')">ユーザ検索</a></li>
+            <li id="favorite"><a onclick="jump(\'Main?req=fav\',\'post\')">お気に入り</a></li>
+            <li id="trush"><a onclick="jump(\'Main?req=trash\',\'post\')">ゴミ箱</a></li>
         </ul>
     </div>
     <div class="content" id="content">
         <div class="content_top_bar">
             <div class="content_top_bar_left">
                 <ul class="menu">
-                    <li><a href="#" onclick="openDownWindow(['checkbox1','checkbox2','checkbox3','checkbox4','checkbox5'])"><i class="material-icons">
+                    <li><a href="#" onclick="exeDownload()"><i class="material-icons">
                         cloud_download
                     </i></a>
                         <div class="tooltips">ダウンロード</div>

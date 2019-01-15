@@ -59,7 +59,7 @@ function openNewFolderWindow() {
     subWin = window.open('/home/fukui-hiraku/BracketsFile/new_folder.html', "アップロード", "width=350 height=270 left=" + w + ' top=' + h);
 }
 
-function openDownWindow() {
+function exeDownload() {
     var target = document.getElementById("hideForm");
     var array = [];
     var flag;
@@ -78,7 +78,7 @@ function openDownWindow() {
         if (array.length == 0) {
             alert("ファイルが選択されていません");
         } else {
-            alert(array);
+            jump("Download?"+array,"post");
         }
     }else{
         alert("フォルダはダウンロードできません");
@@ -117,14 +117,42 @@ function showSubmenu(clicked) {
         name=clicked.myName.substring(0,10) +"...";
     }
     if(clicked.myType == 0) {
-        submenu.innerHTML = "<ul><li class=\"cut\">"+ name + "<li><a href=\"#\">ダウンロード</a></li><li><a href=\"#\">削除</a></li></ul>";
+        submenu.innerHTML = "<ul><li class=\"cut\">"+ name + "<li><a onclick=rightDownload("+ name +")>ダウンロード</a></li><li><a onclick=\"deleteThing(" + name +  ")>削除</a></li></ul>";
         submenu.style.height = "60px";
     }else{
-        submenu.innerHTML = "<ul><li>" + name + "</li><li><a href=\"#\">開く</a></li><li><a href=\"#\">削除</a></li></ul>";
+        submenu.innerHTML = "<ul><li>" + name + "</li><li><a href=\"#\">開く</a></li><li><aonclick=\"deleteThing(" + name +  ")>削除</a></li></ul>";
         submenu.style.height = "60px";
     }
     submenu.style.position = 'absolute';
     submenu.style.left = posX + "px";
     submenu.style.top = posY + "px";
     submenu.classList.add("show");
+}
+
+function rightDownload(name){
+    jump("Download?"+name,"post");
+}
+
+function deleteThing(name) {
+    jump("Main?req=delete?"+name,"post");
+}
+
+/*-----------------------------------------------------------
+submit
+-----------------------------------------------------------*/
+
+function jump(dis,method) {
+    alert("a");
+    var form =docume.createElement("form");
+    form.setAttribute("action",dis);
+    form.setAttribute("method",method);
+    form.style.display ="none";
+    document.body.appendChild(form);
+    form.submit();
+}
+
+function createFolder() {
+    window.setTimeout(function(){
+        jump("Main?req=home","post");
+    })
 }
