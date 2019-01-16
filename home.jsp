@@ -1,8 +1,8 @@
-<%@ page import="model.User" %>
-<%@ page import="java.util.List" %>
-<%@ page import="model.File" %>
-<%@ page import="java.nio.file.Files" %>
-<%@ page import="java.nio.file.Path" %>
+<%@ page import="model.User"%>
+<%@ page import="java.util.List"%>
+<%@ page import="model.File"%>
+<%@ page import="java.nio.file.Files"%>
+<%@ page import="java.nio.file.Path"%>
 <%--
   Created by IntelliJ IDEA.
   User: nullpo299
@@ -10,53 +10,59 @@
   Time: 15:07
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <%
-    User user = (User) session.getAttribute("USER");
-    List<File> files = (List<File>) session.getAttribute("FILES");
-    Path current = (Path) session.getAttribute("CURRENT");
-    Path src = (Path) session.getAttribute("SRC");
-
-    /*
-    *
-    * 設定 -> action="Configuration" method="get"
-    * ログアウト -> action="Logout" method="post"
-    * ホーム -> action="Main?req=home" method="post"
-    * ユーザ検索 -> action="Main?req=sear_user" method="post"
-    * お気に入り -> action="Main?req=fav" method="post"
-    * ゴミ箱 -> action="Main?req=trash" method="post"
-    *
-    * アップロード -> <form enctype="multipart/form-data" action="Upload?path=< %current% >" method="post">
-    *   <input type="file" name="file"><br>
-    *   <input type="submit" value="upload">
-    *   </form>
-    *
-    * ダウンロード -> <form name="dl" action="Download?<<<ファイル名>>>" method="post">
-    *   <a href="#" onClick="dl.submit();">ダウンロード</a>
-    *   </form>
-    *
-    * ディレクトリ作成 -> <form action="Main?req=mkdir&path=< %=current% >" method="post">
-    *    ディレクトリ名：<input type="text" name="name">
-    *   <input type="submit" value="create">
-    *   </form>
-    *
-    * 削除 -> action="Main?req=delete?<<<ファイル名>>> method="post"
-    */
+	User user = (User) session.getAttribute("USER");
+	List<File> files = (List<File>) session.getAttribute("FILES");
+	List<File> dirs = files.stream().filter(f -> Files.isDirectory(f.getPath(), f.getName()))
+			.collect(Collectors.toList());
+	List<File> normal = files.stream().filter(!Files.isDirectory(f.getPath(), f.getName()))
+			.collect(Collectors.toList());
+	Path current = (Path) session.getAttribute("CURRENT");
+	Path src = (Path) session.getAttribute("SRC");
+	/*
+	*
+	* 設定 -> action="Configuration" method="get"
+	* ログアウト -> action="Logout" method="post"
+	* ホーム -> action="Main?req=home" method="post"
+	* ユーザ検索 -> action="Main?req=sear_user" method="post"
+	* お気に入り -> action="Main?req=fav" method="post"
+	* ゴミ箱 -> action="Main?req=trash" method="post"
+	*
+	* アップロード -> <form enctype="multipart/form-data" action="Upload?path=< %current% >" method="post">
+	*   <input type="file" name="file"><br>
+	*   <input type="submit" value="upload">
+	*   </form>
+	*
+	* ダウンロード -> <form name="dl" action="Download?<<<ファイル名>>>" method="post">
+	*   <a href="#" onClick="dl.submit();">ダウンロード</a>
+	*   </form>
+	*
+	* ディレクトリ作成 -> <form action="Main?req=mkdir&path=< %=current% >" method="post">
+	*    ディレクトリ名：<input type="text" name="name">
+	*   <input type="submit" value="create">
+	*   </form>
+	*
+	* 削除 -> action="Main?req=delete?<<<ファイル名>>> method="post"
+	*/
 %>
 
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>MyDrive</title>
-    <meta name="description" content="ファイル共有サービス">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="css/home.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
+<meta charset="utf-8">
+<title>MyDrive</title>
+<meta name="description" content="ファイル共有サービス">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="css/home.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+	type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+	type="text/javascript"></script>
+<script type="text/javascript">
         $(function() {
             $("ul.menu li").mouseenter(function() {
                 $(this).siblings().find("ul").hide();
@@ -67,96 +73,101 @@
             });
         });
     </script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/sort.js"></script>
-    <script type="text/javascript">
-        window.onload = function() { <!----スコープからフォルダとファイルの配列を渡す----->
-            sortLoad([new Folder('A',0), new Folder('B',0), new Folder('C',0), new Folder('D',0), new Folder('E',0)], [new File('checkbox1'), new File('checkbox2'), new File('checseffekbox3'), new File('checkbox4'), new File('checkbox5')]);
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/sort.js"></script>
+<script type="text/javascript">
+        window.onload = function() { 
+        	var dirs=[];
+        	var files=[];
+        	<%for (File f : dirs) {%>
+    			dirs.push(<%=f.getName()%>,0);
+    		<%}%>
+        	<%for (File f : normal) {%>
+        		files.push(<%=f.getName()%>,1);
+        	<%}%>
+    		sortLoad(dirs,files);
 
-            var box = document.getElementById("content");
-            box.addEventListener("contextmenu", function(e) {
-                e.preventDefault();
-            }, false);
+           var box = document.getElementById("content");
+           box.addEventListener("contextmenu", function(e) {
+               e.preventDefault();
+           }, false);
         }
     </script>
 </head>
 
 <body>
-<header>
-    <h1>
-        <a href="https://auth.cyber-u.ac.jp/openam/UI/Login">
-            <font class="M">M</font>y<font class="D">D</font>rive
-        </a>
-    </h1>
+	<header>
+		<h1>
+			<a href="https://auth.cyber-u.ac.jp/openam/UI/Login"> <font
+				class="M">M</font>y<font class="D">D</font>rive
+			</a>
+		</h1>
 
-    <hr>
-</header>
+		<hr>
+	</header>
 
-<div class="submenu" id="submenu"></div>
+	<div class="submenu" id="submenu"></div>
 
-<div class="wrapper">
-    <div class="top_bar">
-        <input type="submit" class="top_con login_con" value="ログアウト"onclick="jump(\'Configuration\',\'get\')">
-        <input type="submit" class="top_con" value="設定"onclick="jump(\'Logout\',\'post\')">
-        <form action="#">
-            <input id="topText" type="text" class="top_con" onkeyup="charFilter()" placeholder="ファイルの検索">
-        </form>
-    </div>
-    <div class="side_bar">
-        <ul>
-            <li id="myFolder"><a onclick="jump(\'Main?req=home\',\'post\')">マイフォルダ</a></li>
-            <li id="serchUser"><a onclick="jump(\'Main?req=sear_user\',\'post\')">ユーザ検索</a></li>
-            <li id="favorite"><a onclick="jump(\'Main?req=fav\',\'post\')">お気に入り</a></li>
-            <li id="trush"><a onclick="jump(\'Main?req=trash\',\'post\')">ゴミ箱</a></li>
-        </ul>
-    </div>
-    <div class="content" id="content">
-        <div class="content_top_bar">
-            <div class="content_top_bar_left">
-                <ul class="menu">
-                    <li><a href="#" onclick="exeDownload()"><i class="material-icons">
-                        cloud_download
-                    </i></a>
-                        <div class="tooltips">ダウンロード</div>
-                    </li>
-                    <li><a href="#" onclick="openUpWindow()"><i class="material-icons">
-                        cloud_upload
-                    </i></a>
-                        <div class="tooltips">アップロード</div>
-                    </li>
-                    <li><a id="left_con" href="#" onclick="openNewFolderWindow()"><i class="material-icons">
-                        add
-                    </i></a>
-                        <div class="tooltips">新規フォルダ</div>
-                    </li>
-                </ul>
-            </div>
-            <div class="content_top_bar_right">
-                <ul class="menu">
-                    <li><a id="right_con" href="#">ソート</a>
-                        <ul id="ddmenu">
-                            <li><a href="#" onclick="selectName();sortByName()"><span id="name">✓</span>名前順</a></li>
-                            <li><a href="#" onclick="selectAsc()"><span id="asc">✓</span>昇順</a></li>
-                            <li><a href="#" onclick="selectDesc()"><span id="desc">✓</span>降順</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="breadcrumb">
-            <ul>
-                <li><a href="#home">home</a></li>
-                <li><a href="#unti">unti</a></li>
-            </ul>
-        </div>
-        <div id="main">
-        </div>
-        <div>
-            <form id="hideForm" action="/home/fukui-hiraku/BracketsFile/login.html">
-            </form>
-        </div>
-    </div>
-</div>
+	<div class="wrapper">
+		<div class="top_bar">
+			<input type="submit" class="top_con login_con" value="ログアウト"
+				onclick="jump(\'Configuration\',\'get\')"> <input
+				type="submit" class="top_con" value="設定"
+				onclick="jump(\'Logout\',\'post\')">
+			<form action="#">
+				<input id="topText" type="text" class="top_con"
+					onkeyup="charFilter()" placeholder="ファイルの検索">
+			</form>
+		</div>
+		<div class="side_bar">
+			<ul>
+				<li id="myFolder"><a onclick="jump(\'Main?req=home\',\'post\')">マイフォルダ</a></li>
+				<li id="serchUser"><a
+					onclick="jump(\'Main?req=sear_user\',\'post\')">ユーザ検索</a></li>
+				<li id="favorite"><a onclick="jump(\'Main?req=fav\',\'post\')">お気に入り</a></li>
+				<li id="trush"><a onclick="jump(\'Main?req=trash\',\'post\')">ゴミ箱</a></li>
+			</ul>
+		</div>
+		<div class="content" id="content">
+			<div class="content_top_bar">
+				<div class="content_top_bar_left">
+					<ul class="menu">
+						<li><a href="#" onclick="exeDownload()"><i
+								class="material-icons"> cloud_download </i></a>
+							<div class="tooltips">ダウンロード</div></li>
+						<li><a href="#" onclick="openUpWindow()"><i
+								class="material-icons"> cloud_upload </i></a>
+							<div class="tooltips">アップロード</div></li>
+						<li><a id="left_con" href="#" onclick="openNewFolderWindow()"><i
+								class="material-icons"> add </i></a>
+							<div class="tooltips">新規フォルダ</div></li>
+					</ul>
+				</div>
+				<div class="content_top_bar_right">
+					<ul class="menu">
+						<li><a id="right_con" href="#">ソート</a>
+							<ul id="ddmenu">
+								<li><a href="#" onclick="selectName();sortByName()"><span
+										id="name">✓</span>名前順</a></li>
+								<li><a href="#" onclick="selectAsc()"><span id="asc">✓</span>昇順</a></li>
+								<li><a href="#" onclick="selectDesc()"><span id="desc">✓</span>降順</a></li>
+							</ul></li>
+					</ul>
+				</div>
+			</div>
+			<div class="breadcrumb">
+				<ul>
+					<li><a href="#home">home</a></li>
+					<li><a href="#unti">unti</a></li>
+				</ul>
+			</div>
+			<div id="main"></div>
+			<div>
+				<form id="hideForm"
+					action="/home/fukui-hiraku/BracketsFile/login.html"></form>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
