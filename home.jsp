@@ -112,9 +112,9 @@
 <div class="wrapper">
     <div class="top_bar">
         <input type="submit" class="top_con login_con" value="ログアウト"
-               onclick="jump('Configuration','get')"> <input
+               onclick="jump('Logout','post')"> <input
             type="submit" class="top_con" value="設定"
-            onclick="jump('Logout','post')">
+            onclick="jump('Configuration','get')">
         <form action="#">
             <input id="topText" type="text" class="top_con"
                    onkeyup="charFilter()" placeholder="ファイルの検索">
