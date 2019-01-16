@@ -81,10 +81,10 @@
             var dirs = [];
             var files = [];
             <%for (File f : dirs) {%>
-            dirs.push(<%="'"+f.getName()+"'"%>, 0);
+            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0));
             <%}%>
             <%for (File f : normal) {%>
-            files.push(<%="'"+f.getName()+"'"%>, 1);
+            files.push(new File(<%="'"+f.getName()+"'"%>, 1));
             <%}%>
             sortLoad(dirs, files);
 
