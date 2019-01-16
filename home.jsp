@@ -92,12 +92,7 @@
     <hr>
 </header>
 
-<div class="submenu" id="submenu">
-    <ul>
-        <li><a href="#">ダウンロード</a></li>
-        <li><a href="#">削除</a></li>
-    </ul>
-</div>
+<div class="submenu" id="submenu"></div>
 
 <div class="wrapper">
     <div class="top_bar">

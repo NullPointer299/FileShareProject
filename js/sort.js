@@ -93,7 +93,7 @@ function createMainFile() {
 function createMainFolder() {
     var temp="";
     for(var v of showFolders) {
-        temp += "<div class=\"node\"><a href=\"#\"><img class=\"folder\" src=\"picture/folder.png\" onclick=\"check(\'" + v.myName + "\')\" oncontextmenu=\"rightclick(new Folder(\'" + v.myName + "\',1))\"></a><input type=\"checkbox\" name=\'" + v.myName + "\' id=\'" + v.myName + "\'><label for=\'" + v.myName + "\' class=\"check_css\"></label><div class=\"filename\">" + v.myName + " </div></div>";
+        temp += "<div class=\"node\"><a href=\"#\"><img class=\"folder\" src=\"picture/folder.png\" ondblclick=jump(\'Main?req=move&src=home&name=" + v.myName + "\',\"post\") onclick=\"check(\'" + v.myName + "\')\" oncontextmenu=\"rightclick(new Folder(\'" + v.myName + "\',1))\"></a><input type=\"checkbox\" name=\'" + v.myName + "\' id=\'" + v.myName + "\'><label for=\'" + v.myName + "\' class=\"check_css\"></label><div class=\"filename\">" + v.myName + " </div></div>";
     }
     return temp;
 }

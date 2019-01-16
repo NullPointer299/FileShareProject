@@ -117,10 +117,10 @@ function showSubmenu(clicked) {
         name=clicked.myName.substring(0,10) +"...";
     }
     if(clicked.myType == 0) {
-        submenu.innerHTML = "<ul><li class=\"cut\">"+ name + "<li><a onclick=rightDownload("+ name +")>ダウンロード</a></li><li><a onclick=\"deleteThing(" + name +  ")>削除</a></li></ul>";
+        submenu.innerHTML = "<ul><li class=\"cut\">"+ name + "<li><a onclick=rightDownload(\""+ name +"\")>ダウンロード</a></li><li><a onclick=deleteThing(\"" + name +  "\")>削除</a></li></ul>";
         submenu.style.height = "60px";
     }else{
-        submenu.innerHTML = "<ul><li>" + name + "</li><li><a href=\"#\">開く</a></li><li><aonclick=\"deleteThing(" + name +  ")>削除</a></li></ul>";
+        submenu.innerHTML = "<ul><li>" + name + "</li><li><a onclick=jump(\'Main?req=move&src=home&name=" + name + "\',\"post\")>開く</a></li><li><a onclick=deleteThing(\"" + name +  "\")>削除</a></li></ul>";
         submenu.style.height = "60px";
     }
     submenu.style.position = 'absolute';
@@ -134,16 +134,15 @@ function rightDownload(name){
 }
 
 function deleteThing(name) {
+    console.log(name);
     jump("Main?req=delete?"+name,"post");
 }
-
 /*-----------------------------------------------------------
 submit
 -----------------------------------------------------------*/
 
 function jump(dis,method) {
-    alert("a");
-    var form =docume.createElement("form");
+    var form =document.createElement("form");
     form.setAttribute("action",dis);
     form.setAttribute("method",method);
     form.style.display ="none";
