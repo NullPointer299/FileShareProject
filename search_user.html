@@ -20,9 +20,14 @@
                 $('ul.menu ul').slideUp(150);
             });
         });
+        
+        window.onload = function() {
+            loadUser([new User("aaaa","aaaa","a"),new User("bbbbb","bbbb","b")]);
+        }
     </script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/sort.js"></script>
+    <script type="text/javascript" src="js/search.js"></script>
 </head>
 
 <body>
@@ -61,16 +66,6 @@
         </div>
         <div class="content" id="content">
             <div class="content_top_bar">
-                <div class="content_top_bar_left">
-                    <ul class="menu">
-                        <li><a href="#" onclick="openDownWindow(['checkbox1','checkbox2','checkbox3','checkbox4','checkbox5'])"><i class="material-icons">
-                                    cloud_download
-                                </i></a>
-                            <div class="tooltips">ダウンロード</div>
-                        </li>
-
-                    </ul>
-                </div>
                 <div class="content_top_bar_right">
                     <ul class="menu">
                         <li><a id="right_con" href="#">ソート</a>
