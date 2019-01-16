@@ -1,5 +1,6 @@
 package model;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -95,13 +96,23 @@ public class MyDriveDAO {
         Path dir = srcPath.resolve(path);
         try {
             if (id == null) {
-                targets = Files.list(dir).map(p -> new File(p.getFileName().toString(), srcPath.relativize(p.getParent()), true)).collect(Collectors.toList());
+                targets = Files.list(dir).map(p -> {
+                    boolean isDir = false;
+                    if (Files.isDirectory(p))
+                        isDir = true;
+                    return new File(p.getFileName().toString(), srcPath.relativize(p.getParent()), isDir, true);
+                }).collect(Collectors.toList());
             } else {
                 Stream<String> lines = Files.lines(srcPath.resolve(id).resolve("blacklist.dat"));
-                targets = Files.list(dir).map(p -> new File(p.getFileName().toString(), srcPath.relativize(p.getParent()), lines.anyMatch(s -> {
-                    String[] ary = s.split("\t");
-                    return srcPath.resolve(id).resolve("home").resolve(ary[0]).equals(p.getParent()) && ary[1].equals(p.getFileName());
-                }))).collect(Collectors.toList());
+                targets = Files.list(dir).map(p -> {
+                    boolean isDir = false;
+                    if (Files.isDirectory(p))
+                        isDir = true;
+                    return new File(p.getFileName().toString(), srcPath.relativize(p.getParent()), isDir, lines.anyMatch(s -> {
+                        String[] ary = s.split(" ");
+                        return srcPath.resolve(id).resolve("home").resolve(ary[0]).equals(p.getParent()) && ary[1].equals(p.getFileName());
+                    }));
+                }).collect(Collectors.toList());
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -165,12 +176,46 @@ public class MyDriveDAO {
         return updCnt <= 0 ? false : true;
     }
 
-    public static void writeBlacklist(String path, String name){
-
+    public static void writeBlacklist(String path, String name, String id) {
+        BufferedWriter writer = null;
+        try {
+            writer = Files.newBufferedWriter(srcPath.resolve(id).resolve("blacklist.dat"));
+            writer.append(path + " " + name);
+            writer.newLine();
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (writer != null) {
+                try {
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
-    public static void eraceBlacklist(String path, String name){
-
+    public static void eraceBlacklist(String path, String name, String id) {
+        try {
+            List<String> lines = Files.lines(srcPath.resolve(id).resolve("blacklist.dat")).filter(s -> {
+                String[] split = s.split(" ");
+                return !(split[0].equals(path) && split[1].equals(name));
+            }).collect(Collectors.toList());
+            BufferedWriter writer = Files.newBufferedWriter(srcPath.resolve(id).resolve("blacklist.dat"));
+            lines.stream().forEach(s -> {
+                try {
+                    writer.append(s);
+                    writer.newLine();
+                    writer.flush();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // make code close();
     }
 
     private static String toEncryptedHashValue(String value) {

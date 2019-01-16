@@ -1,10 +1,8 @@
 <%@ page import="model.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="model.File" %>
-<%@ page import="java.nio.file.Files" %>
 <%@ page import="java.nio.file.Path" %>
 <%@ page import="java.util.stream.Collectors" %>
-<%@ page import="java.nio.file.Paths" %>
 <%--
   Created by IntelliJ IDEA.
   User: nullpo299
@@ -17,10 +15,11 @@
 <%
     User user = (User) session.getAttribute("USER");
     List<File> files = (List<File>) session.getAttribute("FILES");
-    List<File> dirs = files.stream().filter(f -> Files.isDirectory(f.getPath().resolve(f.getName())))
-            .collect(Collectors.toList());
-    List<File> normal = files.stream().filter(f -> !Files.isDirectory(f.getPath().resolve(f.getName())))
-            .collect(Collectors.toList());
+    List<File> dirs = files.stream().filter(f -> f.isDirectory()).collect(Collectors.toList());
+    List<File> normal = files.stream().filter(f -> !f.isDirectory()).collect(Collectors.toList());
+    System.out.println(files);
+    System.out.println(dirs);
+    System.out.println(normal);
     Path current = (Path) session.getAttribute("CURRENT");
     Path src = (Path) session.getAttribute("SRC");
     /*
@@ -82,10 +81,10 @@
             var dirs = [];
             var files = [];
             <%for (File f : dirs) {%>
-            dirs.push(<%=f.getName()%>, 0);
+            dirs.push(<%="'"+f.getName()+"'"%>, 0);
             <%}%>
             <%for (File f : normal) {%>
-            files.push(<%=f.getName()%>, 1);
+            files.push(<%="'"+f.getName()+"'"%>, 1);
             <%}%>
             sortLoad(dirs, files);
 
@@ -123,7 +122,7 @@
     </div>
     <div class="side_bar">
         <ul>
-            <li id="myFolder"><a onclick="jump('Main?req=home','post')">マイフォルダ</a></li>
+            <li id="myFolder"><a onclick="jump('Main?req=home','post')">ホーム</a></li>
             <li id="serchUser"><a
                     onclick="jump('Main?req=sear_user','post')">ユーザ検索</a></li>
             <li id="favorite"><a onclick="jump('Main?req=fav','post')">お気に入り</a></li>
@@ -170,7 +169,7 @@
         <div id="main"></div>
         <div>
             <form id="hideForm"
-                  action="/home/fukui-hiraku/BracketsFile/login.html"></form>
+                  action="Main?req=home&method=post"></form>
         </div>
     </div>
 </div>

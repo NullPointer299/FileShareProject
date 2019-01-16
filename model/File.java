@@ -5,11 +5,13 @@ import java.nio.file.Path;
 public class File {
     private final String name;
     private final Path path;
-    private final boolean isPublic;
+    private final boolean isDirectory;
+    private boolean isPublic;
 
-    public File(String name, Path path, boolean isPublic) {
+    public File(String name, Path path, boolean isDirectories, boolean isPublic) {
         this.name = name;
         this.path = path;
+        this.isDirectory = isDirectories;
         this.isPublic = isPublic;
     }
 
@@ -21,8 +23,16 @@ public class File {
         return path;
     }
 
+    public boolean isDirectory() {
+        return isDirectory;
+    }
+
     public boolean isPublic() {
         return isPublic;
+    }
+
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
     }
 
     @Override
