@@ -21,7 +21,6 @@ class User{
 
 function loadUser(array) {
     users=array;
-    console.log(array);
     createUser();
 }
 

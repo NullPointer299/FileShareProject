@@ -61,7 +61,6 @@ function sortByName() {
             if (a.myName > b.myName) return -1;
         });
     }
-    console.log(showFolders);
     if (order == 0) {
         showFiles.sort(function (a, b) {
             if (a.myName < b.myName) return -1;

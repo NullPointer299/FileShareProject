@@ -11,6 +11,10 @@ function printConfirm() {
     }
 }
 
+function closeConfirm() {
+    document.getElementById("confirm").style.display="none";
+}
+
 function submitConfirm() {
-    document.getElementById("registerForm").submit;
+    document.getElementById("registerForm").submit();
 }
