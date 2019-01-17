@@ -51,49 +51,6 @@
 
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <title>MyDrive</title>
-    <meta name="description" content="ファイル共有サービス">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="css/home.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(function() {
-            $("ul.menu li").mouseenter(function() {
-                $(this).siblings().find("ul").hide();
-                $(this).children().slideDown(150);
-            });
-            $('html').click(function() {
-                $('ul.menu ul').slideUp(150);
-            });
-        });
-    </script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/sort.js"></script>
-    <script type="text/javascript">
-        window.onload = function() {
-            var dirs = [];
-            var files = [];
-            <%for (File f : dirs) {%>
-            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0));
-            <%}%>
-            <%for (File f : normal) {%>
-            files.push(new File(<%="'"+f.getName()+"'"%>, 1));
-            <%}%>
-            sortLoad(dirs, files);
-            
-
-            var box = document.getElementById("content");
-            box.addEventListener("contextmenu", function(e) {
-                e.preventDefault();
-            }, false);
-        }
-    </script>
-</head>
-
 <body>
     <header>
         <h1>
@@ -119,7 +76,7 @@
                     <fieldset class="upload_fieldset">
                         <p class="upload_midasi">ファイルをアップロード</p>
                         <hr class="upload_hr">
-                        <form class="form" enctype="multipart/form-data" action="Upload?path=< %current% >" method="post">
+                        <form class="form" enctype="multipart/form-data" action="Upload?path=<%current%>" method="post">
                             <input id="filePosition" placeholder="未選択です" type="text" readonly>
                             <label for="file" class="fileSelect">参照...</label>
                             <input id="file" name="file" type="file" onchange="fileChange()" required>
@@ -130,7 +87,7 @@
                                 <input type="radio" name="ispublic">公開
                                 <input type="radio" name="ispublic">非公開
                             </div>
-                            <input id="newFolder" type="submit" value="アップロード" onclick="upload()">
+                            <input id="newFolder" type="submit" value="アップロード">
                         </form>
                     </fieldset>
                 </div>
@@ -150,10 +107,10 @@
                     <fieldset class="new_folder_fieldset">
                         <p class="new_folder">新規フォルダ作成</p>
                         <hr class="new_folder">
-                        <form class="form" action="Main?req=mkdir&path=< %=current% >" method="post">
+                        <form class="form" action="Main?req=mkdir&path=<%=current%>" method="post">
                             <div id="new_folder_text">フォルダ名を入力</div>
                             <input id="foldername" type="text" name="name" placeholder="200文字以上は登録できません" maxlength="199" required><br>
-                            <input class="new_folder" type="submit" value="作成" onclick="createFolder()">
+                            <input class="new_folder" type="submit" value="作成">
                         </form>
                     </fieldset>
                 </div>
