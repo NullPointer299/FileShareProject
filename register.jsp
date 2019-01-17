@@ -39,12 +39,12 @@
 
                 <h2 class="title">新規登録</h2>
 
-                <form id="registerForm" action="#" onsubmit="return false;" method="post">
-                    <div class="form"><label for="lastName" class="form">姓</label><input id="lastName" type="text" placeholder=" (例)山田" autofocus required></div>
+                <form id="registerForm" action="Register" onsubmit="return false;" method="post">
+                    <div class="form"><label for="lastName" class="form">姓</label><input id="lastName" type="text" name="lName" placeholder=" (例)山田" autofocus required></div>
 
-                    <div class="form"><label for="firstName" class="form">名</label><input id="firstName" type="text" placeholder=" (例)太郎" required></div>
+                    <div class="form"><label for="firstName" class="form">名</label><input id="firstName" type="text" name="fName" placeholder=" (例)太郎" required></div>
 
-                    <div class="form"><label for="id" class="form">ID</label><input id="id" type="text" placeholder=" (例)tarou" required></div>
+                    <div class="form"><label for="id" class="form">ID</label><input id="id" type="text" name="id" placeholder=" (例)tarou" required></div>
 
                     <div class="form"><label for="password" class="form">パスワード</label><input name="password" id="password" type="password" required></div>
 
@@ -54,7 +54,6 @@
                         <input type="submit" value="登録" onclick="printConfirm()">
                     </div>
                 </form>
-
             </fieldset>
             <div id="confirm">
             </div>
