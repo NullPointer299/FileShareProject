@@ -50,6 +50,50 @@
 %>
 
 <html>
+    <head>
+    <meta charset="utf-8">
+    <title>MyDrive</title>
+    <meta name="description" content="ファイル共有サービス">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/home.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("ul.menu li").mouseenter(function() {
+                $(this).siblings().find("ul").hide();
+                $(this).children().slideDown(150);
+            });
+            $('html').click(function() {
+                $('ul.menu ul').slideUp(150);
+            });
+        });
+
+    </script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/sort.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            var dirs = [];
+            var files = [];
+            <%for (File f : dirs) {%>
+            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0));
+            <%}%>
+            <%for (File f : normal) {%>
+            files.push(new File(<%="'"+f.getName()+"'"%>, 1));
+            <%}%>
+            sortLoad(dirs, files);
+
+
+            var box = document.getElementById("content");
+            box.addEventListener("contextmenu", function(e) {
+                e.preventDefault();
+            }, false);
+        }
+
+    </script>
+</head>
 
 <body>
     <header>
