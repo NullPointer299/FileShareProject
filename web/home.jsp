@@ -120,7 +120,7 @@
                     <fieldset class="upload_fieldset">
                         <p class="upload_midasi">ファイルをアップロード</p>
                         <hr class="upload_hr">
-                        <form class="form" enctype="multipart/form-data" action="Upload?path=<%current%>" method="post">
+                        <form class="form" enctype="multipart/form-data" action="Upload?path=<%=current%>" method="post">
                             <input id="filePosition" placeholder="未選択です" type="text" readonly>
                             <label for="file" class="fileSelect">参照...</label>
                             <input id="file" name="file" type="file" onchange="fileChange()" required>
