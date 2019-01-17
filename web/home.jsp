@@ -104,13 +104,13 @@
 
         <hr>
     </header>
-    <div id="cover" onclick="closeNewFolderWindow();closeUploadWindow()">
+    <div id="cover">
         <div id="upload_content">
             <div class="header">
                 <h1>
                     <font class="M">M</font>y<font class="D">D</font>rive
                 </h1>
-                <span class="upload">
+                <span class="upload" onclick="closeUploadWindow()">
                     <p class="upload_close_button">×</p>
                 </span>
             </div>

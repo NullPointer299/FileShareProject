@@ -259,7 +259,7 @@ input[type=checkbox]:checked + .check_css:before {
 
 .filename {
     font-size: 14px;
-    font-weight: 8px;
+    font-weight: 8;
     width: 100%;
     text-align: center;
     word-wrap: break-word;
@@ -353,16 +353,12 @@ breadcrumb
 .breadcrumb li a:hover {
     text-decoration: underline;
 }
-
-#pop{
-    display: none;
-}
-
 /*------------------------------------------------------------
 new_folder
 -------------------------------------------------------------*/
 
 #new_folder_content{
+    z-index: 1000;
     display: none;
     position: absolute;
     margin: auto;
@@ -477,6 +473,7 @@ input[type="submit"].new_folder:hover {
 /*upload*/
 
 #upload_content{
+    z-index: 1000;
     display: none;
     position: absolute;
     margin: auto;
@@ -567,7 +564,7 @@ label.fileSelect{
     left: 105px;
 }
 
-input[type="submit"] {
+input[type="submit"]#newFolder {
     padding: 6px 20px;
     border-radius: 10px;
     font-size: 14px;
@@ -580,7 +577,7 @@ input[type="submit"] {
     transition: all 0.3s ease;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]#newFolder:hover {
     background-color: rgba(0,0,0,0.3);
     border: 3px solid black;
 }
