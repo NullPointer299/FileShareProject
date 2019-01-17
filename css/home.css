@@ -363,7 +363,7 @@ new_folder
     position: absolute;
     margin: auto;
     top: 0;
-    bottom: 500px;
+    bottom: 0;
     right: 0;
     left: 0;
     background-color: white;
@@ -478,7 +478,7 @@ input[type="submit"].new_folder:hover {
     position: absolute;
     margin: auto;
     top: 0;
-    bottom: 500px;
+    bottom: 0;
     right: 0;
     left: 0;
     background-color: white;
