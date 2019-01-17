@@ -19,12 +19,16 @@
                 <p>ファイルをアップロード</p>
                 <hr>
                 <form class="form" enctype="multipart/form-data" action="Upload?path=< %current% >" method="post">
-                    <input id="filePosition"placeholder="未選択です"type="text" readonly>
+                    <input id="filePosition" placeholder="未選択です" type="text" readonly>
                     <label for="file" class="fileSelect">参照...</label>
                     <input id="file" name="file" type="file" onchange="fileChange()" required>
                     <br>
                     <div id="text">ファイル名を入力</div>
-                    <input id="filename"type="text" name="filename"placeholder="200文字以上は登録できません" maxlength="199"><br>
+                    <input id="filename" type="text" name="filename" placeholder="200文字以上は登録できません" maxlength="199"><br>
+                    <div class="radioButton">
+                        <input type="radio" name="ispublic">公開
+                        <input type="radio" name="ispublic">非公開
+                    </div>
                     <input id="newFolder" type="submit" value="アップロード" onclick="upload()">
                 </form>
             </fieldset>
