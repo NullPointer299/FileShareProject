@@ -28,11 +28,10 @@ public class Register extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         HttpSession ses = request.getSession();
-        Map<String, String> info = (Map<String, String>) ses.getAttribute("INFO");
-        String id = info.get("id");
-        String fName = info.get("fName");
-        String lName = info.get("lName");
-        String password = info.get("password");
+        String id = request.getParameter("id");
+        String fName = request.getParameter("fName");
+        String lName = request.getParameter("lName");
+        String password = request.getParameter("password");
         if (MyDriveDAO.createUser(id, fName, lName, password)) {
             User user = MyDriveDAO.login(id, password);
             ses.setAttribute("USER", user);

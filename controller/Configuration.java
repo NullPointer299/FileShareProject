@@ -17,40 +17,41 @@ public class Configuration extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         HttpSession ses = request.getSession();
         User user = (User) ses.getAttribute("USER");
-        String req = request.getParameter("req");
         String url = "WEB-INF/web/configuration.jsp";
-        switch (req) {
-            case "chname":
-                String firstName = request.getParameter("first");
-                String lastName = request.getParameter("last");
-                if (MyDriveDAO.updateName(user.getId(), firstName, lastName)) {
-                    user.setFirstName(firstName);
-                    user.setLastName(lastName);
-                    url += "?stat=done";
+        String req = request.getParameter("req");
+        if (req == null) {
+            String fName = request.getParameter("fName");
+            String lName = request.getParameter("lName");
+            String pass = request.getParameter("pass");
+            boolean isPublic = Boolean.parseBoolean(request.getParameter("public"));
+            if (fName != null && lName != null) {
+                if (MyDriveDAO.updateName(user.getId(), fName, lName)) {
+                    user.setFirstName(fName);
+                    user.setLastName(lName);
                 } else {
-                    System.out.println("[Configuration]Change name is Failed!!!");
-                    url += "?stat=failed";
+                    System.out.println("updateName failed!!!"); //TODO debug code here!
                 }
-                break;
-            case "chpass":
-                String pass = request.getParameter("new");
-                if (MyDriveDAO.updatePassword(user.getId(), pass)) {
-                    url += "?stat=done";
+            }
+            if (pass != null) {
+                if (!MyDriveDAO.updatePassword(user.getId(), pass)) {
+                    System.out.println("updatePassword failed!!!"); //TODO debug code here!
+                }
+            }
+            if (user.isPublic() != isPublic) {
+                if (MyDriveDAO.updatePublic(user.getId(), isPublic ? 1 : 0)) {
+                    user.setIsPublic(isPublic);
                 } else {
-                    System.out.println("[Configuration]Change password is Failed!!!");
-                    url += "?stat=failed";
+                    System.out.println("updatePublic failed!!!");   //TODO debug code here!
                 }
-                break;
-            case "chpub":
-                int pub = Integer.parseInt(request.getParameter("public"));
-                if (MyDriveDAO.updatePublic(user.getId(), pub)) {
-                    user.setIsPublic(pub > 0);
-                    url += "?stat=done";
-                } else {
-                    System.out.println("[Configuration]Change public is Failed!!!");
-                    url += "?stat=failed";
-                }
-                break;
+            }
+        } else {
+            if (req.equals("delete")) {
+                //アカウント削除
+            } else if (req.equals("back")) {
+                //ホームに戻る
+            } else {
+                System.out.println("unknown request");  //TODO debug code here!
+            }
         }
         request.getRequestDispatcher(url).forward(request, response);
     }

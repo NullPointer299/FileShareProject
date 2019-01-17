@@ -144,6 +144,10 @@ public class MyDriveDAO {
     }
 
     public static boolean updateName(String id, String firstName, String lastName) {
+        System.out.println("[MyDriveDAO]method = updateName");
+        System.out.println("[MyDriveDAO]id = "+id);
+        System.out.println("[MyDriveDAO]firstName = "+firstName);
+        System.out.println("[MyDriveDAO]lastName = "+lastName);
         int updCnt = 0;
         String sql = String.format("UPDATE USERS SET FIRST_NAME='%s', LAST_NAME='%s' WHERE ID='%s';", firstName, lastName, id);
         try {
@@ -155,6 +159,9 @@ public class MyDriveDAO {
     }
 
     public static boolean updatePassword(String id, String newPass) {
+        System.out.println("[MyDriveDAO]method = updatePassword");
+        System.out.println("[MyDriveDAO]id = "+id);
+        System.out.println("[MyDriveDAO]newPass = "+newPass);
         int updCnt = 0;
         String sql = String.format("UPDATE USERS SET PASSWORD='%s' WHERE ID='%s';", toEncryptedHashValue(newPass), id);
         try {
@@ -166,6 +173,9 @@ public class MyDriveDAO {
     }
 
     public static boolean updatePublic(String id, int pub) {
+        System.out.println("[MyDriveDAO]method=updatePublic");
+        System.out.println("[MyDriveDAO]id = "+id);
+        System.out.println("[MyDriveDAO]pub = "+pub);
         int updCnt = 0;
         String sql = String.format("UPDATE USERS SET PUBLIC=%d WHERE ID='%s';", pub, id);
         try {
