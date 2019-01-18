@@ -102,13 +102,11 @@
                     <ul class="menu">
                         <li><a id="right_con" href="#">ソート</a>
                             <ul id="ddmenu">
-                                <%--id="name"の重複なくして！--%>
                                 <li><a href="#" onclick="selectName();sortByName()"><span id="name">✓</span>名前順</a></li>
                                 <li><a href="#" onclick="selectAsc()"><span id="asc">✓</span>昇順</a></li>
                                 <li><a href="#" onclick="selectDesc()"><span id="desc">✓</span>降順</a></li>
                             </ul>
                         </li>
-                        <%--id="name"の重複なくして！--%>
                     </ul>
                 </div>
             </div>
