@@ -123,10 +123,9 @@
                         <input id="file" name="file" type="file" onchange="fileChange()" required>
                         <br>
                         <div class="upload_text">ファイル名を入力</div>
-                        <input id="upload_filename" type="text" name="filename" placeholder="200文字以上は登録できません"
-                               maxlength="199"><br>
+                        <input id="upload_filename" type="text" name="fileName" placeholder="未入力は元の名前で登録されます" maxlength="199"><br>
                         <div class="radioButton">
-                            <input type="radio" name="ispublic">公開
+                            <input type="radio" name="ispublic" checked>公開
                             <input type="radio" name="ispublic">非公開
                         </div>
                         <input id="newFolder" type="submit" value="アップロード">

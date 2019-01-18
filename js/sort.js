@@ -48,7 +48,9 @@ class Folder{
     get myType() {
         return this.type;
     }
-    get myPath()
+    get myPath() {
+	return this.path;
+    }
 }
 
 function sortByName() {
