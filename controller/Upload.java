@@ -19,7 +19,8 @@ public class Upload extends HttpServlet {
         boolean isPublic = request.getParameter("public") != null;
         User user = (User) ses.getAttribute("USER");
         Part part = request.getPart("file");
-        String name = getFileName(part);
+        String fileName = request.getParameter("fileName");
+        String name = fileName.equals("") ? getFileName(part) : fileName;
         String path = request.getParameter("path");
         part.write(getServletContext().getRealPath("WEB-INF/uploaded") + "/" + path + "/" + name);
         ses.setAttribute("FILES", user.setHome(MyDriveDAO.move(Paths.get(path), null)));
