@@ -30,6 +30,35 @@ function check(id) {
     }
 }
 
+var subWin;
+
+function openUpWindow() {
+    closeWindow();
+    var w = (screen.width - 640) / 2;
+    var h = (screen.height - 480) / 2;
+    subWin = window.open('/home/nullpo299/IdeaProjects/FileShareService/web/upload.html', "アップロード", "width=350 height=350　resizable=no left=" + w + ' top=' + h);
+}
+
+function closeWindow() {
+    if ((subWin != null) && (!subWin.closed)) {
+        subWin.close();
+    }
+    subWin = null;
+}
+
+function upload() {
+    var parent = window.opener.document;
+    window.open('about:blank', '_self').close();
+    parent.getElementById("hideForm").submit();
+}
+
+function openNewFolderWindow() {
+    closeWindow();
+    var w = (screen.width - 640) / 2;
+    var h = (screen.height - 480) / 2;
+    subWin = window.open('/home/nullpo299/IdeaProjects/FileShareService/web/new_folder.html', "アップロード", "width=350 height=270 left=" + w + ' top=' + h);
+}
+
 function exeDownload() {
     var target = document.getElementById("hideForm");
     var array = [];
@@ -49,18 +78,11 @@ function exeDownload() {
         if (array.length == 0) {
             alert("ファイルが選択されていません");
         } else {
-            jump("Download?" + array, "post");
+            jump("Download?"+array,"post");
         }
-    } else {
+    }else{
         alert("フォルダはダウンロードできません");
     }
-}
-
-function fileChange() {
-    var s = document.getElementById("file").value.split("\\");
-    var st = s[s.length - 1];
-    var target = document.getElementById("filePosition").value = st;
-    document.getElementById("upload_filename").value = st;
 }
 
 /*-----------------------------------------------------------
@@ -90,15 +112,15 @@ function rightclick(clicked) {
 
 function showSubmenu(clicked) {
     var submenu = document.getElementById('submenu');
-    var name = clicked.myName;
-    if (clicked.myName.length > 11) {
-        name = clicked.myName.substring(0, 10) + "...";
+    var name=clicked.myName;
+    if(clicked.myName.length > 11) {
+        name=clicked.myName.substring(0,10) +"...";
     }
-    if (clicked.myType == 0) {
-        submenu.innerHTML = "<ul><li class=\"cut\">" + name + "<li><a onclick=rightDownload(\"" + name + "\")>ダウンロード</a></li><li><a onclick=deleteThing(\"" + name + "\")>削除</a></li></ul>";
+    if(clicked.myType == 0) {
+        submenu.innerHTML = "<ul><li class=\"cut\">"+ name + "<li><a onclick=rightDownload(\""+ name +"\")>ダウンロード</a></li><li><a onclick=deleteThing(\"" + name +  "\")>削除</a></li></ul>";
         submenu.style.height = "60px";
-    } else {
-        submenu.innerHTML = "<ul><li>" + name + "</li><li><a onclick=jump(\'Main?req=move&src=home&name=" + name + "\',\"post\")>開く</a></li><li><a onclick=deleteThing(\"" + name + "\")>削除</a></li></ul>";
+    }else{
+        submenu.innerHTML = "<ul><li>" + name + "</li><li><a onclick=jump(\'Main?req=move&src=home&name=" + name + "\',\"post\")>開く</a></li><li><a onclick=deleteThing(\"" + name +  "\")>削除</a></li></ul>";
         submenu.style.height = "60px";
     }
     submenu.style.position = 'absolute';
@@ -107,57 +129,29 @@ function showSubmenu(clicked) {
     submenu.classList.add("show");
 }
 
-function rightDownload(name) {
-    jump("Download?" + name, "post");
+function rightDownload(name){
+    jump("Download?"+name,"post");
 }
 
 function deleteThing(name) {
     console.log(name);
-    jump("Main?req=delete?" + name, "post");
+    jump("Main?req=delete?"+name,"post");
 }
-
 /*-----------------------------------------------------------
 submit
 -----------------------------------------------------------*/
 
-function jump(dis, method) {
-    var form = document.createElement("form");
-    form.setAttribute("action", dis);
-    form.setAttribute("method", method);
-    form.style.display = "none";
+function jump(dis,method) {
+    var form =document.createElement("form");
+    form.setAttribute("action",dis);
+    form.setAttribute("method",method);
+    form.style.display ="none";
     document.body.appendChild(form);
     form.submit();
 }
 
 function createFolder() {
-    window.setTimeout(function () {
-        jump("Main?req=home", "post");
+    window.setTimeout(function(){
+        jump("Main?req=home","post");
     })
-}
-
-/*--------------------------------------------------
-new_folder
----------------------------------------------------*/
-function openNewFolderWindow() {
-    document.getElementById("cover").style.display = "block";
-    document.getElementById("new_folder_content").style.display = "block";
-}
-
-function closeNewFolderWindow() {
-    document.getElementById("cover").style.display = "none";
-    document.getElementById("new_folder_content").style.display = "none";
-}
-
-/*-----------------------------------------------------
-upload
-------------------------------------------------------*/
-
-function openUploadWindow() {
-    document.getElementById("cover").style.display = "block";
-    document.getElementById("upload_content").style.display = "block";
-}
-
-function closeUploadWindow() {
-    document.getElementById("cover").style.display = "none";
-    document.getElementById("upload_content").style.display = "none";
 }
