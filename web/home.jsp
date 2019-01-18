@@ -125,8 +125,8 @@
                         <div class="upload_text">ファイル名を入力</div>
                         <input id="upload_filename" type="text" name="fileName" placeholder="未入力は元の名前で登録されます" maxlength="199"><br>
                         <div class="radioButton">
-                            <input type="radio" name="ispublic" checked>公開
-                            <input type="radio" name="ispublic">非公開
+                            <input type="radio" name="public" value="true"checked>公開
+                            <input type="radio" name="public"value="false">非公開
                         </div>
                         <input id="newFolder" type="submit" value="アップロード">
                     </form>

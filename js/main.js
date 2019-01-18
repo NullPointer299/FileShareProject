@@ -57,8 +57,10 @@ function exeDownload() {
 }
 
 function fileChange(){
-    var s = document.getElementById("file").value;
-    var target = document.getElementById("filePosition").value=s;
+    var s = document.getElementById("file").value.split("/");
+    var st = s[s.length-1];
+    var target = document.getElementById("filePosition").value=st;
+    document.getElementById("upload_filename").value = st;
 }
 /*-----------------------------------------------------------
 右クリック関連
