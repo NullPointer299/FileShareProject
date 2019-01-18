@@ -73,7 +73,7 @@
             <li id="myFolder"><a href="#" onclick="jump('Main?req=home','post')">ホーム</a></li>
             <li id="searchUser"><a href="#" onclick="jump('Main?req=sear_user','post')">ユーザ検索</a></li>
             <li id="favorite"><a href="#" onclick="jump('Main?req=fav','post')">お気に入り</a></li>
-            <li id="trush"><a href="#" onclick="jump('Main?req=trash','post')">ゴミ箱</a></li>
+            <li id="trash"><a href="#" onclick="jump('Main?req=trash','post')">ゴミ箱</a></li>
         </ul>
     </div>
     <div class="content" id="content">
@@ -82,14 +82,12 @@
                 <ul class="menu">
                     <li><a id="right_con" href="#">ソート</a>
                         <ul id="ddmenu">
-                            <%--id="name"の重複なくして！--%>
                             <li><a href="#" onclick="selectName();sortByName()"><span id="name">✓</span>名前順</a></li>
                             <li><a href="#" onclick="selectAsc()"><span id="asc">✓</span>昇順</a></li>
                             <li><a href="#" onclick="selectDesc()"><span id="desc">✓</span>降順</a></li>
                         </ul>
                     </li>
-                    <%--id="name"の重複なくして！--%>
-                </ul><span id="name"></span>
+                </ul>
             </div>
         </div>
 
