@@ -17,11 +17,9 @@
     List<File> files = (List<File>) session.getAttribute("FILES");
     List<File> dirs = files.stream().filter(f -> f.isDirectory()).collect(Collectors.toList());
     List<File> normal = files.stream().filter(f -> !f.isDirectory()).collect(Collectors.toList());
-    System.out.println(files);
-    System.out.println(dirs);
-    System.out.println(normal);
     Path current = (Path) session.getAttribute("CURRENT");
     Path src = (Path) session.getAttribute("SRC");
+
     /*
      *
      * 設定 -> action="Configuration" method="get"
@@ -50,7 +48,7 @@
 %>
 
 <html>
-    <head>
+<head>
     <meta charset="utf-8">
     <title>MyDrive</title>
     <meta name="description" content="ファイル共有サービス">
@@ -60,12 +58,12 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        $(function() {
-            $("ul.menu li").mouseenter(function() {
+        $(function () {
+            $("ul.menu li").mouseenter(function () {
                 $(this).siblings().find("ul").hide();
                 $(this).children().slideDown(150);
             });
-            $('html').click(function() {
+            $('html').click(function () {
                 $('ul.menu ul').slideUp(150);
             });
         });
@@ -74,11 +72,11 @@
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/sort.js"></script>
     <script type="text/javascript">
-        window.onload = function() {
+        window.onload = function () {
             var dirs = [];
             var files = [];
             <%for (File f : dirs) {%>
-            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0,<%="'"+f.myPath()+"'")%>);
+            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>));
             <%}%>
             <%for (File f : normal) {%>
             files.push(new File(<%="'"+f.getName()+"'"%>, 1));
@@ -87,7 +85,7 @@
 
 
             var box = document.getElementById("content");
-            box.addEventListener("contextmenu", function(e) {
+            box.addEventListener("contextmenu", function (e) {
                 e.preventDefault();
             }, false);
         }
@@ -96,128 +94,132 @@
 </head>
 
 <body>
-    <header>
-        <h1>
-            <a href="https://auth.cyber-u.ac.jp/openam/UI/Login">
-                <font class="M">M</font>y<font class="D">D</font>rive
-            </a>
-        </h1>
+<header>
+    <h1>
+        <a href="https://auth.cyber-u.ac.jp/openam/UI/Login">
+            <font class="M">M</font>y<font class="D">D</font>rive
+        </a>
+    </h1>
 
-        <hr>
-    </header>
-    <div id="cover">
-        <div id="upload_content">
-            <div class="header">
-                <h1>
-                    <font class="M">M</font>y<font class="D">D</font>rive
-                </h1>
-                <span class="upload" onclick="closeUploadWindow()">
+    <hr>
+</header>
+<div id="cover">
+    <div id="upload_content">
+        <div class="header">
+            <h1>
+                <font class="M">M</font>y<font class="D">D</font>rive
+            </h1>
+            <span class="upload" onclick="closeUploadWindow()">
                     <p class="upload_close_button">×</p>
                 </span>
-            </div>
-            <div class="upload_wrapper">
-                <div class="upload_main">
-                    <fieldset class="upload_fieldset">
-                        <p class="upload_midasi">ファイルをアップロード</p>
-                        <hr class="upload_hr">
-                        <form class="form" enctype="multipart/form-data" action="Upload?path=<%=current%>" method="post">
-                            <input id="filePosition" placeholder="未選択です" type="text" readonly>
-                            <label for="file" class="fileSelect">参照...</label>
-                            <input id="file" name="file" type="file" onchange="fileChange()" required>
-                            <br>
-                            <div class="upload_text">ファイル名を入力</div>
-                            <input id="upload_filename" type="text" name="filename" placeholder="200文字以上は登録できません" maxlength="199"><br>
-                            <div class="radioButton">
-                                <input type="radio" name="ispublic">公開
-                                <input type="radio" name="ispublic">非公開
-                            </div>
-                            <input id="newFolder" type="submit" value="アップロード">
-                        </form>
-                    </fieldset>
-                </div>
+        </div>
+        <div class="upload_wrapper">
+            <div class="upload_main">
+                <fieldset class="upload_fieldset">
+                    <p class="upload_midasi">ファイルをアップロード</p>
+                    <hr class="upload_hr">
+                    <form class="form" enctype="multipart/form-data" action="Upload?path=<%=current%>" method="post">
+                        <input id="filePosition" placeholder="未選択です" type="text" readonly>
+                        <label for="file" class="fileSelect">参照...</label>
+                        <input id="file" name="file" type="file" onchange="fileChange()" required>
+                        <br>
+                        <div class="upload_text">ファイル名を入力</div>
+                        <input id="upload_filename" type="text" name="filename" placeholder="200文字以上は登録できません"
+                               maxlength="199"><br>
+                        <div class="radioButton">
+                            <input type="radio" name="ispublic">公開
+                            <input type="radio" name="ispublic">非公開
+                        </div>
+                        <input id="newFolder" type="submit" value="アップロード">
+                    </form>
+                </fieldset>
             </div>
         </div>
-        <div id="new_folder_content">
-            <div class="header">
-                <h1>
-                    <font class="M">M</font>y<font class="D">D</font>rive
-                </h1>
-                <span class="new_folder_closeButton" onclick="closeNewFolderWindow()">
+    </div>
+    <div id="new_folder_content">
+        <div class="header">
+            <h1>
+                <font class="M">M</font>y<font class="D">D</font>rive
+            </h1>
+            <span class="new_folder_closeButton" onclick="closeNewFolderWindow()">
                     <p>×</p>
                 </span>
-            </div>
-            <div class="new_folder_wrapper">
-                <div class="new_folder_main">
-                    <fieldset class="new_folder_fieldset">
-                        <p class="new_folder">新規フォルダ作成</p>
-                        <hr class="new_folder">
-                        <form class="form" action="Main?req=mkdir&path=<%=current%>" method="post">
-                            <div id="new_folder_text">フォルダ名を入力</div>
-                            <input id="foldername" type="text" name="name" placeholder="200文字以上は登録できません" maxlength="199" required><br>
-                            <input class="new_folder" type="submit" value="作成">
-                        </form>
-                    </fieldset>
-                </div>
+        </div>
+        <div class="new_folder_wrapper">
+            <div class="new_folder_main">
+                <fieldset class="new_folder_fieldset">
+                    <p class="new_folder">新規フォルダ作成</p>
+                    <hr class="new_folder">
+                    <form class="form" action="Main?req=mkdir&path=<%=current%>" method="post">
+                        <div id="new_folder_text">フォルダ名を入力</div>
+                        <input id="foldername" type="text" name="name" placeholder="200文字以上は登録できません" maxlength="199"
+                               required><br>
+                        <input class="new_folder" type="submit" value="作成">
+                    </form>
+                </fieldset>
             </div>
         </div>
     </div>
-    <div class="submenu" id="submenu"></div>
+</div>
+<div class="submenu" id="submenu"></div>
 
-    <div class="wrapper">
-        <div class="top_bar">
-            <input type="submit" class="top_con login_con" value="ログアウト" onclick="jump('Logout','post')"> <input type="submit" class="top_con" value="設定" onclick="jump('Configuration','get')">
-            <form action="#">
-                <input id="topText" type="text" class="top_con" onkeyup="charFilter()" placeholder="ファイルの検索">
-            </form>
-        </div>
-        <div class="side_bar">
-            <ul>
-                <li id="myFolder"><a onclick="jump('Main?req=home','post')">ホーム</a></li>
-                <li id="serchUser"><a onclick="jump('Main?req=sear_user','post')">ユーザ検索</a></li>
-                <li id="favorite"><a onclick="jump('Main?req=fav','post')">お気に入り</a></li>
-                <li id="trush"><a onclick="jump('Main?req=trash','post')">ゴミ箱</a></li>
-            </ul>
-        </div>
-        <div class="content" id="content">
-            <div class="content_top_bar">
-                <div class="content_top_bar_left">
-                    <ul class="menu">
-                        <li><a href="#" onclick="exeDownload()"><i class="material-icons"> cloud_download </i></a>
-                            <div class="tooltips">ダウンロード</div>
-                        </li>
-                        <li><a href="#" onclick="openUploadWindow()"><i class="material-icons"> cloud_upload </i></a>
-                            <div class="tooltips">アップロード</div>
-                        </li>
-                        <li><a id="left_con" href="#" onclick="openNewFolderWindow()"><i class="material-icons"> add </i></a>
-                            <div class="tooltips">新規フォルダ</div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="content_top_bar_right">
-                    <ul class="menu">
-                        <li><a id="right_con" href="#">ソート</a>
-                            <ul id="ddmenu">
-                                <li><a href="#" onclick="selectName();sortByName()"><span id="name">✓</span>名前順</a></li>
-                                <li><a href="#" onclick="selectAsc()"><span id="asc">✓</span>昇順</a></li>
-                                <li><a href="#" onclick="selectDesc()"><span id="desc">✓</span>降順</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="breadcrumb">
-                <ul>
-                    <li><a href="#home">home</a></li>
-                    <li><a href="#unti">unti</a></li>
+<div class="wrapper">
+    <div class="top_bar">
+        <input type="submit" class="top_con login_con" value="ログアウト" onclick="jump('Logout','post')"> <input
+            type="submit" class="top_con" value="設定" onclick="jump('Configuration','get')">
+        <form action="#">
+            <input id="topText" type="text" class="top_con" onkeyup="charFilter()" placeholder="ファイルの検索">
+        </form>
+    </div>
+    <div class="side_bar">
+        <ul>
+            <li id="myFolder"><a onclick="jump('Main?req=home','post')">ホーム</a></li>
+            <li id="serchUser"><a onclick="jump('Main?req=sear_user','post')">ユーザ検索</a></li>
+            <li id="favorite"><a onclick="jump('Main?req=fav','post')">お気に入り</a></li>
+            <li id="trush"><a onclick="jump('Main?req=trash','post')">ゴミ箱</a></li>
+        </ul>
+    </div>
+    <div class="content" id="content">
+        <div class="content_top_bar">
+            <div class="content_top_bar_left">
+                <ul class="menu">
+                    <li><a href="#" onclick="exeDownload()"><i class="material-icons"> cloud_download </i></a>
+                        <div class="tooltips">ダウンロード</div>
+                    </li>
+                    <li><a href="#" onclick="openUploadWindow()"><i class="material-icons"> cloud_upload </i></a>
+                        <div class="tooltips">アップロード</div>
+                    </li>
+                    <li><a id="left_con" href="#" onclick="openNewFolderWindow()"><i class="material-icons">
+                        add </i></a>
+                        <div class="tooltips">新規フォルダ</div>
+                    </li>
                 </ul>
             </div>
-            <div id="main"></div>
-            <div>
-
-                <form id="hideForm" action="Main?req=home&method=post"></form>
+            <div class="content_top_bar_right">
+                <ul class="menu">
+                    <li><a id="right_con" href="#">ソート</a>
+                        <ul id="ddmenu">
+                            <li><a href="#" onclick="selectName();sortByName()"><span id="name">✓</span>名前順</a></li>
+                            <li><a href="#" onclick="selectAsc()"><span id="asc">✓</span>昇順</a></li>
+                            <li><a href="#" onclick="selectDesc()"><span id="desc">✓</span>降順</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="#home">home</a></li>
+                <li><a href="#unti">unti</a></li>
+            </ul>
+        </div>
+        <div id="main"></div>
+        <div>
+
+            <form id="hideForm" action="Main?req=home&method=post"></form>
+        </div>
     </div>
+</div>
 </body>
 
 </html>
