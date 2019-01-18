@@ -25,7 +25,7 @@ public class Upload extends HttpServlet {
         ses.setAttribute("FILES", user.setHome(MyDriveDAO.move(Paths.get(path), null)));
 
         if (isPublic)
-            Files.newBufferedWriter(Paths.get("/home/nullpo299/IdeaProjects/FileShareService/out/artifacts/FileShareService_war_exploded/WEB-INF/uploaded/", user.getId(), "blacklist.dat")).write(path + " " + name);
+            MyDriveDAO.writeBlacklist(path.replace(name, ""), name, user.getId());
 
         request.getRequestDispatcher("WEB-INF/web/home.jsp").forward(request, response);
     }
