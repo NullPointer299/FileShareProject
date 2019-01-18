@@ -63,13 +63,14 @@ function fileChange() {
     document.getElementById("upload_filename").value = st;
 }
 
-function duplicate(){
+function duplicate() {
     var box = document.getElementById("upload_filename").value;
-    if(haveFiles.indexOf(box) <= -1 && haveFolders.indexOf(box) <= -1) {
-        alert("名前が重複しています");
+    if (haveFiles.indexOf(box) <= -1 && haveFolders.indexOf(box) <= -1) {
+        return true;
+    } else {
+        alert("名前が重複しています")
         return false;
     }
-    return true;
 }
 
 /*-----------------------------------------------------------
@@ -94,14 +95,18 @@ document.addEventListener('click', function () {
 function rightclick(clicked) {
     window.setTimeout(function () {
         showSubmenu(clicked);
-        for(let v of showFiles) {
-            if(v.myName != clicked.myName) {
-                document.getElementById(v.myName).checked ="false";
+        for (let v of showFiles) {
+            if (v.myName.equals(clicked.myName)) {
+                document.getElementById(v.myName).checked = "true";
+            }else{
+                document.getElementById(v.myName).checked="false";
             }
         }
-        for(let v of showFolders) {
-            if(v.myName != clicked.myName) {
-                document.getElementById(v.myName).checked ="false";
+        for (let v of showFolders) {
+            if (v.myName.equals(clicked.myName)) {
+                document.getElementById(v.myName).checked = "true";
+            }else{
+                document.getElementById(v.myName).checked="false";
             }
         }
     }, 100);
@@ -114,10 +119,10 @@ function showSubmenu(clicked) {
         name = clicked.myName.substring(0, 10) + "...";
     }
     if (clicked.myType == 0) {
-        submenu.innerHTML = "<ul><li class=\"cut\">" + name + "<li><a onclick=rightDownload(\"" + name + "\")>ダウンロード</a></li><li><a onclick=deleteThing(\"" + name + "\")>削除</a></li></ul>";
+        submenu.innerHTML = "<ul><li class=\"cut\">" + name + "<li><a href="" onclick=rightDownload(\"" + name + "\")>ダウンロード</a></li><li><a href="" onclick=deleteThing(\"" + name + "\")>削除</a></li></ul>";
         submenu.style.height = "60px";
     } else {
-        submenu.innerHTML = "<ul><li>" + name + "</li><li><a onclick=jump(\'Main?req=move&src=home&name=" + name + "\',\"post\")>開く</a></li><li><a onclick=deleteThing(\"" + name + "\")>削除</a></li></ul>";
+        submenu.innerHTML = "<ul><li>" + name + "</li><li><a href="" onclick=jump(\'Main?req=move&src=home&name=" + name + "\',\"post\")>開く</a></li><li><a href="" onclick=deleteThing(\"" + name + "\")>削除</a></li></ul>";
         submenu.style.height = "60px";
     }
     submenu.style.position = 'absolute';

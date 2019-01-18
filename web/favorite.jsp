@@ -70,11 +70,10 @@
     </div>
     <div class="side_bar">
         <ul>
-            <li id="myFolder" onclick="closeWindow()"><a href="home.html">マイフォルダ</a></li>
-            <%--id="searchUser"に直して！--%>
-            <li id="serchUser" onclick="closeWindow()"><a href="serch_user.html">ユーザ検索</a></li>
-            <li id="favorite" onclick="closeWindow()"><a href="#">お気に入り</a></li>
-            <li id="trash"><a href="trash.html">ゴミ箱</a></li>
+            <li id="myFolder"><a href="" onclick="jump('Main?req=home','post')">ホーム</a></li>
+            <li id="serchUser"><a href="" onclick="jump('Main?req=sear_user','post')">ユーザ検索</a></li>
+            <li id="favorite"><a href="" onclick="jump('Main?req=fav','post')">お気に入り</a></li>
+            <li id="trush"><a href="" onclick="jump('Main?req=trash','post')">ゴミ箱</a></li>
         </ul>
     </div>
     <div class="content" id="content">
