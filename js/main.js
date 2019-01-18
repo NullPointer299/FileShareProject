@@ -139,11 +139,13 @@ function showSubmenu(clicked) {
     var submenu = document.getElementById('submenu');
     var name = clicked.myName;
     if (getLen(clicked.myName) > 11) {
-        if (clicked.myName < 6) {
+        if (clicked.myName.length < 6) {
             name = clicked.myName.substring(0, 5) + "...";
         }else{
             name = clicked.myName.substring(0,10) +"...";
         }
+    }else{
+        name=clicked.myName;
     }
     if (clicked.myType == 0) {
         submenu.innerHTML = "<ul><li class=\"cut\">" + name + "<li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";

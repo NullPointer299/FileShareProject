@@ -86,22 +86,16 @@
             <div class="content_top_bar">
                 <div class="content_top_bar_left">
                     <ul class="menu">
-                        <li><a href="#" onclick="openDownload()"><i class="material-icons">
-                                    cloud_download
-                                </i></a>
-                            <div class="tooltips">ダウンロード</div>
-                        </li>
                         <li><a href="#" onclick="deleteThings()"><i class="material-icons">
                                     delete
                                 </i></a>
                             <div class="tooltips">削除</div>
                         </li>
-
-
-                        <i class="material-icons">
-                            delete
-                        </i>
-
+                        <li><a href="#" onclick="openDownload()"><i class="material-icons">
+                                    cloud_download
+                                </i></a>
+                            <div class="tooltips">ダウンロード</div>
+                        </li>
                     </ul>
                 </div>
                 <div class="content_top_bar_right">
