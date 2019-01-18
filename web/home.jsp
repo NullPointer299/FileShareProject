@@ -117,7 +117,7 @@
                 <fieldset class="upload_fieldset">
                     <p class="upload_midasi">ファイルをアップロード</p>
                     <hr class="upload_hr">
-                    <form class="form" enctype="multipart/form-data" action="Upload?path=<%=current%>" method="post">
+                    <form id="upload_form" onsubmit="duplicate()" class="form" enctype="multipart/form-data" action="Upload?path=<%=current%>" method="post">
                         <input id="filePosition" placeholder="未選択です" type="text" readonly>
                         <label for="file" class="fileSelect">参照...</label>
                         <input id="file" name="file" type="file" onchange="fileChange()" required>
@@ -148,7 +148,7 @@
                 <fieldset class="new_folder_fieldset">
                     <p class="new_folder">新規フォルダ作成</p>
                     <hr class="new_folder">
-                    <form class="form" action="Main?req=mkdir&path=<%=current%>" method="post">
+                    <form id="folder_form"class="form" onsubmit="duplicate()" action="Main?req=mkdir&path=<%=current%>" method="post">
                         <div id="new_folder_text">フォルダ名を入力</div>
                         <input id="foldername" type="text" name="name" placeholder="200文字以上は登録できません" maxlength="199"
                                required><br>

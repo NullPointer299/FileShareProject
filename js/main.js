@@ -63,6 +63,15 @@ function fileChange() {
     document.getElementById("upload_filename").value = st;
 }
 
+function duplicate(){
+    var box = document.getElementById("upload_filename").value;
+    if(haveFiles.indexOf(box) <= -1 && haveFolders.indexOf(box) <= -1) {
+        alert("名前が重複しています");
+        return false;
+    }
+    return true;
+}
+
 /*-----------------------------------------------------------
 右クリック関連
 -----------------------------------------------------------*/
@@ -85,6 +94,16 @@ document.addEventListener('click', function () {
 function rightclick(clicked) {
     window.setTimeout(function () {
         showSubmenu(clicked);
+        for(let v of showFiles) {
+            if(v.myName != clicked.myName) {
+                document.getElementById(v.myName).checked ="false";
+            }
+        }
+        for(let v of showFolders) {
+            if(v.myName != clicked.myName) {
+                document.getElementById(v.myName).checked ="false";
+            }
+        }
     }, 100);
 }
 
