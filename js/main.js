@@ -98,15 +98,19 @@ function rightclick(clicked) {
         for (let v of showFiles) {
             if (v.myName.equals(clicked.myName)) {
                 document.getElementById(v.myName).checked = true;
+                console.log("true:" + v.myName);
             } else {
                 document.getElementById(v.myName).checked = false;
+                console.log("true:" + v.myName);
             }
         }
         for (let v of showFolders) {
             if (v.myName.equals(clicked.myName)) {
                 document.getElementById(v.myName).checked = true;
+                console.log("true:" + v.myName);
             } else {
                 document.getElementById(v.myName).checked = false;
+                console.log("true:" + v.myName);
             }
         }
     }, 100);
