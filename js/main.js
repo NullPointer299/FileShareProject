@@ -68,7 +68,7 @@ function duplicate() {
     if (haveFiles.indexOf(box) <= -1 && haveFolders.indexOf(box) <= -1) {
         return true;
     } else {
-        alert("名前が重複しています")
+        alert("名前が重複しています");
         return false;
     }
 }
@@ -98,31 +98,54 @@ function rightclick(clicked) {
         for (let v of showFiles) {
             if (v.myName.equals(clicked.myName)) {
                 document.getElementById(v.myName).checked = true;
-            }else{
-                document.getElementById(v.myName).checked=false;
+            } else {
+                document.getElementById(v.myName).checked = false;
             }
         }
         for (let v of showFolders) {
             if (v.myName.equals(clicked.myName)) {
                 document.getElementById(v.myName).checked = true;
-            }else{
-                document.getElementById(v.myName).checked=false;
+            } else {
+                document.getElementById(v.myName).checked = false;
             }
         }
     }, 100);
 }
 
+function getLen(str) {
+    var result = 0;
+    for (var i = 0; i < str.length; i++) {
+        var chr = str.charCodeAt(i);
+        if ((chr >= 0x00 && chr < 0x81) ||
+            (chr === 0xf8f0) ||
+            (chr >= 0xff61 && chr < 0xffa0) ||
+            (chr >= 0xf8f1 && chr < 0xf8f4)) {
+            //半角文字の場合は1を加算
+            result += 1;
+        } else {
+            //それ以外の文字の場合は2を加算
+            result += 2;
+        }
+    }
+    //結果を返す
+    return result;
+};
+
 function showSubmenu(clicked) {
     var submenu = document.getElementById('submenu');
     var name = clicked.myName;
-    if (clicked.myName.length > 6) {
-        name = clicked.myName.substring(0, 6) + "...";
+    if (getLen(clicked.myName) > 11) {
+        if (clicked.myName < 6) {
+            name = clicked.myName.substring(0, 5) + "...";
+        }else{
+            name = clicked.myName.substring(0,10) +"...";
+        }
     }
     if (clicked.myType == 0) {
-        submenu.innerHTML = "<ul><li class=\"cut\">" + name + "<li><a href=\"#\" onclick=rightDownload(\"" + name + "\")>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThing(\"" + name + "\")>削除</a></li></ul>";
+        submenu.innerHTML = "<ul><li class=\"cut\">" + name + "<li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
         submenu.style.height = "60px";
     } else {
-        submenu.innerHTML = "<ul><li>" + name + "</li><li><a href=\"#\" onclick=jump(\'Main?req=move&src=home&name=" + name + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThing(\"" + name + "\")>削除</a></li></ul>";
+        submenu.innerHTML = "<ul><li>" + name + "</li><li><a href=\"#\" onclick=jump(\'Main?req=move&src=home&name=" + name + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
         submenu.style.height = "60px";
     }
     submenu.style.position = 'absolute';
@@ -130,16 +153,6 @@ function showSubmenu(clicked) {
     submenu.style.top = posY + "px";
     submenu.classList.add("show");
 }
-
-function rightDownload(name) {
-    jump("Download?" + name, "post");
-}
-
-function deleteThing(name) {
-    console.log(name);
-    jump("Main?req=delete?" + name, "post");
-}
-
 /*-----------------------------------------------------------
 submit
 -----------------------------------------------------------*/
@@ -184,4 +197,24 @@ function openUploadWindow() {
 function closeUploadWindow() {
     document.getElementById("cover").style.display = "none";
     document.getElementById("upload_content").style.display = "none";
+}
+
+/*----------------------------------------------------------
+削除
+-----------------------------------------------------------*/
+
+function deleteThings() {
+    var temp="";
+    for(let f of showFiles) {
+        if(document.getElementById(f.myName).checked){
+            temp += f.myName +",";
+        }
+    }
+    for(let f of showFolders){
+        if(document.getElementById(f.myName).checked){
+            temp += f.myName +",";
+        }
+    }
+    temp = temp.slice(0,-1);
+    jump("Main?req=delete?names=" + temp, "post");
 }
