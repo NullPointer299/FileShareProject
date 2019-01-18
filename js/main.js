@@ -97,16 +97,16 @@ function rightclick(clicked) {
         showSubmenu(clicked);
         for (let v of showFiles) {
             if (v.myName.equals(clicked.myName)) {
-                document.getElementById(v.myName).checked = "true";
+                document.getElementById(v.myName).checked = true;
             }else{
-                document.getElementById(v.myName).checked="false";
+                document.getElementById(v.myName).checked=false;
             }
         }
         for (let v of showFolders) {
             if (v.myName.equals(clicked.myName)) {
-                document.getElementById(v.myName).checked = "true";
+                document.getElementById(v.myName).checked = true;
             }else{
-                document.getElementById(v.myName).checked="false";
+                document.getElementById(v.myName).checked=false;
             }
         }
     }, 100);
@@ -115,11 +115,11 @@ function rightclick(clicked) {
 function showSubmenu(clicked) {
     var submenu = document.getElementById('submenu');
     var name = clicked.myName;
-    if (clicked.myName.length > 11) {
-        name = clicked.myName.substring(0, 10) + "...";
+    if (clicked.myName.length > 6) {
+        name = clicked.myName.substring(0, 6) + "...";
     }
     if (clicked.myType == 0) {
-        submenu.innerHTML = "<ul><li class=\"cut\">" + name + "<li><a href="" onclick=rightDownload(\"" + name + "\")>ダウンロード</a></li><li><a href="" onclick=deleteThing(\"" + name + "\")>削除</a></li></ul>";
+        submenu.innerHTML = "<ul><li class=\"cut\">" + name + "<li><a href=\"#\" onclick=rightDownload(\"" + name + "\")>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThing(\"" + name + "\")>削除</a></li></ul>";
         submenu.style.height = "60px";
     } else {
         submenu.innerHTML = "<ul><li>" + name + "</li><li><a href="" onclick=jump(\'Main?req=move&src=home&name=" + name + "\',\"post\")>開く</a></li><li><a href="" onclick=deleteThing(\"" + name + "\")>削除</a></li></ul>";
