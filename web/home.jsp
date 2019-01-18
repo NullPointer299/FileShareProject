@@ -123,7 +123,7 @@
                         <input id="file" name="file" type="file" onchange="fileChange()" required>
                         <br>
                         <div class="upload_text">ファイル名を入力</div>
-                        <input id="upload_filename" type="text" name="fileName" placeholder="未入力は元の名前で登録されます" maxlength="199"><br>
+                        <input id="upload_filename" pattern="[^\\=:;\']+$" type="text" name="fileName" placeholder="未入力は元の名前で登録されます" maxlength="199"><br>
                         <div class="radioButton">
                             <input type="radio" name="public" value="true"checked>公開
                             <input type="radio" name="public"value="false">非公開
@@ -150,7 +150,7 @@
                     <hr class="new_folder">
                     <form id="folder_form"class="form" onsubmit="duplicate()" action="Main?req=mkdir&path=<%=current%>" method="post">
                         <div id="new_folder_text">フォルダ名を入力</div>
-                        <input id="foldername" type="text" name="name" placeholder="200文字以上は登録できません" maxlength="199"
+                        <input id="foldername" pattern="[^\\=:;\']+$" type="text" name="name" placeholder="200文字以上は登録できません" maxlength="199"
                                required><br>
                         <input class="new_folder" type="submit" value="作成">
                     </form>
