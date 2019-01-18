@@ -56,6 +56,10 @@ function exeDownload() {
     }
 }
 
+function fileChange(){
+    var s = document.getElementById("file").value;
+    var target = document.getElementById("filePosition").value=s;
+}
 /*-----------------------------------------------------------
 右クリック関連
 -----------------------------------------------------------*/
