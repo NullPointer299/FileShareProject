@@ -78,6 +78,10 @@ public class Main extends HttpServlet {
                     String src = request.getParameter("src");
                     path = request.getParameter("path");
                     id = request.getParameter("id");
+                    System.out.println("[Main]name = "+name);
+                    System.out.println("[Main]src = "+src);
+                    System.out.println("[Main]path = "+path);
+                    System.out.println("[Main]id = "+id);
                     ses.setAttribute("FILES", MyDriveDAO.move(Paths.get(path, name), id));
                     ses.setAttribute("CURRENT", Paths.get(path , name));
                     url.append(src).append(".jsp");

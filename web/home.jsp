@@ -18,7 +18,6 @@
     List<File> dirs = files.stream().filter(f -> f.isDirectory()).collect(Collectors.toList());
     List<File> normal = files.stream().filter(f -> !f.isDirectory()).collect(Collectors.toList());
     Path current = (Path) session.getAttribute("CURRENT");
-    Path src = (Path) session.getAttribute("SRC");
 
     /*
      *
