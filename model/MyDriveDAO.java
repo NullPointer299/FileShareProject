@@ -145,9 +145,9 @@ public class MyDriveDAO {
 
     public static boolean updateName(String id, String firstName, String lastName) {
         System.out.println("[MyDriveDAO]method = updateName");
-        System.out.println("[MyDriveDAO]id = "+id);
-        System.out.println("[MyDriveDAO]firstName = "+firstName);
-        System.out.println("[MyDriveDAO]lastName = "+lastName);
+        System.out.println("[MyDriveDAO]id = " + id);
+        System.out.println("[MyDriveDAO]firstName = " + firstName);
+        System.out.println("[MyDriveDAO]lastName = " + lastName);
         int updCnt = 0;
         String sql = String.format("UPDATE USERS SET FIRST_NAME='%s', LAST_NAME='%s' WHERE ID='%s';", firstName, lastName, id);
         try {
@@ -155,13 +155,13 @@ public class MyDriveDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return updCnt <= 0 ? false : true;
+        return updCnt > 0;
     }
 
     public static boolean updatePassword(String id, String newPass) {
         System.out.println("[MyDriveDAO]method = updatePassword");
-        System.out.println("[MyDriveDAO]id = "+id);
-        System.out.println("[MyDriveDAO]newPass = "+newPass);
+        System.out.println("[MyDriveDAO]id = " + id);
+        System.out.println("[MyDriveDAO]newPass = " + newPass);
         int updCnt = 0;
         String sql = String.format("UPDATE USERS SET PASSWORD='%s' WHERE ID='%s';", toEncryptedHashValue(newPass), id);
         try {
@@ -169,13 +169,13 @@ public class MyDriveDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return updCnt <= 0 ? false : true;
+        return updCnt > 0;
     }
 
     public static boolean updatePublic(String id, int pub) {
         System.out.println("[MyDriveDAO]method=updatePublic");
-        System.out.println("[MyDriveDAO]id = "+id);
-        System.out.println("[MyDriveDAO]pub = "+pub);
+        System.out.println("[MyDriveDAO]id = " + id);
+        System.out.println("[MyDriveDAO]pub = " + pub);
         int updCnt = 0;
         String sql = String.format("UPDATE USERS SET PUBLIC=%d WHERE ID='%s';", pub, id);
         try {
@@ -183,7 +183,20 @@ public class MyDriveDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return updCnt <= 0 ? false : true;
+        return updCnt > 0;
+    }
+
+    public static boolean removeUser(String id) {
+        System.out.println("[MyDriveDAO]method=removeUser");
+        System.out.println("[MyDriveDAO]id = " + id);
+        int updCnt = 0;
+        String sql = String.format("DELETE FROM USERS WHERE ID=%s", id);
+        try {
+            updCnt = stat.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return updCnt > 0;
     }
 
     public static void writeBlacklist(String path, String name, String id) {
@@ -225,7 +238,7 @@ public class MyDriveDAO {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // make code close();
+        // TODO make code close();
     }
 
     private static String toEncryptedHashValue(String value) {

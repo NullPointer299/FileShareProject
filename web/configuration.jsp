@@ -41,8 +41,10 @@
             <input type="radio" name="public" value="false" <%if (!user.isPublic())out.print("checked=\"checked\"");%>>公開しない<br>
             <input type="submit" value="適用">
             <br>
+            <%--Configuration?req=remove--%>
             <a href="#">アカウント削除</a><br>
-            <a href="#">TOPに戻る</a>
+            <%--Configuration?req=home--%>
+            <a href="#">ホームに戻る</a>
         </form>
     </fieldset>
 </div>
