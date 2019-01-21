@@ -49,7 +49,7 @@
 
     for (File f : files) {
         if (Files.isDirectory(f.getPath())) {
-            out.println("<form action=\"Main?cd=move&src=user_dir&name=" +
+            out.println("<form action=\"Main?req=move&src=user_dir&name=" +
                     f.getName() + "&path=" + f.getPath() + "&id=" + target.getId() + "\" method=\"post\">");
             out.println("<input type=\"submit\" value=\"" + f.getName() + "\">");
             out.println("</form>");

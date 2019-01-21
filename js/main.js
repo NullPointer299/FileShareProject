@@ -60,12 +60,12 @@ checkbox関連
 
 function check(id) {
     var target = document.getElementById(id);
-    var check = document.getElementById(id +"_check");
+    var check = document.getElementById(id + "_check");
     if (target.checked) {
-        check.style.display="none";
+        check.style.display = "none";
         target.checked = false;
     } else {
-        check.style.display="block";
+        check.style.display = "block";
         target.checked = true;
     }
 }
@@ -92,25 +92,25 @@ document.addEventListener('click', function () {
 
 function rightclick(clicked) {
     window.setTimeout(function () {
-        showSubmenu(clicked);
         for (let v of showFiles) {
-            if (v.myName.equals(clicked.myName)) {
+            if (v.myName == clicked.myName) {
                 document.getElementById(v.myName).checked = true;
-                console.log("true:" + v.myName);
+                document.getElementById(v.myName + "_check").style.display = "block";
             } else {
                 document.getElementById(v.myName).checked = false;
-                console.log("true:" + v.myName);
+                document.getElementById(v.myName + "_check").style.display = "none";
             }
         }
         for (let v of showFolders) {
-            if (v.myName.equals(clicked.myName)) {
+            if (v.myName == clicked.myName) {
                 document.getElementById(v.myName).checked = true;
-                console.log("true:" + v.myName);
+                document.getElementById(v.myName + "_check").style.display = "block";
             } else {
                 document.getElementById(v.myName).checked = false;
-                console.log("true:" + v.myName);
+                document.getElementById(v.myName + "_check").style.display = "none";
             }
         }
+        showSubmenu(clicked);
     }, 100);
 }
 
@@ -134,22 +134,24 @@ function getLen(str) {
 };
 
 function showSubmenu(clicked) {
+    console.log("in");
     var submenu = document.getElementById('submenu');
     var name = clicked.myName;
+    var path = clicked.myPath;
     if (getLen(clicked.myName) > 11) {
         if (clicked.myName.length < 6) {
             name = clicked.myName.substring(0, 5) + "...";
-        }else{
-            name = clicked.myName.substring(0,10) +"...";
+        } else {
+            name = clicked.myName.substring(0, 10) + "...";
         }
-    }else{
-        name=clicked.myName;
+    } else {
+        name = clicked.myName;
     }
     if (clicked.myType == 0) {
         submenu.innerHTML = "<ul><li class=\"cut\">" + name + "<li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
         submenu.style.height = "60px";
     } else {
-        submenu.innerHTML = "<ul><li>" + name + "</li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+        submenu.innerHTML = "<ul><li>" + name + "</li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
         submenu.style.height = "60px";
     }
     submenu.style.position = 'absolute';
@@ -208,17 +210,17 @@ function closeUploadWindow() {
 -----------------------------------------------------------*/
 
 function deleteThings() {
-    var temp="";
-    for(let f of showFiles) {
-        if(document.getElementById(f.myName).checked){
-            temp += f.myName +",";
+    var temp = "";
+    for (let f of showFiles) {
+        if (document.getElementById(f.myName).checked) {
+            temp += f.myName + ",";
         }
     }
-    for(let f of showFolders){
-        if(document.getElementById(f.myName).checked){
-            temp += f.myName +",";
+    for (let f of showFolders) {
+        if (document.getElementById(f.myName).checked) {
+            temp += f.myName + ",";
         }
     }
-    temp = temp.slice(0,-1);
+    temp = temp.slice(0, -1);
     jump("Main?req=delete?names=" + temp, "post");
 }

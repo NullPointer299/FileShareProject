@@ -74,7 +74,7 @@
             var dirs = [];
             var files = [];
             <%for (File f : dirs) {%>
-            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0,<%="'"+f.getPath()+"'"%>));
+            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0,<%="'"+f.myPath()+"'")%>);
             <%}%>
             <%for (File f : normal) {%>
             files.push(new File(<%="'"+f.getName()+"'"%>, 1));
