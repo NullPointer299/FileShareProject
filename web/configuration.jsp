@@ -18,36 +18,42 @@
     <title>MyDrive</title>
     <meta name="description" content="ファイル共有サービス">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script type="text/javascript" src="../js/configuration.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
 </head>
 
 <body>
-<header>
-    <h1>
-        <font class="M">M</font>y<font class="D">D</font>rive
-    </h1>
-    <hr>
-</header>
+    <header>
+        <h1>
+            <font class="M">M</font>y<font class="D">D</font>rive
+        </h1>
+        <hr>
+    </header>
 
-<div class="wrapper">
-    <fieldset>
-        <form action="Configuration" method="post">
-            名前変更<input type="text" name="lName"><input type="text" name="fName">
-            <br>
-            パスワード変更<input type="password" name="pass">
-            <br>
-            ユーザ公開設定
-            <input type="radio" name="public" value="true" <%if (user.isPublic())out.print("checked=\"checked\"");%>>公開する<br>
-            <input type="radio" name="public" value="false" <%if (!user.isPublic())out.print("checked=\"checked\"");%>>公開しない<br>
-            <input type="submit" value="適用">
-            <br>
-            <%--Configuration?req=remove--%>
-            <a href="#">アカウント削除</a><br>
-            <%--Configuration?req=home--%>
-            <a href="#">ホームに戻る</a>
-        </form>
-    </fieldset>
-</div>
+    <div class="wrapper">
+        <fieldset>
+            <form action="#">
+                名前変更
+                <br>
+                姓<input type="text">
+                名<input type="text">
+                <br>
+                パスワード変更<input type="password">
+                <br>
+                ユーザ公開設定
+                <select>
+                    <option>公開</option>
+                    <option selected>非公開</option>
+                </select>
+                <br>
+                <input type="submit" value="適用">
+                <br>
+            </form>
+            <a href="#" onclick="deleteAccount()">アカウント削除</a>
+            <a href="#" onclick="home()">HOMEに戻る</a>
+        </fieldset>
+    </div>
 
 </body>
 
