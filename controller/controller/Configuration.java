@@ -45,10 +45,14 @@ public class Configuration extends HttpServlet {
                 }
             }
         } else {
-            if (req.equals("delete")) {
-                //アカウント削除
-            } else if (req.equals("back")) {
-                //ホームに戻る
+            if (req.equals("remove")) {
+                // アカウント削除
+                if(MyDriveDAO.removeUser(user.getId())){
+                    url="index.jsp";
+                }
+            } else if (req.equals("home")) {
+                // ホームに戻る
+                url="home.jsp";
             } else {
                 System.out.println("unknown request");  //TODO debug code here!
             }
