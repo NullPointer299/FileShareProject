@@ -1,4 +1,4 @@
-@import url("style.css");
+@import url("../style.css");
 
 .wrapper {
     width: 100vw;
@@ -115,8 +115,8 @@ confirm
 
 #confirm{
     display: none;
-    width: 600px;
-    height: 600px;
+    width: 540px;
+    height: 550px;
     background-color: white;
     position: absolute;
     margin: auto;
@@ -124,4 +124,79 @@ confirm
     left: 0;
     right: 0;
     bottom: 0;
+    background-color: white;
+    padding: 0;
+}
+
+#confirm .M{
+    color: orange;
+}
+
+#confirm .D{
+    color: lightgreen;
+}
+
+#confirm hr{
+    clear: both;
+}
+
+fieldset.confirmArea{
+    height: 99%;
+    width: 99%;
+    border: 5px solid #310D00;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+.confirmNode{
+    padding: 30px 80px;
+}
+
+#confirm input[type="submit"] {
+    padding: 6px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    width: 150px;
+    height: 50px;
+    background-color: whitesmoke;
+    border: 2px solid ;
+    margin: auto;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#confirm input[type="submit"]:hover {
+    background-color: lightgray;
+    border: 3px solid black;
+}
+
+#confirm input[type="text"]{
+    font-weight: 900;
+    font-size: 24px;
+}
+
+#close_button{
+    position: absolute;
+    bottom: 40px;
+    left: 100px;
+}
+
+#register_button{
+    position: absolute;
+    bottom: 40px;
+    right: 100px;
+}
+
+.aaaaa{
+    position: absolute;
+    bottom: 110px;
+    left: 100px;
+    color: red;
 }

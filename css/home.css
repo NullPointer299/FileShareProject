@@ -194,6 +194,11 @@ main
     background-color: white;
 }
 
+.node a{
+    color: black;
+    text-decoration: none;
+}
+
 .node:hover {
     z-index: 1;
 }
@@ -201,8 +206,6 @@ main
 input[type="checkbox"] {
     display: none;
 }
-
-
 
 .filename {
     font-size: 14px;

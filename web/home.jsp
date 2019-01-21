@@ -122,7 +122,7 @@
                             <div class="upload_text">ファイル名を入力</div>
                             <input id="upload_filename" type="text" name="fileName" placeholder="200文字以上は登録できません" maxlength="199"><br>
                             <div class="radioButton">
-                                <input type="radio" name="ispublic">公開
+                                <input type="radio" name="ispublic" checked>公開
                                 <input type="radio" name="ispublic">非公開
                             </div>
                             <input id="newFolder" type="submit" value="アップロード">
@@ -166,10 +166,10 @@
         </div>
         <div class="side_bar">
             <ul>
-                <li id="myFolder"><a onclick="jump('Main?req=home','post')">ホーム</a></li>
-                <li id="serchUser"><a onclick="jump('Main?req=sear_user','post')">ユーザ検索</a></li>
-                <li id="favorite"><a onclick="jump('Main?req=fav','post')">お気に入り</a></li>
-                <li id="trush"><a onclick="jump('Main?req=trash','post')">ゴミ箱</a></li>
+                <li id="myFolder"><a href="#" onclick="jump('Main?req=home','post')">ホーム</a></li>
+                <li id="serchUser"><a href="#" onclick="jump('Main?req=sear_user','post')">ユーザ検索</a></li>
+                <li id="favorite"><a href="#" onclick="jump('Main?req=fav','post')">お気に入り</a></li>
+                <li id="trush"><a href="#" onclick="jump('Main?req=trash','post')">ゴミ箱</a></li>
             </ul>
         </div>
         <div class="content" id="content">

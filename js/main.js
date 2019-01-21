@@ -94,7 +94,7 @@ document.addEventListener('click', function () {
 
 function rightclick(clicked) {
     window.setTimeout(function () {
-        for (let v of showFiles) {
+        for (let v of haveFiles) {
             if (v.myName == clicked.myName) {
                 document.getElementById(v.myName).checked = true;
                 document.getElementById(v.myName + "_check").style.display = "block";
@@ -103,7 +103,7 @@ function rightclick(clicked) {
                 document.getElementById(v.myName + "_check").style.display = "none";
             }
         }
-        for (let v of showFolders) {
+        for (let v of haveFolders) {
             if (v.myName == clicked.myName) {
                 document.getElementById(v.myName).checked = true;
                 document.getElementById(v.myName + "_check").style.display = "block";

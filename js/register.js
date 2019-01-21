@@ -5,8 +5,10 @@ function printConfirm() {
     var id = document.getElementById("id").value;
     var password = document.getElementById("password").value;
     var passwordCheck = document.getElementById("passwordCheck").value;
-    if (lastName != "" && firstName !="" &&id !="" && password !=""&&passwordCheck !="") {
-        target.innerHTML = "姓：" + lastName + "<br>名：" + firstName + "<br>ID:" + id + "<br><input type=\"submit\" value=\"戻る\" onclick=\"closeConfirm()\"><input type=\"submit\" value=\"登録\"onclick=\"submitConfirm()\">";
+    if (lastName != "" && firstName !="" &&id !="" && password !=""&&passwordCheck !="" && (password == passwordCheck)) {
+        document.getElementById("confirm_lName").value=lastName;
+        document.getElementById("confirm_fName").value=firstName;
+        document.getElementById("confirm_id").value=id;
         target.style.display = "block";
     }
 }
