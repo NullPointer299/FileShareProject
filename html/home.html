@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <head>
+
+<head>
     <meta charset="utf-8">
     <title>MyDrive</title>
     <meta name="description" content="ファイル共有サービス">
@@ -34,7 +35,9 @@
             files.push(new File(<%="'"+f.getName()+"'"%>, 1));
             <%}%>
             sortLoad(dirs, files);*/
-            sortLoad([new Folder("a",0,"a")],[]);
+            dirs.push(new Folder("a", 0, "a"));
+            files.push(new File("b",1));
+            sortLoad(dirs,files);
 
             var box = document.getElementById("content");
             box.addEventListener("contextmenu", function(e) {
@@ -161,10 +164,10 @@
                     <li><a href="#unti">unti</a></li>
                 </ul>
             </div>
-            <div id="main"></div>
-            <div>
-
-                <form id="hideForm" action="Main?req=home&method=post"></form>
+            <div id="main">
+                <div>
+                    <form id="hideForm" action="Main?req=home&method=post"></form>
+                </div>
             </div>
         </div>
     </div>

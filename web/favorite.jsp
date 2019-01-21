@@ -65,7 +65,7 @@
         <input type="submit" class="top_con login_con" value="ログアウト">
         <input type="submit" class="top_con" value="設定">
         <form action="#">
-            <input id="topText" type="text" class="top_con" onkeyup="charFilter()" placeholder="ユーザの検索">
+            <input id="topText" type="text" class="top_con" placeholder="ユーザの検索">
         </form>
     </div>
     <div class="side_bar">
@@ -97,36 +97,3 @@
 </div>
 </body>
 </html>
-
-<%--<html>--%>
-<%--<head>--%>
-    <%--<title>MyDrive</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-
-<%--<h1>MyDrive</h1>--%>
-<%--<h2>Favorite</h2>--%>
-
-<%--<form action="Configuration" method="post">--%>
-    <%--<input type="submit" value="config">--%>
-<%--</form>--%>
-<%--<form action="Main?req=user_info" method="post">--%>
-    <%--<input type="submit" value="logout">--%>
-<%--</form>--%>
-<%--<form action="Main?req=home" method="post">--%>
-    <%--<input type="submit" value="home">--%>
-<%--</form>--%>
-<%--<form action="Main?req=sear_user" method="post">--%>
-    <%--<input type="submit" value="sear_user">--%>
-<%--</form>--%>
-<%--<form action="Main?req=fav" method="post">--%>
-    <%--<input type="submit" value="fav">--%>
-<%--</form>--%>
-<%--<form action="Main?req=trash" method="post">--%>
-    <%--<input type="submit" value="trash">--%>
-<%--</form>--%>
-
-<%--<br>This is favorite.jsp!!!<br>--%>
-
-<%--</body>--%>
-<%--</html>--%>

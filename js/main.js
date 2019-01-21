@@ -21,15 +21,6 @@ function selectDesc() {
     asc.style.color = "transparent";
 }
 
-function check(id) {
-    var target = document.getElementById(id);
-    if (target.checked) {
-        target.checked = false;
-    } else {
-        target.checked = true;
-    }
-}
-
 function exeDownload() {
     var target = document.getElementById("hideForm");
     var array = [];
@@ -63,15 +54,22 @@ function fileChange() {
     document.getElementById("upload_filename").value = st;
 }
 
-function duplicate() {
-    var box = document.getElementById("upload_filename").value;
-    if (haveFiles.indexOf(box) <= -1 && haveFolders.indexOf(box) <= -1) {
-        return true;
+/*----------------------------------------------------------
+checkbox関連
+------------------------------------------------------------*/
+
+function check(id) {
+    var target = document.getElementById(id);
+    var check = document.getElementById(id +"_check");
+    if (target.checked) {
+        check.style.display="none";
+        target.checked = false;
     } else {
-        alert("名前が重複しています");
-        return false;
+        check.style.display="block";
+        target.checked = true;
     }
 }
+
 
 /*-----------------------------------------------------------
 右クリック関連
