@@ -74,10 +74,10 @@
             var dirs = [];
             var files = [];
             <%for (File f : dirs) {%>
-            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0,<%="'"+f.myPath()+"'")%>);
+            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0,<%="'"+f.getPath()+"'"%>));
             <%}%>
             <%for (File f : normal) {%>
-            files.push(new File(<%="'"+f.getName()+"'"%>, 1));
+            files.push(new File(<%="'"+f.getName()+"'"%>, 1,<%="'" +f.getPath()+"'"%>));
             <%}%>
             sortLoad(dirs, files);
 
@@ -120,7 +120,7 @@
                             <input id="file" name="file" type="file" onchange="fileChange()" required>
                             <br>
                             <div class="upload_text">ファイル名を入力</div>
-                            <input id="upload_filename" type="text" name="filename" placeholder="200文字以上は登録できません" maxlength="199"><br>
+                            <input id="upload_filename" type="text" name="fileName" placeholder="200文字以上は登録できません" maxlength="199"><br>
                             <div class="radioButton">
                                 <input type="radio" name="ispublic">公開
                                 <input type="radio" name="ispublic">非公開

@@ -24,15 +24,19 @@ function setShowFiles(array) {//いま表示しているものを格納
 }
 
 class File {
-    constructor(name,type) {
+    constructor(name,type,path) {
         this.name = name;
         this.type = type;
+        this.path = path
     }
     get myName() {
         return this.name;
     }
     get myType() {
         return this.type;
+    }
+    get myPath() {
+        return this.path;
     }
 }
 
@@ -88,7 +92,7 @@ function createMain() {
 function createMainFile() {
     var temp="";
     for (var v of showFiles) {
-        temp += "<div class=\"node\" onclick=\"check(\'" + v.myName + "\')\" oncontextmenu=\"rightclick(new File(\'" + v.myName + "\',0))\"><a href=\"#\"><input type=\"checkbox\" name=\"" + v.myName + "\" id=\""+ v.myName + "\"><img class=\"file\" src=\"../picture/file.png\"><div class=\"check_box\"></div><div class=\"check\" id=\"" + v.myName +"_check\"></div><div class=\"filename\">" + v.myName + "</div></div>";
+        temp += "<div class=\"node\" onclick=\"check(\'" + v.myName + "\')\" oncontextmenu=\"rightclick(new File(\'" + v.myName + "\',0,\'" + v.myPath +"\')\"><a href=\"#\"><input type=\"checkbox\" name=\"" + v.myName + "\" id=\""+ v.myName + "\"><img class=\"file\" src=\"../picture/file.png\"><div class=\"check_box\"></div><div class=\"check\" id=\"" + v.myName +"_check\"></div><div class=\"filename\">" + v.myName + "</div></div>";
     }
     return temp;
 }

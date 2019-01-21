@@ -22,25 +22,27 @@ function selectDesc() {
 }
 
 function exeDownload() {
-    var target = document.getElementById("hideForm");
     var array = [];
     var flag;
-    for (var v of haveFolders) {
+    for (var v of showFolders) {
+        console.log(v.myName);
         if (document.getElementById(v.myName).checked) {
             flag = true;
             break;
         }
     }
     if (!flag) {
-        for (var v of haveFiles) {
+        for (var v of showFiles) {
             if (document.getElementById(v.myName).checked) {
-                array.push(v.myName);
+                array.push(v);
             }
         }
         if (array.length == 0) {
             alert("ファイルが選択されていません");
         } else {
-            jump("Download?" + array, "post");
+            for (var f of array) {
+                window.setTimeout(jump("Download?name=" + f.myName + "&path=" + f.myPath, "post"),100);
+            }
         }
     } else {
         alert("フォルダはダウンロードできません");
@@ -159,6 +161,7 @@ function showSubmenu(clicked) {
     submenu.style.top = posY + "px";
     submenu.classList.add("show");
 }
+
 /*-----------------------------------------------------------
 submit
 -----------------------------------------------------------*/

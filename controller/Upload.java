@@ -20,7 +20,7 @@ public class Upload extends HttpServlet {
         User user = (User) ses.getAttribute("USER");
         Part part = request.getPart("file");
         String fileName = request.getParameter("fileName");
-        String name = fileName.equals("") ? getFileName(part) : fileName;
+        String name = fileName == null || fileName.equals("") ? getFileName(part) : fileName;
         String path = request.getParameter("path");
         part.write(getServletContext().getRealPath("WEB-INF/uploaded") + "/" + path + "/" + name);
         ses.setAttribute("FILES", user.setHome(MyDriveDAO.cd(Paths.get(path), null)));

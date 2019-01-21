@@ -199,6 +199,18 @@ public class MyDriveDAO {
         return updCnt > 0;
     }
 
+    public static boolean deleteFile(Path path, String name) {
+        boolean stat = false;
+        try {
+            if (Files.deleteIfExists(path.resolve(name))) {
+                stat = true;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return stat;
+    }
+
     public static void writeBlacklist(String path, String name, String id) {
         BufferedWriter writer = null;
         try {
