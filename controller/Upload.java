@@ -23,7 +23,7 @@ public class Upload extends HttpServlet {
         String name = fileName.equals("") ? getFileName(part) : fileName;
         String path = request.getParameter("path");
         part.write(getServletContext().getRealPath("WEB-INF/uploaded") + "/" + path + "/" + name);
-        ses.setAttribute("FILES", user.setHome(MyDriveDAO.move(Paths.get(path), null)));
+        ses.setAttribute("FILES", user.setHome(MyDriveDAO.cd(Paths.get(path), null)));
 
         if (isPublic)
             MyDriveDAO.writeBlacklist(path.replace(name, ""), name, user.getId());

@@ -149,7 +149,7 @@ function showSubmenu(clicked) {
         submenu.innerHTML = "<ul><li class=\"cut\">" + name + "<li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
         submenu.style.height = "60px";
     } else {
-        submenu.innerHTML = "<ul><li>" + name + "</li><li><a href=\"#\" onclick=jump(\'Main?req=move&src=home&name=" + name + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+        submenu.innerHTML = "<ul><li>" + name + "</li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
         submenu.style.height = "60px";
     }
     submenu.style.position = 'absolute';

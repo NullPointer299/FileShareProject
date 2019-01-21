@@ -88,8 +88,8 @@ public class MyDriveDAO {
         return null;
     }
 
-    public static List<File> move(Path path, String id) {
-        System.out.println("[MyDriveDAO]method = move");
+    public static List<File> cd(Path path, String id) {
+        System.out.println("[MyDriveDAO]method = cd");
         System.out.println("[MyDriveDAO]path = " + path);
         System.out.println("[MyDriveDAO]id = " + id);
         List<File> targets = null;

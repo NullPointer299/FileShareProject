@@ -35,7 +35,7 @@ public class Register extends HttpServlet {
         if (MyDriveDAO.createUser(id, fName, lName, password)) {
             User user = MyDriveDAO.login(id, password);
             ses.setAttribute("USER", user);
-            ses.setAttribute("FILES", MyDriveDAO.move(Paths.get(user.getId(), "home"), null));
+            ses.setAttribute("FILES", MyDriveDAO.cd(Paths.get(user.getId(), "home"), null));
             ses.setAttribute("CURRENT", Paths.get(user.getId(), "home"));
             ses.setAttribute("SRC", Paths.get("/home/nullpo299/IdeaProjects/FileShareService/out/artifacts/FileShareService_war_exploded/WEB-INF/uploaded/"));
         } else {

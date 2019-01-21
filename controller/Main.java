@@ -31,6 +31,7 @@ public class Main extends HttpServlet {
             String id;
             switch (req) {
                 case "sear_word":
+                    //検索キーワード
                     System.out.println("[Main]sear_word");
                     String userKeyword = request.getParameter("keyword");
                     if (userKeyword != null) {
@@ -38,69 +39,82 @@ public class Main extends HttpServlet {
                     }
                     url.append("search_user.jsp");
                     break;
-                case "home":
-                    System.out.println("[Main]home");
-                    List<File> userDir = user.getHome();
-                    ses.setAttribute("FILES", userDir == null ? user.setHome(MyDriveDAO.move(Paths.get(user.getId(), "home"), null)) : userDir);
-                    ses.setAttribute("CURRENT", Paths.get(user.getId(), "home"));
-                    url.append("home.jsp");
-                    break;
                 case "sear_user":
+                    //ユーザの検索
                     System.out.println("[Main]sear_user");
                     ses.removeAttribute("USERS");
                     url.append("search_user.jsp");
                     break;
+                case "home":
+                    //ホームへ移動
+                    System.out.println("[Main]home");
+                    List<File> userDir = user.getHome();
+                    ses.setAttribute("FILES", userDir == null ? user.setHome(MyDriveDAO.cd(Paths.get(user.getId(), "home"), null)) : userDir);
+                    ses.setAttribute("CURRENT", Paths.get(user.getId(), "home"));
+                    url.append("home.jsp");
+                    break;
                 case "fav":
+                    //お気に入りを表示
                     System.out.println("[Main]fav");
                     List<User> fav = user.getFav();
                     ses.setAttribute("FAV", fav == null ? user.setFav(MyDriveDAO.getFav(user.getId())) : fav);
                     url.append("favorite.jsp");
                     break;
                 case "trash":
+                    //ゴミ箱に移動
                     System.out.println("[Main]trash");
                     List<File> trash = user.getTrash();
-                    ses.setAttribute("FILES", trash == null ? user.setTrash(MyDriveDAO.move(Paths.get(user.getId(), "trash"), null)) : trash);
+                    ses.setAttribute("FILES", trash == null ? user.setTrash(MyDriveDAO.cd(Paths.get(user.getId(), "trash"), null)) : trash);
                     ses.setAttribute("CURRENT", Paths.get(user.getId(), "trash"));
                     url.append("trash.jsp");
                     break;
                 case "show_dir":
+                    //他人のディレクトリの参照
                     System.out.println("[Main]show_dir");
                     id = request.getParameter("id");
                     User target = ((List<User>) ses.getAttribute("USERS")).stream().filter(u -> u.getId().equals(id)).findFirst().orElse(null);
-                    ses.setAttribute("FILES", MyDriveDAO.move(Paths.get(target.getId(), "home"), target.getId()));
+                    ses.setAttribute("FILES", MyDriveDAO.cd(Paths.get(target.getId(), "home"), target.getId()));
                     ses.setAttribute("TARGET", target);
                     ses.setAttribute("CURRENT", Paths.get(id, "home"));
                     url.append("user_dir.jsp");
                     break;
-                case "move":
-                    System.out.println("[Main]move");
+                case "cd":
+                    //ワーキングディレクトリの移動
+                    System.out.println("[Main]cd");
                     name = request.getParameter("name");
                     String src = request.getParameter("src");
                     path = request.getParameter("path");
                     id = request.getParameter("id");
-                    System.out.println("[Main]name = "+name);
-                    System.out.println("[Main]src = "+src);
-                    System.out.println("[Main]path = "+path);
-                    System.out.println("[Main]id = "+id);
-                    ses.setAttribute("FILES", MyDriveDAO.move(Paths.get(path, name), id));
-                    ses.setAttribute("CURRENT", Paths.get(path , name));
+                    System.out.println("[Main]name = " + name);
+                    System.out.println("[Main]src = " + src);
+                    System.out.println("[Main]path = " + path);
+                    System.out.println("[Main]id = " + id);
+                    ses.setAttribute("FILES", MyDriveDAO.cd(Paths.get(path, name), id));
+                    ses.setAttribute("CURRENT", Paths.get(path, name));
                     url.append(src).append(".jsp");
                     break;
                 case "mkdir":
+                    //ディレクトリの作成
                     System.out.println("[Main]mkdir");
                     name = request.getParameter("name");
                     path = request.getParameter("path");
                     MyDriveDAO.mkdir(Paths.get(path, name));
                     user.setHome(null);
-                    ses.setAttribute("FILES", MyDriveDAO.move(Paths.get(path), null));
+                    ses.setAttribute("FILES", MyDriveDAO.cd(Paths.get(path), null));
                     url.append("home.jsp");
                     break;
                 case "delete":
+                    //ファイルの削除
                     System.out.println("[Main]delete");
-                    String check=request.getParameter("check");
-                    String[] split=check.split(",");
+                    String check = request.getParameter("check");
+                    String[] split = check.split(",");
                     System.out.println(Arrays.asList());
                     url.append("home.jsp");
+                    break;
+                case "change_publishing":
+                    //ファイルの公開設定の変更
+                    System.out.println("[Main]change_publishing");
+                    System.out.println();
                     break;
             }
         }
