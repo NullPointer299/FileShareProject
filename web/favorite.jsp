@@ -49,7 +49,6 @@
             <font class="M">M</font>y<font class="D">D</font>rive
         </a>
     </h1>
-
     <hr>
 </header>
 

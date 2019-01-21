@@ -20,7 +20,6 @@
                 $('ul.menu ul').slideUp(150);
             });
         });
-
     </script>
     <script type="text/javascript" src="../js/main.js"></script>
     <script type="text/javascript" src="../js/sort.js"></script>
@@ -36,7 +35,7 @@
             <%}%>
             sortLoad(dirs, files);*/
             dirs.push(new Folder("a", 0, "a"));
-            files.push(new File("b",1));
+            files.push(new File("b", 1));
             sortLoad(dirs,files);
 
             var box = document.getElementById("content");
@@ -44,7 +43,6 @@
                 e.preventDefault();
             }, false);
         }
-
     </script>
 </head>
 
@@ -165,9 +163,12 @@
                 </ul>
             </div>
             <div id="main">
-                <div>
-                    <form id="hideForm" action="Main?req=home&method=post"></form>
+                <div class="node">
+                    <img class="folder" src="../picture/folder.png">
                 </div>
+            </div>
+            <div>
+                <form id="hideForm" action="Main?req=home&method=post"></form>
             </div>
         </div>
     </div>
