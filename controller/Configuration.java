@@ -50,9 +50,6 @@ public class Configuration extends HttpServlet {
                 if(MyDriveDAO.removeUser(user.getId())){
                     url="index.jsp";
                 }
-            } else if (req.equals("home")) {
-                // ホームに戻る
-                url="home.jsp";
             } else {
                 System.out.println("unknown request");  //TODO debug code here!
             }

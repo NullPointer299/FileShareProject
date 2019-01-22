@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -199,16 +200,24 @@ public class MyDriveDAO {
         return updCnt > 0;
     }
 
-    public static boolean deleteFile(Path path, String name) {
-        boolean stat = false;
-        try {
-            if (Files.deleteIfExists(path.resolve(name))) {
-                stat = true;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static boolean deleteFile(Path path, String[] names) {
+        boolean stat = true;
+        if (Arrays.stream(names).allMatch(name -> Files.exists(path.resolve(name)))) {
+            Arrays.stream(names).forEach(name -> {
+                try {
+                    Files.delete(path.resolve(name));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }else{
+            stat=false;
         }
         return stat;
+    }
+
+    public static boolean move(Path path, String[] names){
+        return false;
     }
 
     public static void writeBlacklist(String path, String name, String id) {

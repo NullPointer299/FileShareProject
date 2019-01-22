@@ -19,7 +19,7 @@ public class Download extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String path = request.getParameter("path");
-        System.out.println("request => name="+name+" : path="+path);
+        System.out.println("request => name=" + name + " : path=" + path);
         Path srcPath = Paths.get("/home/nullpo299/IdeaProjects/FileShareService/out/artifacts/FileShareService_war_exploded/WEB-INF/uploaded");
         OutputStream out = response.getOutputStream();
         InputStream in = Files.newInputStream(srcPath.resolve(path).resolve(name));

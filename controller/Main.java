@@ -29,6 +29,7 @@ public class Main extends HttpServlet {
             String name;
             String path;
             String id;
+            String [] names;
             switch (req) {
                 case "sear_word":
                     //検索キーワード
@@ -106,10 +107,22 @@ public class Main extends HttpServlet {
                 case "delete":
                     //ファイルの削除
                     System.out.println("[Main]delete");
-                    String check = request.getParameter("check");
-                    String[] split = check.split(",");
-                    System.out.println(Arrays.asList());
-                    url.append("home.jsp");
+                    path = request.getParameter("path");
+                    names = request.getParameter("names").split(",");
+                    System.out.println(Arrays.asList(names));
+                    if(MyDriveDAO.deleteFile(Paths.get(path), names)){
+                        url.append("home.jsp?");
+                    }else{
+                        url.append("home.jsp?stat=del_fail");
+                    }
+                    break;
+                case "move":
+                    //ファイルの階層移動
+                    System.out.println("[Main]move");
+                    path = request.getParameter("path");
+                    names = request.getParameter("names").split(",");
+                    System.out.println(Arrays.asList(names));
+
                     break;
                 case "change_publishing":
                     //ファイルの公開設定の変更
