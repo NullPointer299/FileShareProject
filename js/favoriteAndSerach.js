@@ -1,5 +1,5 @@
 class User {
-    constructor(fName,lName id) {
+    constructor(fName,lName,id) {
         this.fName = fName;
         this.lName=lName;
         this.id = id;
@@ -8,7 +8,7 @@ class User {
         return this.fname;
     }
     get myLName() {
-        return this.lName
+        return this.lName;
     }
     get myId() {
         return this.id;
@@ -45,7 +45,7 @@ function createMainOfUser() {
     var target = document.getElementById("main");
     var temp = "";
     for (var v of showUsers) {
-        temp += "<div class=\"person\" onclick=jump(---------------------------パラメータとか----------------------,\"post\")><a href=\"#\"><i class=\"material-icons\">person</i> 名前:" + v.myLName + " " + v.myFName + "   ID:" + v.myId + "</a></div>";
+        //temp += "<div class=\"person\" onclick=jump(---------------------------パラメータとか----------------------,\"post\")><a href=\"#\"><i class=\"material-icons\">person</i> 名前:" + v.myLName + " " + v.myFName + "   ID:" + v.myId + "</a></div>";
     }
     target.innerHTML = temp;
 

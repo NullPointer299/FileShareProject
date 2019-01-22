@@ -1,8 +1,8 @@
-deleteAll() {
+function deleteAll() {
     jump("Trash?req=deleteAll","post");
 }
 
-deleteThingsAtTrash() {
+function deleteThingsAtTrash() {
     var temp = "";
     var files = [];
     var dirs = [];
