@@ -66,7 +66,7 @@
                     <div class="confirmNode">ID：<div class="confirm_text" id="confirm_id"></div></div>
                     <div class="aaaaa">この情報で登録します。よろしいですか？</div>
                     <input id="close_button" type="submit" onclick="closeConfirm()" value="戻る">
-                    <input id="register_button" type="submit" value="登録" onsubmit="submitConfirm()">
+                    <input id="register_button" type="submit" value="登録" onclick="submitConfirm()">
                 </fieldset>
             </div>
         </div>
