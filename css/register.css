@@ -1,4 +1,4 @@
-@import url("/style.css");
+@import url("style.css");
 
 body {
     width: 100vw;
@@ -154,7 +154,6 @@ fieldset.confirmArea{
 
 .confirmNode{
     padding: 30px 80px;
-    border-bottom: 2px solid black;
 }
 
 #confirm input[type="submit"] {
@@ -177,6 +176,12 @@ fieldset.confirmArea{
     border: 3px solid black;
 }
 
+.confirm_text{
+    display: inline;
+    border-bottom: 2px solid red;
+    font-size: 25px;
+}
+
 #confirm input[type="text"]{
     font-weight: 900;
     font-size: 24px;
@@ -196,7 +201,7 @@ fieldset.confirmArea{
 
 .aaaaa{
     position: absolute;
-    bottom: 110px;
+    bottom: 130px;
     left: 100px;
     color: red;
 }
