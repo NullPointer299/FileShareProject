@@ -34,12 +34,12 @@
         });
 
         window.onload = function() {
-            loadUser([new User("aaaa","aaaa","a"),new User("bbbbb","bbbb","b")]);
+            loadUser();
         }
     </script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/sort.js"></script>
-    <script type="text/javascript" src="js/search.js"></script>
+    <script type="text/javascript" src="js/favoriteAndSerach.js"></script>
 </head>
 
 <body>
@@ -64,7 +64,7 @@
         <input type="submit" class="top_con login_con" value="ログアウト">
         <input type="submit" class="top_con" value="設定">
         <form action="#">
-            <input id="topText" type="text" class="top_con" placeholder="ユーザの検索">
+            <input id="topText" onkeyup="charFilterOfUser()" type="text" class="top_con" placeholder="ユーザを絞る">
         </form>
     </div>
     <div class="side_bar">
@@ -81,7 +81,7 @@
                 <ul class="menu">
                     <li><a id="right_con" href="#">ソート</a>
                         <ul id="ddmenu">
-                            <li><a href="#" onclick="selectName();sortByName()"><span id="name">✓</span>名前順</a></li>
+                            <li><a href="#" onclick="sortByNameofUser()"><span id="name">✓</span>名前順</a></li>
                             <li><a href="#" onclick="selectAsc()"><span id="asc">✓</span>昇順</a></li>
                             <li><a href="#" onclick="selectDesc()"><span id="desc">✓</span>降順</a></li>
                         </ul>

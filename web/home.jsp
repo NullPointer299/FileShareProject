@@ -77,7 +77,7 @@
             dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0,<%="'"+f.getPath()+"'"%>));
             <%}%>
             <%for (File f : normal) {%>
-            files.push(new File(<%="'"+f.getName()+"'"%>, 1,<%="'" +f.getPath()+"'"%>));
+            files.push(new File(<%="'"+f.getName()+"'"%>, 1,<%="'"+f.getPath()+"'"%>));
             <%}%>
             sortLoad(dirs, files);
             loadBreadcrumb(<%=current%>);

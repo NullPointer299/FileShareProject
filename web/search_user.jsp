@@ -35,12 +35,12 @@
         });
 
         window.onload = function () {
-            loadUser([new User("aaaa", "aaaa", "a"), new User("bbbbb", "bbbb", "b")]);
+            loadUser();
         }
     </script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/sort.js"></script>
-    <script type="text/javascript" src="js/search.js"></script>
+    <script type="text/javascript" src="js/favoriteAndSerach.js"></script>
 </head>
 
 <body>
@@ -55,10 +55,6 @@
 </header>
 
 <div class="submenu" id="submenu">
-    <ul>
-        <li><a href="#">ダウンロード</a></li>
-        <li><a href="#">削除</a></li>
-    </ul>
 </div>
 
 <div class="wrapper">

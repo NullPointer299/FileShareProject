@@ -38,7 +38,16 @@
     <script type="text/javascript" src="js/sort.js"></script>
     <script type="text/javascript">
         window.onload = function() {
-            sortLoad();
+            var dirs = [];
+            var files = [];
+            <%for (File f : dirs) {%>
+            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>));
+            <%}%>
+            <%for (File f : normal) {%>
+            files.push(new File(<%="'"+f.getName()+"'"%>, 1, <%="'"+f.getPath()+"'"%>));
+            <%}%>
+            sortLoad(dirs, files);
+            loadBreadcrumb(<%=current%>);
             var box = document.getElementById("content");
             box.addEventListener("contextmenu", function(e) {
                 e.preventDefault();
@@ -59,17 +68,11 @@
         <hr>
     </header>
 
-    <div class="submenu" id="submenu">
-        <ul>
-            <li><a href="#">ダウンロード</a></li>
-            <li><a href="#">削除</a></li>
-        </ul>
-    </div>
+    <div class="submenu" id="submenu"></div>
 
     <div class="wrapper">
         <div class="top_bar">
-            <input type="submit" class="top_con login_con" value="ログアウト">
-            <input type="submit" class="top_con" value="設定">
+            <input type="submit" class="top_con login_con" value="ログアウト" onclick="jump('Logout','post')"> <input type="submit" class="top_con" value="設定" onclick="jump('Configuration','get')">
             <form action="#">
                 <input id="topText" type="text" class="top_con" onkeyup="charFilter()" placeholder="ファイルの検索">
             </form>
@@ -86,10 +89,15 @@
             <div class="content_top_bar">
                 <div class="content_top_bar_left">
                     <ul class="menu">
-                        <li><a href="#" onclick="deleteThings()"><i class="material-icons">
+                        <li><a href="#" onclick="deleteAll()"><i class="material-icons">
+                                    delete_forever
+                                </i></a>
+                            <div class="tooltips">空にする</div>
+                        </li>
+                        <li><a href="#" onclick="deleteThingsAtTrash()"><i class="material-icons">
                                     delete
                                 </i></a>
-                            <div class="tooltips">削除</div>
+                            <div class="tooltips">選択済み削除</div>
                         </li>
                         <li><a href="#" onclick="openDownload()"><i class="material-icons">
                                     cloud_download
@@ -111,11 +119,6 @@
                 </div>
             </div>
             <div class="breadcrumb">
-                <ul>
-                    <li><a href="#home">home</a></li>
-                    <!----scriptで生成----->
-                    <li><a href="#unti">unti</a></li>
-                </ul>
             </div>
             <div id="main">
             </div>
