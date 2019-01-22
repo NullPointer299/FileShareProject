@@ -214,16 +214,18 @@ function closeUploadWindow() {
 
 function deleteThings() {
     var temp = "";
+    var files=[];
+    var dirs=[];
     for (let f of showFiles) {
         if (document.getElementById(f.myName).checked) {
-            temp += f.myName + ",";
+            files.push(f);
         }
     }
     for (let f of showFolders) {
         if (document.getElementById(f.myName).checked) {
-            temp += f.myName + ",";
+            dirs.push(f);
         }
     }
-    temp = temp.slice(0, -1);
+    
     jump("Main?req=delete?names=" + temp, "post");
 }

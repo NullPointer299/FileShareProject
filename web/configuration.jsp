@@ -33,7 +33,7 @@
 
     <div class="wrapper">
         <fieldset>
-            <form action="#">
+            <form action="Configuration">
                 名前変更
                 <br>
                 姓<input type="text">
@@ -51,7 +51,7 @@
                 <br>
             </form>
             <a href="#" onclick="deleteAccount()">アカウント削除</a>
-            <a href="#" onclick="home()">HOMEに戻る</a>
+            <a href="#" onclick="home()">ホームに戻る</a>
         </fieldset>
     </div>
 
