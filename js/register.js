@@ -7,7 +7,7 @@ function printConfirm() {
     var passwordCheck = document.getElementById("passwordCheck").value;
     if (lastName != "" && firstName !="" &&id !="" && password !=""&&passwordCheck !="" && (password == passwordCheck)) {
         target.style.display = "block";
-        document.getElementById("confirm_lName").value=lastName;
+        document.getElementById("confirm_lName").value = lastName;
         document.getElementById("confirm_fName").value=firstName;
         document.getElementById("confirm_id").value=id;
     }
