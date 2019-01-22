@@ -1,5 +1,5 @@
 function deleteAccount(){
-    jump("delete?","post");
+    jump("Configuration?req=remove","post");
 }
 
 function home() {
