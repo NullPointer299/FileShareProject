@@ -37,7 +37,7 @@
      *   <a href="#" onClick="dl.submit();">ダウンロード</a>
      *   </form>
      *
-     * ディレクトリ作成 -> <form action="Main?req=mkdir&path=< %=current% >" method="post">
+     * ディレクトリ作成 -> <form action="Main?req=mkdir&path=<%=current%>" method="post">
      *    ディレクトリ名：<input type="text" name="name">
      *   <input type="submit" value="create">
      *   </form>
@@ -80,7 +80,7 @@
             files.push(new File(<%="'"+f.getName()+"'"%>, 1,<%="'" +f.getPath()+"'"%>));
             <%}%>
             sortLoad(dirs, files);
-
+            loadBreadcrumb(<%=current%>);
             var box = document.getElementById("content");
             box.addEventListener("contextmenu", function(e) {
                 e.preventDefault();
@@ -199,11 +199,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="breadcrumb">
-                <ul>
-                    <li><a href="#home">home</a></li>
-                    <li><a href="#unti">unti</a></li>
-                </ul>
+            <div class="breadcrumb" id="breadcrumb">
             </div>
             <div id="main">
                 <div class="node">

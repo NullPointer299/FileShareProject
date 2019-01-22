@@ -41,7 +41,7 @@ function exeDownload() {
             alert("ファイルが選択されていません");
         } else {
             for (var f of array) {
-                window.setTimeout(jump("Download?name=" + f.myName + "&path=" + f.myPath, "post"),100);
+                window.setTimeout(jump("Download?name=" + f.myName + "&path=" + f.myPath, "post"), 100);
             }
         }
     } else {
@@ -214,18 +214,53 @@ function closeUploadWindow() {
 
 function deleteThings() {
     var temp = "";
-    var files=[];
-    var dirs=[];
+    var files = [];
+    var dirs = [];
+    var path;
     for (let f of showFiles) {
         if (document.getElementById(f.myName).checked) {
-            files.push(f);
+            path=f.myPath;
+            files.push(f.myName);
         }
     }
     for (let f of showFolders) {
         if (document.getElementById(f.myName).checked) {
-            dirs.push(f);
+            path=f.myPath;
+            dirs.push(f.myName);
         }
     }
-    
-    jump("Main?req=delete?names=" + temp, "post");
+
+    if (files.length != 0) {
+        temp += files.join();
+        if (dirs.length != 0) {
+            temp += "," + dirs.join();
+        }
+    }else{
+        if(dirs.length != 0) {
+            temp += dirs.join();
+        }else{
+            alert("削除対象を選択してください");
+            return;
+        }
+    }
+    jump("Main?req=delete?names=" + temp +"&path=" + path, "post");
 }
+
+/*---------------------------------------------------------------
+breadcrumb
+-----------------------------------------------------------------*/
+
+function loadBreadcrumb(path){
+    var target = document.getElementById("breadcrumb");
+    var pathArray = path.split("/");
+    var temp ="<ul>";
+    var parent =pathArray[0];
+    
+    for(var i=1;i<pathArray.length;i++){
+        temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + pathArray[i] +"&path=" +parent +"\',\"post\")>" + pathArray[i] +"</a></li>";
+        parent += "/" + pathArray[i];
+    }
+    temp += "</ul>";
+    target.innerHTML=temp;
+}
+

@@ -25,12 +25,6 @@
                 confirm.setCustomValidity('');
             }
         }
-        document.onkeypress = enter;
-        function enter(){
-          if( window.event.keyCode == 13 ){
-            return false;
-          }
-        }
     </script>
     <script type="text/javascript" src="../js/register.js"></script>
 </head>
