@@ -356,10 +356,19 @@ new_folder
     right: 0;
     left: 0;
     background-color: white;
-    height: 300px;
+    height: 320px;
     width: 350px;
 }
 
+.radioButtonOfNewFolder{
+    position: absolute;
+    top: 200px;
+    left: 100px;
+}
+
+#new_folder_content a{
+    text-decoration: none;
+}
 .new_folder_main {
     width: 330px;
 }
@@ -377,7 +386,7 @@ body.header h1 {
     border-color: rgba(0, 0, 0, 0.3);
     padding: 0 0 10px 0px;
     width: 340px;
-    height: 170px;
+    height: 220px;
 }
 
 hr.new_folder {
@@ -415,7 +424,7 @@ input[type="file"] {
 
 input[type="submit"].new_folder {
     position: absolute;
-    top: 200px;
+    top: 240px;
     width: 120px;
     left: 105px;
     padding: 6px 20px;

@@ -116,39 +116,12 @@ function rightclick(clicked) {
     }, 100);
 }
 
-function getLen(str) {
-    var result = 0;
-    for (var i = 0; i < str.length; i++) {
-        var chr = str.charCodeAt(i);
-        if ((chr >= 0x00 && chr < 0x81) ||
-            (chr === 0xf8f0) ||
-            (chr >= 0xff61 && chr < 0xffa0) ||
-            (chr >= 0xf8f1 && chr < 0xf8f4)) {
-            //半角文字の場合は1を加算
-            result += 1;
-        } else {
-            //それ以外の文字の場合は2を加算
-            result += 2;
-        }
-    }
-    //結果を返す
-    return result;
-};
-
 function showSubmenu(clicked) {
     console.log("in");
     var submenu = document.getElementById('submenu');
     var name = clicked.myName;
     var path = clicked.myPath;
-    /*if (getLen(clicked.myName) > 11) {
-        if (clicked.myName.length < 6) {
-            name = clicked.myName.substring(0, 5) + "...";
-        } else {
-            name = clicked.myName.substring(0, 10) + "...";
-        }
-    } else {
-        name = clicked.myName;
-    }*/
+   
     if (clicked.myType == 0) {
         submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
         submenu.style.height = "60px";
