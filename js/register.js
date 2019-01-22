@@ -11,6 +11,7 @@ function printConfirm() {
         document.getElementById("confirm_fName").innerHTML=firstName;
         document.getElementById("confirm_id").innerHTML=id;
     }
+    return false;
 }
 
 function closeConfirm() {

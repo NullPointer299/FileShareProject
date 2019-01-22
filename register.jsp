@@ -39,7 +39,7 @@
 
                 <h2 class="title">新規登録</h2>
 
-                <form id="registerForm" action="Register" onsubmit="return false;" method="post">
+                <form id="registerForm" action="Register" onsubmit="printConfirm()" method="post">
                     <div class="form"><label for="lastName" class="form">姓</label><input id="lastName" type="text" name="lName" placeholder=" (例)山田" autofocus required></div>
 
                     <div class="form"><label for="firstName" class="form">名</label><input id="firstName" type="text" name="fName" placeholder=" (例)太郎" required></div>
@@ -51,7 +51,7 @@
                     <div class="form"><label for="passwordCheck" class="form">パス確認</label><input name="passwordCheck" id="passwordCheck" type="password" oninput="CheckPassword(this)" required></div>
 
                     <div class="submit form">
-                        <input type="submit" value="登録" onclick="printConfirm()">
+                        <input type="submit" value="登録">
                     </div>
                 </form>
             </fieldset>
