@@ -154,6 +154,7 @@ fieldset.confirmArea{
 
 .confirmNode{
     padding: 30px 80px;
+    border-bottom: 2px solid black;
 }
 
 #confirm input[type="submit"] {
