@@ -105,7 +105,7 @@
                                 <input type="radio" name="ispublic" checked>公開
                                 <input type="radio" name="ispublic">非公開
                             </div>
-                            <input id="newFolder" type="submit" value="アップロード">
+                            <input id="newFolder" onclick="submitUpload()" type="submit" value="アップロード">
                         </form>
                     </fieldset>
                 </div>
