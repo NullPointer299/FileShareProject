@@ -25,18 +25,15 @@
     <script type="text/javascript" src="../js/sort.js"></script>
     <script type="text/javascript">
         window.onload = function() {
-            var dirs = [];
-            var files = [];
+            var dirs = [new Folder("a",0,"a")];
+            var files = [new File("b",0,"b")];
             /*<%for (File f : dirs) {%>
-            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0,<%="'"+f.myPath()+"'")%>);
+            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0,<%="'"+f.getPath()+"'"%>));
             <%}%>
             <%for (File f : normal) {%>
-            files.push(new File(<%="'"+f.getName()+"'"%>, 1));
-            <%}%>
-            sortLoad(dirs, files);*/
-            dirs.push(new Folder("a", 0, "a"));
-            files.push(new File("b", 1));
-            sortLoad(dirs,files);
+            files.push(new File(<%="'"+f.getName()+"'"%>, 1,<%="'" +f.getPath()+"'"%>));
+            <%}%>*/
+            sortLoad(dirs, files);
 
             var box = document.getElementById("content");
             box.addEventListener("contextmenu", function(e) {
@@ -77,7 +74,7 @@
                             <input id="file" name="file" type="file" onchange="fileChange()" required>
                             <br>
                             <div class="upload_text">ファイル名を入力</div>
-                            <input id="upload_filename" type="text" name="filename" placeholder="未入力は元の名前がしようされます" maxlength="199"><br>
+                            <input id="upload_filename" type="text" name="fileName" placeholder="200文字以上は登録できません" maxlength="199"><br>
                             <div class="radioButton">
                                 <input type="radio" name="ispublic" checked>公開
                                 <input type="radio" name="ispublic">非公開
@@ -133,6 +130,9 @@
             <div class="content_top_bar">
                 <div class="content_top_bar_left">
                     <ul class="menu">
+                        <li><a href="#" onclick="deleteThings()"><i class="material-icons"> delete </i></a>
+                            <div class="tooltips">削除</div>
+                        </li>
                         <li><a href="#" onclick="exeDownload()"><i class="material-icons"> cloud_download </i></a>
                             <div class="tooltips">ダウンロード</div>
                         </li>

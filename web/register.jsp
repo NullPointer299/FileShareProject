@@ -65,12 +65,11 @@
                     <div class="confirmNode">名：<input type="text" id="confirm_fName" readonly></div>
                     <div class="confirmNode">ID：<input type="text" id="confirm_id" readonly></div>
                     <div class="aaaaa">この情報で登録します。よろしいですか？</div>
-                    <input id="close_button" type="submit" onclick="closeConfirm()" value="戻る">
-                    <input id="register_button"type="submit" value="登録" onsubmit="submitConfirm()">
+                    <input id="close_button" type="submit" onclick="closeConfirm()" value="戻る">                                                                                                               
+                    <input id="register_button" type="submit" value="登録" onsubmit="return false;submitConfirm()">
                 </fieldset>
             </div>
         </div>
     </div>
 </body>
-
 </html>
