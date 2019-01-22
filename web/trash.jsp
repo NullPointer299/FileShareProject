@@ -47,7 +47,8 @@
             files.push(new File(<%="'"+f.getName()+"'"%>, 1, <%="'"+f.getPath()+"'"%>));
             <%}%>
             sortLoad(dirs, files);
-            loadBreadcrumb(<%=current%>);
+            loadBreadcrumb("\'" + <%=current%> + "\'");
+                                     
             var box = document.getElementById("content");
             box.addEventListener("contextmenu", function(e) {
                 e.preventDefault();

@@ -175,11 +175,11 @@ function jump(dis, method) {
     form.submit();
 }
 
-function createFolder() {
+/*function createFolder() {
     window.setTimeout(function () {
         jump("Main?req=home", "post");
     })
-}
+}*/
 
 /*--------------------------------------------------
 new_folder
@@ -192,6 +192,15 @@ function openNewFolderWindow() {
 function closeNewFolderWindow() {
     document.getElementById("cover").style.display = "none";
     document.getElementById("new_folder_content").style.display = "none";
+}
+
+function submitNewFolder() {
+    console.log("in");
+    if (duplicate("foldername")) {
+        alert("名前が重複しています");
+    }else{
+        document.getElementById("new_folder_form").submit();
+    }
 }
 
 /*-----------------------------------------------------
@@ -208,6 +217,15 @@ function closeUploadWindow() {
     document.getElementById("upload_content").style.display = "none";
 }
 
+function submitUpload(){
+    console.log("in");
+    if(duplicate("upload_filename")){
+        alert("名前が重複しています");
+    }else{
+        document.getElementById("upload_form").submit();
+    }
+}
+
 /*----------------------------------------------------------
 削除
 -----------------------------------------------------------*/
@@ -219,13 +237,13 @@ function deleteThings() {
     var path;
     for (let f of showFiles) {
         if (document.getElementById(f.myName).checked) {
-            path=f.myPath;
+            path = f.myPath;
             files.push(f.myName);
         }
     }
     for (let f of showFolders) {
         if (document.getElementById(f.myName).checked) {
-            path=f.myPath;
+            path = f.myPath;
             dirs.push(f.myName);
         }
     }
@@ -235,32 +253,53 @@ function deleteThings() {
         if (dirs.length != 0) {
             temp += "," + dirs.join();
         }
-    }else{
-        if(dirs.length != 0) {
+    } else {
+        if (dirs.length != 0) {
             temp += dirs.join();
-        }else{
+        } else {
             alert("削除対象を選択してください");
             return;
         }
     }
-    jump("Main?req=delete?names=" + temp +"&path=" + path, "post");
+    jump("Main?req=delete?names=" + temp + "&path=" + path, "post");
 }
 
+/*--------------------------------------------------------------
+重複
+-----------------------------------------------------------------*/
+function duplicate(target) {
+    var name = document.getElementById(target).value;
+    var flag = false;
+    for (let f of haveFiles) {
+        if (f.myName == name) {
+            flag = true;
+            break;
+        }
+    }
+    if (!flag) {
+        for (let f of haveFolders) {
+            if (f.myName == name) {
+                flag = true;
+                break;
+            }
+        }
+    }
+    return flag;
+}
 /*---------------------------------------------------------------
 breadcrumb
 -----------------------------------------------------------------*/
 
-function loadBreadcrumb(path){
+function loadBreadcrumb(path) {
     var target = document.getElementById("breadcrumb");
     var pathArray = path.split("/");
-    var temp ="<ul>";
-    var parent =pathArray[0];
-    
-    for(var i=1;i<pathArray.length;i++){
-        temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + pathArray[i] +"&path=" +parent +"\',\"post\")>" + pathArray[i] +"</a></li>";
+    var temp = "<ul>";
+    var parent = pathArray[0];
+
+    for (var i = 1; i < pathArray.length; i++) {
+        temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
         parent += "/" + pathArray[i];
     }
     temp += "</ul>";
-    target.innerHTML=temp;
+    target.innerHTML = temp;
 }
-

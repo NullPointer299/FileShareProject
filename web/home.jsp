@@ -18,35 +18,10 @@
     List<File> dirs = files.stream().filter(f -> f.isDirectory()).collect(Collectors.toList());
     List<File> normal = files.stream().filter(f -> !f.isDirectory()).collect(Collectors.toList());
     Path current = (Path) session.getAttribute("CURRENT");
-
-    /*
-     *
-     * 設定 -> action="Configuration" method="get"
-     * ログアウト -> action="Logout" method="post"
-     * ホーム -> action="Main?req=home" method="post"
-     * ユーザ検索 -> action="Main?req=sear_user" method="post"
-     * お気に入り -> action="Main?req=fav" method="post"
-     * ゴミ箱 -> action="Main?req=trash" method="post"
-     *
-     * アップロード -> <form enctype="multipart/form-data" action="Upload?path=< %current% >" method="post">
-     *   <input type="file" name="file"><br>
-     *   <input type="submit" value="upload">
-     *   </form>
-     *
-     * ダウンロード -> <form name="dl" action="Download?<<<ファイル名>>>" method="post">
-     *   <a href="#" onClick="dl.submit();">ダウンロード</a>
-     *   </form>
-     *
-     * ディレクトリ作成 -> <form action="Main?req=mkdir&path=<%=current%>" method="post">
-     *    ディレクトリ名：<input type="text" name="name">
-     *   <input type="submit" value="create">
-     *   </form>
-     *
-     * 削除 -> action="Main?req=delete?<<<ファイル名>>> method="post"
-     */
 %>
 
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>MyDrive</title>
@@ -66,6 +41,7 @@
                 $('ul.menu ul').slideUp(150);
             });
         });
+
     </script>
     <script type="text/javascript" src="../js/main.js"></script>
     <script type="text/javascript" src="../js/sort.js"></script>
@@ -74,18 +50,20 @@
             var dirs = [];
             var files = [];
             <%for (File f : dirs) {%>
-            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0,<%="'"+f.getPath()+"'"%>));
+            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>));
             <%}%>
             <%for (File f : normal) {%>
-            files.push(new File(<%="'"+f.getName()+"'"%>, 1,<%="'"+f.getPath()+"'"%>));
+            files.push(new File(<%="'"+f.getName()+"'"%>, 1, <%="'"+f.getPath()+"'"%>));
             <%}%>
             sortLoad(dirs, files);
-            loadBreadcrumb(<%=current%>);
+            loadBreadcrumb("\'" + <%=current%> +"\'");
+                                     
             var box = document.getElementById("content");
-            box.addEventListener("contextmenu", function(e) {
-                e.preventDefault();
-            }, false);
+            box.addEventListener("contextmenu", function(e){
+                    e.preventDefault();
+                }, false);
         }
+
     </script>
 </head>
 
@@ -106,7 +84,9 @@
                     <font class="M">M</font>y<font class="D">D</font>rive
                 </h1>
                 <span class="upload" onclick="closeUploadWindow()">
-                    <p class="upload_close_button">×</p>
+                    <a href="#">
+                        <p class="upload_close_button">×</p>
+                    </a>
                 </span>
             </div>
             <div class="upload_wrapper">
@@ -114,7 +94,7 @@
                     <fieldset class="upload_fieldset">
                         <p class="upload_midasi">ファイルをアップロード</p>
                         <hr class="upload_hr">
-                        <form class="form" enctype="multipart/form-data" action="Upload?path=<%=current%>" method="post">
+                        <form id="upload_form" class="form" onsubmit="return false;" enctype="multipart/form-data" action="Upload?path=<%=current%>" method="post">
                             <input id="filePosition" placeholder="未選択です" type="text" readonly>
                             <label for="file" class="fileSelect">参照...</label>
                             <input id="file" name="file" type="file" onchange="fileChange()" required>
@@ -137,7 +117,9 @@
                     <font class="M">M</font>y<font class="D">D</font>rive
                 </h1>
                 <span class="new_folder_closeButton" onclick="closeNewFolderWindow()">
-                    <p>×</p>
+                    <a href="#">
+                        <p>×</p>
+                    </a>
                 </span>
             </div>
             <div class="new_folder_wrapper">
@@ -145,10 +127,10 @@
                     <fieldset class="new_folder_fieldset">
                         <p class="new_folder">新規フォルダ作成</p>
                         <hr class="new_folder">
-                        <form class="form" action="Main?req=mkdir&path=<%=current%>" method="post">
+                        <form id="new_folder_form" class="form" onsubmit="return false;" action="Main?req=mkdir&path=<%=current%>" method="post">
                             <div id="new_folder_text">フォルダ名を入力</div>
                             <input id="foldername" type="text" name="name" placeholder="200文字以上は登録できません" maxlength="199" required><br>
-                            <input class="new_folder" type="submit" value="作成">
+                            <input class="new_folder" type="submit" onclick="submitNewFolder()" value="作成">
                         </form>
                     </fieldset>
                 </div>
