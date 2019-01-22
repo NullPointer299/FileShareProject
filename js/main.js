@@ -121,13 +121,18 @@ function showSubmenu(clicked) {
     var submenu = document.getElementById('submenu');
     var name = clicked.myName;
     var path = clicked.myPath;
-   
+    var pub;
+    if(clicked.isPublic == "true"){
+        pub = "<li><a href=\"#\" onclick=jump(\'Main?path=" + path +"&name=" + name + "&public="+clicked.isPublic +"\',\'post\')>非公開にする</a></li>";
+    }else{
+        pub = "<li><a href=\"#\" onclick=jump(\'Main?path=" + path +"&name=" + name + "&public="+clicked.isPublic +"\',\'post\')>公開にする</a></li>";
+    }
     if (clicked.myType == 0) {
-        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
-        submenu.style.height = "60px";
+        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub +"</ul>";
+        submenu.style.height="90px";
     } else {
-        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
-        submenu.style.height = "60px";
+        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub +"</ul>";
+        submenu.style.height = "90px";
     }
     submenu.style.position = 'absolute';
     submenu.style.left = posX + "px";

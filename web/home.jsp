@@ -50,10 +50,10 @@
             var dirs = [];
             var files = [];
             <%for (File f : dirs) {%>
-            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>));
+            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>,<%="'"+f.isPublic()+"'"%>));
             <%}%>
             <%for (File f : normal) {%>
-            files.push(new File(<%="'"+f.getName()+"'"%>, 1, <%="'"+f.getPath()+"'"%>));
+            files.push(new File(<%="'"+f.getName()+"'"%>, 1, <%="'"+f.getPath()+"'"%>,<%="'"+f.isPublic()+"'"%>));
             <%}%>
             sortLoad(dirs, files);
             loadBreadcrumb("\'" + <%=current%> +"\'");
@@ -102,8 +102,8 @@
                             <div class="upload_text">ファイル名を入力</div>
                             <input id="upload_filename" type="text" name="fileName" placeholder="200文字以上は登録できません" maxlength="199"><br>
                             <div class="radioButton">
-                                <input type="radio" name="ispublic" checked>公開
-                                <input type="radio" name="ispublic">非公開
+                                <input type="radio" name="public" value="true" checked>公開
+                                <input type="radio" name="public" value="false">非公開
                             </div>
                             <input id="newFolder" onclick="submitUpload()" type="submit" value="アップロード">
                         </form>
@@ -130,6 +130,10 @@
                         <form id="new_folder_form" class="form" onsubmit="return false;" action="Main?req=mkdir&path=<%=current%>" method="post">
                             <div id="new_folder_text">フォルダ名を入力</div>
                             <input id="foldername" type="text" name="name" placeholder="200文字以上は登録できません" maxlength="199" required><br>
+                            <div class="radioButtonOfNewFolder">
+                                <input type="radio" name="public" value="true" checked>公開
+                                <input type="radio" name="public" value="false">非公開
+                            </div>
                             <input class="new_folder" type="submit" onclick="submitNewFolder()" value="作成">
                         </form>
                     </fieldset>
