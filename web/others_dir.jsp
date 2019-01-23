@@ -76,70 +76,7 @@
 
         <hr>
     </header>
-    <div id="cover">
-        <div id="upload_content">
-            <div class="header">
-                <h1>
-                    <font class="M">M</font>y<font class="D">D</font>rive
-                </h1>
-                <span class="upload" onclick="closeUploadWindow()">
-                    <a href="#">
-                        <p class="upload_close_button">×</p>
-                    </a>
-                </span>
-            </div>
-            <div class="upload_wrapper">
-                <div class="upload_main">
-                    <fieldset class="upload_fieldset">
-                        <p class="upload_midasi">ファイルをアップロード</p>
-                        <hr class="upload_hr">
-                        <form id="upload_form" class="form" onsubmit="return false;" enctype="multipart/form-data" action="Upload?path=<%=current%>" method="post">
-                            <input id="filePosition" placeholder="未選択です" type="text" readonly>
-                            <label for="file" class="fileSelect">参照...</label>
-                            <input id="file" name="file" type="file" onchange="fileChange()" required>
-                            <br>
-                            <div class="upload_text">ファイル名を入力</div>
-                            <input id="upload_filename" type="text" name="fileName" placeholder="200文字以上は登録できません" maxlength="199"><br>
-                            <div class="radioButton">
-                                <input type="radio" name="public" value="true" checked>公開
-                                <input type="radio" name="public" value="false">非公開
-                            </div>
-                            <input id="newFolder" onclick="submitUpload()" type="submit" value="アップロード">
-                        </form>
-                    </fieldset>
-                </div>
-            </div>
-        </div>
-        <div id="new_folder_content">
-            <div class="header">
-                <h1>
-                    <font class="M">M</font>y<font class="D">D</font>rive
-                </h1>
-                <span class="new_folder_closeButton" onclick="closeNewFolderWindow()">
-                    <a href="#">
-                        <p>×</p>
-                    </a>
-                </span>
-            </div>
-            <div class="new_folder_wrapper">
-                <div class="new_folder_main">
-                    <fieldset class="new_folder_fieldset">
-                        <p class="new_folder">新規フォルダ作成</p>
-                        <hr class="new_folder">
-                        <form id="new_folder_form" class="form" onsubmit="return false;" action="Main?req=mkdir&path=<%=current%>" method="post">
-                            <div id="new_folder_text">フォルダ名を入力</div>
-                            <input id="foldername" type="text" name="name" placeholder="200文字以上は登録できません" maxlength="199" required><br>
-                            <div class="radioButtonOfNewFolder">
-                                <input type="radio" name="public" value="true" checked>公開
-                                <input type="radio" name="public" value="false">非公開
-                            </div>
-                            <input class="new_folder" type="submit" onclick="submitNewFolder()" value="作成">
-                        </form>
-                    </fieldset>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="submenu" id="submenu"></div>
 
     <div class="wrapper">
