@@ -18,6 +18,5 @@ function closeConfirm() {
 }
 
 function submitConfirm() {
-    console.log("in");
     document.getElementById("registerForm").submit();
 }

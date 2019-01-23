@@ -25,7 +25,6 @@ function exeDownload() {
     var array = [];
     var flag;
     for (var v of showFolders) {
-        console.log(v.myName);
         if (document.getElementById(v.myName).checked) {
             flag = true;
             break;
@@ -117,7 +116,6 @@ function rightclick(clicked) {
 }
 
 function showSubmenu(clicked) {
-    console.log("in");
     var submenu = document.getElementById('submenu');
     var name = clicked.myName;
     var path = clicked.myPath;
@@ -173,7 +171,6 @@ function closeNewFolderWindow() {
 }
 
 function submitNewFolder() {
-    console.log("in");
     if (duplicate("foldername")) {
         alert("名前が重複しています");
     } else {
@@ -196,7 +193,6 @@ function closeUploadWindow() {
 }
 
 function submitUpload() {
-    console.log("in");
     if (duplicate("upload_filename")) {
         alert("名前が重複しています");
     } else {

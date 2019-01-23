@@ -85,6 +85,7 @@ label {
 .info {
     margin-left: 40px;
 }
+
 .submit {
     width: 200px;
     height: 60px;
@@ -115,9 +116,12 @@ body{
     right: 10px;
 }
 
-i{
-    
+.loginA{
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
 }
+
 /*---------------------------------------------------------------------
 confirm
 -----------------------------------------------------------------------*/

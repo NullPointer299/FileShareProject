@@ -27,7 +27,6 @@ function loadUser(array) {
 function createUser(){
     var target = document.getElementById("main");
     var temp ="";
-    console.log(users);
     for(var v of users){
         temp += "<div class=\"person\"><a><i class=\"material-icons\">person</i> 名前:" + v.myLastName +" " + v.myFirstName + "   ID:" + v.myId + "</a></div>";
     }
