@@ -10,7 +10,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     User user = (User) session.getAttribute("USER");
-    List<User> fav = (List<User>) session.getAttribute("FAV");
+    Map<User,Boolean> users = (Map<User,Boolean>) session.getAttribute("USERS");
+    
 %>
 
 <!DOCTYPE html>
@@ -40,8 +41,8 @@
             loadNowPage("favorite");
             let users = [];
             let fav = [];
-            <%for (User p : fav) {%>
-            users.push(new User(<%="'"+p.getLastName()+"'"%>, <%="'"+p.getFirstName()+"'"%>, <%="'"+p.getId()+"'"%>));
+            <%for (Map.Entry<User,Boolean> m : users.entrySet()) {%>
+            users.push(new User(<%="'"+m.getKey().getLastName()+"'"%>, <%="'"+m.getKey().getFirstName()+"'"%>, <%="'"+m.getKey().getId()+"'"%>,<%="'"+m.getValue().toString()+"'"%>));
             <%}%>
 
             loadUser(users);

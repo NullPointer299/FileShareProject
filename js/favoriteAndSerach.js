@@ -1,8 +1,9 @@
 class User {
-    constructor(fName,lName,id) {
+    constructor(fName,lName,id,favorite) {
         this.fName = fName;
         this.lName=lName;
         this.id = id;
+        this.favorite=favorite;
     }
     get myFName() {
         return this.fName;
@@ -12,6 +13,9 @@ class User {
     }
     get myId() {
         return this.id;
+    }
+    get isFav(){
+        return this.favorite;
     }
 }
 

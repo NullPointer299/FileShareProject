@@ -127,11 +127,11 @@ function showSubmenu(clicked) {
     if (nowPage == "home") {
         const name = clicked.myName;
         const path = clicked.myPath;
-        let is=clicked.isPublic;
-        if(is == "true"){
+        let is = clicked.isPublic;
+        if (is == "true") {
             is = "false";
-        }else{
-            is="true";
+        } else {
+            is = "true";
         }
         let pub;
         console.log(clicked.isPublic);
@@ -147,7 +147,7 @@ function showSubmenu(clicked) {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub + "</ul>";
             submenu.style.height = "80px";
         }
-    }else if(nowPage =="trash"){
+    } else if (nowPage == "trash") {
         const name = clicked.myName;
         const path = clicked.myPath;
         if (clicked.myType == 0) {
@@ -157,12 +157,30 @@ function showSubmenu(clicked) {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
             submenu.style.height = "60px";
         }
-    }else if(nowPage=="others_dir"){
-        
-    }else if(nowPage=="favorite"){
-        
-    }else if(nowPage=="search_user"){
-        
+    } else if (nowPage == "others_dir") {
+        const name = clicked.myName;
+        const path = clicked.myPath;
+        if (clicked.myType == 0) {
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li></ul>";
+            submenu.style.height = "60px";
+        } else {
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li></ul>";
+            submenu.style.height="60px";
+        }
+    } else if (nowPage == "favorite") {
+        const lName = clicked.myLName;
+        const fName = clicked.myFName;
+        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump()>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump()>お気に入り解除</a></li></ul>";
+        submenu.style.height = "80px";
+    } else if (nowPage == "search_user") {
+        const lName = clicked.myLName;
+        const fName = clicked.myFName;
+        if (clicked.isFav =="true") {
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump()>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump()>お気に入り解除</a></li></ul>";
+        } else {
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump()>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump()>お気に入り登録</a></li></ul>";
+        }
+        submenu.style.height ="80px";
     }
     submenu.style.position = 'absolute';
     submenu.style.left = posX + "px";
@@ -182,12 +200,6 @@ function jump(dis, method) {
     document.body.appendChild(form);
     form.submit();
 }
-
-/*function createFolder() {
-    window.setTimeout(function () {
-        jump("Main?req=home", "post");
-    })
-}*/
 
 /*--------------------------------------------------
 new_folder
