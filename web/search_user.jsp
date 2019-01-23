@@ -35,7 +35,14 @@
         });
 
         window.onload = function () {
-            loadUser();
+            loadNowPage("search_user");
+            let users = [];
+            let fav =[];
+            <%for (User p : users) {%>
+            users.push(new User(<%="'"+p.getLastName()+"'"%>,<%="'"+p.getFirstName()+"'"%> , <%="'"+p.getId()+"'"%>));
+            <%}%>
+                
+            loadUser(users);
         }
     </script>
     <script type="text/javascript" src="js/main.js"></script>
@@ -79,7 +86,7 @@
                 <ul class="menu">
                     <li><a id="right_con" href="#">ソート</a>
                         <ul id="ddmenu">
-                            <li><a href="#" onclick="selectName();sortByName()"><span id="name">✓</span>名前順</a></li>
+                            <li><a href="#" onclick="sortByName()"><span id="name">✓</span>名前順</a></li>
                             <li><a href="#" onclick="selectAsc()"><span id="asc">✓</span>昇順</a></li>
                             <li><a href="#" onclick="selectDesc()"><span id="desc">✓</span>降順</a></li>
                         </ul>

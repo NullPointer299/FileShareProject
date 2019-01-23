@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../js/main.js"></script>
     <script type="text/javascript">
         window.onload = function() {
-            loadConfig(<%=user.getLastName()%>,<%=user.getFirstName()%>,<%=user.isPublic() +""%>);
+            loadConfig(<%="'"+user.getLastName()+"'"%>,<%="'"+user.getFirstName()+"'"%>,<%="'"+user.isPublic() +"'"%>);
         }
     </script>
 </head>

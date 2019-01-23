@@ -57,6 +57,7 @@
             <%}%>
             sortLoad(dirs, files);
             loadBreadcrumb(<%="'"+current+"'"%>);
+            loadNowPage("home");
                                      
             var box = document.getElementById("content");
             box.addEventListener("contextmenu", function(e){

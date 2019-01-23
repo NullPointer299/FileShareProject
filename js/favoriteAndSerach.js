@@ -5,7 +5,7 @@ class User {
         this.id = id;
     }
     get myFName() {
-        return this.fname;
+        return this.fName;
     }
     get myLName() {
         return this.lName;
@@ -17,35 +17,19 @@ class User {
 
 var haveUsers;
 var showUsers;
-var favoriteUsers;
 
-function loadUser(u,fu) {
+function loadUser(u) {
     haveUsers = u;
     showUsers = u;
-    favoriteUsers=fu;
-    sortByNameOfUser();
-}
-
-function sortByNameOfUser() {
-    if (order == 0) {
-        showUsers.sort(function (a, b) {
-            if (a.myName < b.myName) return -1;
-            if (a.myName > b.myName) return 1;
-        });
-    } else {
-        showUsers.sort(function (a, b) {
-            if (a.myName < b.myName) return 1;
-            if (a.myName > b.myName) return -1;
-        });
-    }
-    createMainOfUser();
+    sortByName();
 }
 
 function createMainOfUser() {
+    console.log("in");
     var target = document.getElementById("main");
     var temp = "";
     for (var v of showUsers) {
-        //temp += "<div class=\"person\" onclick=jump(---------------------------パラメータとか----------------------,\"post\")><a href=\"#\"><i class=\"material-icons\">person</i> 名前:" + v.myLName + " " + v.myFName + "   ID:" + v.myId + "</a></div>";
+        temp += "<div class=\"person\" onclick=jump(---------------------------パラメータとか----------------------,\"post\")><a href=\"#\"><i class=\"material-icons\">person</i> 名前:" + v.myLName + " " + v.myFName + "   ID:" + v.myId + "</a></div>";
     }
     target.innerHTML = temp;
 

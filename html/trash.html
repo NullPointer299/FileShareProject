@@ -6,7 +6,7 @@
     <title>MyDrive</title>
     <meta name="description" content="ファイル共有サービス">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="css/trash.css">
+    <link rel="stylesheet" href="../css/trash.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
@@ -21,8 +21,8 @@
             });
         });
     </script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/sort.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/sort.js"></script>
     <script type="text/javascript">
         window.onload = function() { <!----スコープからフォルダとファイルの----->
             sortLoad([new Folder('A',0), new Folder('B',0), new Folder('C',0), new Folder('D',0), new Folder('E',0)], [new File('checkbox1'), new File('checkbox2'), new File('checkbox3'), new File('checkbox4'), new File('checkbox5')]);
@@ -31,6 +31,7 @@
             box.addEventListener("contextmenu", function(e) {
                 e.preventDefault();
             }, false);
+            loadNowPage("trash");
         }
     </script>
 </head>

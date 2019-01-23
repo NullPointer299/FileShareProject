@@ -26,8 +26,9 @@
     <script type="text/javascript" src="../js/sort.js"></script>
     <script type="text/javascript">
         window.onload = function() {
+            loadNowPage("home");
             var dirs = [new Folder("あああああああああああ",0,"a","true")];
-            var files = [new File("b",0,"b","true")];
+            var files = [new File("b",0,"b","false")];
             /*<%for (File f : dirs) {%>
             dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>));
             <%}%>
@@ -36,6 +37,7 @@
             <%}%>*/
             sortLoad(dirs, files);
             loadBreadcrumb("a/h/s/efsa/sefae");
+            
 
             var box = document.getElementById("content");
             box.addEventListener("contextmenu", function(e) {

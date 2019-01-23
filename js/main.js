@@ -1,3 +1,9 @@
+var nowPage;
+
+function loadNowPage(page) {
+    nowPage = page;
+}
+
 function selectName() {
     var size = document.getElementById("size");
     var name = document.getElementById("name");
@@ -117,20 +123,46 @@ function rightclick(clicked) {
 
 function showSubmenu(clicked) {
     var submenu = document.getElementById('submenu');
-    var name = clicked.myName;
-    var path = clicked.myPath;
-    var pub;
-    if (clicked.isPublic == "true") {
-        pub = "<li><a href=\"#\" onclick=jump(\'Main?req=change_publishing&path=" + path + "&name=" + name + "&public=" + !clicked.isPublic + "\',\'post\')>非公開にする</a></li>";
-    } else {
-        pub = "<li><a href=\"#\" onclick=jump(\'Main?req=change_publishing&path=" + path + "&name=" + name + "&public=" + !clicked.isPublic + "\',\'post\')>公開にする</a></li>";
-    }
-    if (clicked.myType == 0) {
-        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub + "</ul>";
-        submenu.style.height = "90px";
-    } else {
-        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub + "</ul>";
-        submenu.style.height = "90px";
+
+    if (nowPage == "home") {
+        const name = clicked.myName;
+        const path = clicked.myPath;
+        let is=clicked.isPublic;
+        if(is == "true"){
+            is = "false";
+        }else{
+            is="true";
+        }
+        let pub;
+        console.log(clicked.isPublic);
+        if (clicked.isPublic == "true") {
+            pub = "<li><a href=\"#\" onclick=jump(\'Main?req=change_publishing&path=" + path + "&name=" + name + "&public=" + is + "\',\'post\')>非公開にする</a></li>";
+        } else {
+            pub = "<li><a href=\"#\" onclick=jump(\'Main?req=change_publishing&path=" + path + "&name=" + name + "&public=" + is + "\',\'post\')>公開にする</a></li>";
+        }
+        if (clicked.myType == 0) {
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub + "</ul>";
+            submenu.style.height = "80px";
+        } else {
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub + "</ul>";
+            submenu.style.height = "80px";
+        }
+    }else if(nowPage =="trash"){
+        const name = clicked.myName;
+        const path = clicked.myPath;
+        if (clicked.myType == 0) {
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+            submenu.style.height = "60px";
+        } else {
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+            submenu.style.height = "60px";
+        }
+    }else if(nowPage=="others_dir"){
+        
+    }else if(nowPage=="favorite"){
+        
+    }else if(nowPage=="search_user"){
+        
     }
     submenu.style.position = 'absolute';
     submenu.style.left = posX + "px";

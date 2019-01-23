@@ -55,8 +55,9 @@
             files.push(new File(<%="'"+f.getName()+"'"%>, 1, <%="'"+f.getPath()+"'"%>));
             <%}%>
             sortLoad(dirs, files);
-            loadBreadcrumb("\'" + <%=current%> + "\'");
-                                     
+            loadBreadcrumb(<%="'" +current+"'"%>);
+            loadNowPage("trash");
+                                    
             var box = document.getElementById("content");
             box.addEventListener("contextmenu", function(e) {
                 e.preventDefault();
@@ -140,36 +141,3 @@
 </body>
 
 </html>
-
-<%--<html>--%>
-<%--<head>--%>
-<%--<title>MyDrive</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-
-<%--<h1>MyDrive</h1>--%>
-<%--<h2>ゴミ箱</h2>--%>
-
-<%--<form action="Configuration" method="post">--%>
-<%--<input type="submit" value="config">--%>
-<%--</form>--%>
-<%--<form action="Logout" method="post">--%>
-<%--<input type="submit" value="logout">--%>
-<%--</form>--%>
-<%--<form action="Main?req=home" method="post">--%>
-<%--<input type="submit" value="home">--%>
-<%--</form>--%>
-<%--<form action="Main?req=sear_user" method="post">--%>
-<%--<input type="submit" value="sear_user">--%>
-<%--</form>--%>
-<%--<form action="Main?req=fav" method="post">--%>
-<%--<input type="submit" value="fav">--%>
-<%--</form>--%>
-<%--<form action="Main?req=trash" method="post">--%>
-<%--<input type="submit" value="trash">--%>
-<%--</form>--%>
-
-<%--<br>This is trash.jsp!!!<br>--%>
-
-<%--</body>--%>
-<%--</html>--%>

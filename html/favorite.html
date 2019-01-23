@@ -22,12 +22,17 @@
         });
         
         window.onload = function() {
+            var box = document.getElementById("content");
+            box.addEventListener("contextmenu", function(e){
+                    e.preventDefault();
+                }, false);
             loadUser([new User("aaaa","aaaa","a"),new User("bbbbb","bbbb","b")]);
+            loadNowPage("favorite");
         }
     </script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/sort.js"></script>
-    <script type="text/javascript" src="js/search.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/sort.js"></script>
+    <script type="text/javascript" src="../js/favoriteAndSerach.js"></script>
 </head>
 
 <body>

@@ -287,19 +287,17 @@ rightclick
 .submenu ul li a:hover {
     background-color: darkgray;
 }
-
 h6.cut {
     padding: 0;
     margin: 0;
     font-size: 12px;
-    width: 60px;
+    width: 80px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-text-overflow: ellipsis;
     text-overflow: ellipsis;
 }
-
 /*-------------------------------------------------------------
 breadcrumb
 -------------------------------------------------------------*/

@@ -57,7 +57,7 @@
             <%}%>
             sortLoad(dirs, files);
             loadBreadcrumb(<%="'"+current+"'"%>);
-                                     
+            loadNowPage("others_dir");                         
             var box = document.getElementById("content");
             box.addEventListener("contextmenu", function(e){
                     e.preventDefault();

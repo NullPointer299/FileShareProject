@@ -66,29 +66,44 @@ class Folder {
 }
 
 function sortByName() {
-    if (order == 0) {
-        showFolders.sort(function (a, b) {
-            if (a.myName < b.myName) return -1;
-            if (a.myName > b.myName) return 1;
-        });
-    } else {
-        showFolders.sort(function (a, b) {
-            if (a.myName < b.myName) return 1;
-            if (a.myName > b.myName) return -1;
-        });
+    if (nowPage == "home"||nowPage=="trash"||nowPage=="others_dir") {
+        if (order == 0) {
+            showFolders.sort(function (a, b) {
+                if (a.myName < b.myName) return -1;
+                if (a.myName > b.myName) return 1;
+            });
+        } else {
+            showFolders.sort(function (a, b) {
+                if (a.myName < b.myName) return 1;
+                if (a.myName > b.myName) return -1;
+            });
+        }
+        if (order == 0) {
+            showFiles.sort(function (a, b) {
+                if (a.myName < b.myName) return -1;
+                if (a.myName > b.myName) return 1;
+            });
+        } else {
+            showFiles.sort(function (a, b) {
+                if (a.myName < b.myName) return 1;
+                if (a.myName > b.myName) return -1;
+            });
+        }
+        createMain();
+    } else if (nowPage == "favorite" || nowPage == "search_user") {
+        if (order == 0) {
+            showUsers.sort(function (a, b) {
+                if (a.myLName < b.myLName) return -1;
+                if (a.myLName > b.myLName) return 1;
+            });
+        } else {
+            showUsers.sort(function (a, b) {
+                if (a.myLName < b.myLName) return 1;
+                if (a.myLName > b.myLName) return -1;
+            });
+        }
+        createMainOfUser();
     }
-    if (order == 0) {
-        showFiles.sort(function (a, b) {
-            if (a.myName < b.myName) return -1;
-            if (a.myName > b.myName) return 1;
-        });
-    } else {
-        showFiles.sort(function (a, b) {
-            if (a.myName < b.myName) return 1;
-            if (a.myName > b.myName) return -1;
-        });
-    }
-    createMain();
 }
 
 function createMain() {
