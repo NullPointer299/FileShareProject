@@ -61,7 +61,6 @@
             <a href="#" onclick="home()">ホームに戻る</a>
         </fieldset>
     </div>
-
 </body>
 
 </html>

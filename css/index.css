@@ -14,7 +14,6 @@
     position: relative;
     background: #666 url(https://bcrikko.github.io/web-design-practices/single-page-layout/asset/header.jpg) no-repeat;
     background-size: cover;
-    position: relative;
     z-index: 0;
 }
 
