@@ -21,6 +21,11 @@
     <link rel="stylesheet" href="../css/main.css">
     <script type="text/javascript" src="../js/configuration.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            loadConfig(<%=user.getLastName()%>,<%=user.getFirstName()%>,<%=user.isPublic() +""%>);
+        }
+    </script>
 </head>
 
 <body>
@@ -33,21 +38,23 @@
 
     <div class="wrapper">
         <fieldset>
-            <form action="Configuration">
+            <form id="configForm" action="Configuration" onsubmit="return false;">
                 名前変更
                 <br>
-                姓<input type="text">
-                名<input type="text">
+                姓<input id="lName" type="text" name="lName">
+                名<input id="fName" type="text" name=fName>
                 <br>
-                パスワード変更<input type="password">
+                パスワード変更<input id="password" type="password" name="password">
+                <br>
+                パスワード確認<input id="passwordCheck" type="password">
                 <br>
                 ユーザ公開設定
-                <select>
-                    <option>公開</option>
-                    <option selected>非公開</option>
+                <select name="public" id="public">
+                    <option value="true">公開</option>
+                    <option value="false">非公開</option>
                 </select>
                 <br>
-                <input type="submit" value="適用">
+                <input type="submit" onclick="checkPassword()" value="適用">
                 <br>
             </form>
             <a href="#" onclick="deleteAccount()">アカウント削除</a>

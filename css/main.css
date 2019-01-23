@@ -55,7 +55,7 @@ side_bar
 
 .side_bar {
     width: 170px;
-    height: -webkit-calc(100vh-170px);
+    height: -webkit-calc(100vh - 170px);
     float: left;
 }
 
