@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <title>MyDrive</title>
     <meta name="description" content="ファイル共有サービス">
-    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="css/register.css">
     <script type="text/javascript">
         function CheckPassword(confirm) {
             var input1 = password.value;
@@ -26,7 +26,7 @@
             }
         }
     </script>
-    <script type="text/javascript" src="../js/register.js"></script>
+    <script type="text/javascript" src="js/register.js"></script>
 </head>
 
 <body>

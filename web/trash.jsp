@@ -1,4 +1,8 @@
 <%@ page import="model.User" %>
+<%@ page import="model.File" %>
+<%@ page import="java.nio.file.Path" %>
+<%@ page import="java.util.stream.Collectors" %>
+<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: nullpo299
@@ -9,6 +13,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     User user=(User)session.getAttribute("USER");
+    List<File> files = (List<File>) session.getAttribute("FILES");
+    List<File> dirs = files.stream().filter(f -> f.isDirectory()).collect(Collectors.toList());
+    List<File> normal = files.stream().filter(f -> !f.isDirectory()).collect(Collectors.toList());
+    Path current = (Path) session.getAttribute("CURRENT");
 %>
 
 <html>
