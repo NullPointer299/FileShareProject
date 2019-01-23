@@ -1,5 +1,6 @@
 <%@ page import="model.User" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
 <%--
   Created by IntelliJ IDEA.
   User: nullpo299
@@ -10,8 +11,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     User user = (User) session.getAttribute("USER");
-    Map<User,Boolean> users = (Map<User,Boolean>) session.getAttribute("USERS");
-    
+    Map<User, Boolean> users = (Map<User, Boolean>) session.getAttribute("USERS");
+
 %>
 
 <!DOCTYPE html>
@@ -42,7 +43,7 @@
             let users = [];
             let fav = [];
             <%for (Map.Entry<User,Boolean> m : users.entrySet()) {%>
-            users.push(new User(<%="'"+m.getKey().getLastName()+"'"%>, <%="'"+m.getKey().getFirstName()+"'"%>, <%="'"+m.getKey().getId()+"'"%>,<%="'"+m.getValue().toString()+"'"%>));
+            users.push(new User(<%="'"+m.getKey().getLastName()+"'"%>, <%="'"+m.getKey().getFirstName()+"'"%>, <%="'"+m.getKey().getId()+"'"%>, <%="'"+m.getValue().toString()+"'"%>));
             <%}%>
 
             loadUser(users);

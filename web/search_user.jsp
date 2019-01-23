@@ -1,5 +1,6 @@
 <%@ page import="model.User" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
 <%--
   Created by IntelliJ IDEA.
   User: nullpo299
