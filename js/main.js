@@ -123,9 +123,9 @@ function showSubmenu(clicked) {
     var path = clicked.myPath;
     var pub;
     if (clicked.isPublic == "true") {
-        pub = "<li><a hef=\"#\" onclick=jump(\'Main?path=" + path + "&name=" + name + "&public=" + !clicked.isPublic + "\',\'post\')>非公開にする</a></li>";
+        pub = "<li><a hef=\"#\" onclick=jump(\'Main?req=change_publishing&path=" + path + "&name=" + name + "&public=" + !clicked.isPublic + "\',\'post\')>非公開にする</a></li>";
     } else {
-        pub = "<li><a href=\"#\" onclick=jump(\'Main?path=" + path + "&name=" + name + "&public=" + !clicked.isPublic + "\',\'post\')>公開にする</a></li>";
+        pub = "<li><a href=\"#\" onclick=jump(\'Main?req=change_publishing&path=" + path + "&name=" + name + "&public=" + !clicked.isPublic + "\',\'post\')>公開にする</a></li>";
     }
     if (clicked.myType == 0) {
         submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub + "</ul>";
@@ -239,7 +239,7 @@ function deleteThings() {
             return;
         }
     }
-    jump("Main?req=remove?names=" + temp + "&path=" + path, "post");
+    jump("Main?req=mv_to_trash&names=" + temp + "&path=" + path, "post");
 }
 
 /*--------------------------------------------------------------
