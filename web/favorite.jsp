@@ -1,4 +1,5 @@
 <%@ page import="model.User" %>
+<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: nullpo299
@@ -9,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     User user = (User) session.getAttribute("USER");
-    List<User> users=user.getFav();
+    List<User> fav = (List<User>) session.getAttribute("FAV");
 %>
 
 <!DOCTYPE html>
@@ -20,7 +21,8 @@
     <title>MyDrive</title>
     <meta name="description" content="ファイル共有サービス">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href=css/favorite.css> <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href=css/favorite.css>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -37,11 +39,11 @@
         window.onload = function () {
             loadNowPage("favorite");
             let users = [];
-            let fav =[];
-            <%for (User p : users) {%>
-            users.push(new User(<%="'"+p.getLastName()+"'"%>,<%="'"+p.getFirstName()+"'"%> , <%="'"+p.getId()+"'"%>));
+            let fav = [];
+            <%for (User p : fav) {%>
+            users.push(new User(<%="'"+p.getLastName()+"'"%>, <%="'"+p.getFirstName()+"'"%>, <%="'"+p.getId()+"'"%>));
             <%}%>
-            
+
             loadUser(users);
         }
     </script>
@@ -51,53 +53,53 @@
 </head>
 
 <body>
-    <header>
-        <h1>
-            <a href="https://auth.cyber-u.ac.jp/openam/UI/Login">
-                <font class="M">M</font>y<font class="D">D</font>rive
-            </a>
-        </h1>
-        <hr>
-    </header>
+<header>
+    <h1>
+        <a href="https://auth.cyber-u.ac.jp/openam/UI/Login">
+            <font class="M">M</font>y<font class="D">D</font>rive
+        </a>
+    </h1>
+    <hr>
+</header>
 
-    <div class="submenu" id="submenu">
+<div class="submenu" id="submenu">
+</div>
+
+<div class="wrapper">
+    <div class="top_bar">
+        <input type="submit" class="top_con login_con" value="ログアウト">
+        <input type="submit" class="top_con" value="設定">
+        <form action="#">
+            <input id="topText" onkeyup="charFilterOfUser()" type="text" class="top_con" placeholder="ユーザを絞る">
+        </form>
     </div>
-
-    <div class="wrapper">
-        <div class="top_bar">
-            <input type="submit" class="top_con login_con" value="ログアウト">
-            <input type="submit" class="top_con" value="設定">
-            <form action="#">
-                <input id="topText" onkeyup="charFilterOfUser()" type="text" class="top_con" placeholder="ユーザを絞る">
-            </form>
-        </div>
-        <div class="side_bar">
-            <ul>
-                <li id="myFolder"><a href="#" onclick="jump('Main?req=home','post')">ホーム</a></li>
-                <li id="searchUser"><a href="#" onclick="jump('Main?req=sear_user','post')">ユーザ検索</a></li>
-                <li id="favorite"><a href="#" onclick="jump('Main?req=fav','post')">お気に入り</a></li>
-                <li id="trash"><a href="#" onclick="jump('Main?req=trash','post')">ゴミ箱</a></li>
-            </ul>
-        </div>
-        <div class="content" id="content">
-            <div class="content_top_bar">
-                <div class="content_top_bar_right">
-                    <ul class="menu">
-                        <li><a id="right_con" href="#">ソート</a>
-                            <ul id="ddmenu">
-                                <li><a href="#" onclick="sortByNameofUser()"><span id="name">✓</span>名前順</a></li>
-                                <li><a href="#" onclick="selectAsc()"><span id="asc">✓</span>昇順</a></li>
-                                <li><a href="#" onclick="selectDesc()"><span id="desc">✓</span>降順</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div id="main">
+    <div class="side_bar">
+        <ul>
+            <li id="myFolder"><a href="#" onclick="jump('Main?req=home','post')">ホーム</a></li>
+            <li id="searchUser"><a href="#" onclick="jump('Main?req=sear_user','post')">ユーザ検索</a></li>
+            <li id="favorite"><a href="#" onclick="jump('Main?req=fav','post')">お気に入り</a></li>
+            <li id="trash"><a href="#" onclick="jump('Main?req=trash','post')">ゴミ箱</a></li>
+        </ul>
+    </div>
+    <div class="content" id="content">
+        <div class="content_top_bar">
+            <div class="content_top_bar_right">
+                <ul class="menu">
+                    <li><a id="right_con" href="#">ソート</a>
+                        <ul id="ddmenu">
+                            <li><a href="#" onclick="sortByNameofUser()"><span id="name">✓</span>名前順</a></li>
+                            <li><a href="#" onclick="selectAsc()"><span id="asc">✓</span>昇順</a></li>
+                            <li><a href="#" onclick="selectDesc()"><span id="desc">✓</span>降順</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
+
+        <div id="main">
+        </div>
     </div>
+</div>
 </body>
 
 </html>
