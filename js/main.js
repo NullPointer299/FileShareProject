@@ -72,7 +72,6 @@ function check(id) {
     }
 }
 
-
 /*-----------------------------------------------------------
 右クリック関連
 -----------------------------------------------------------*/
@@ -114,6 +113,7 @@ function rightclick(clicked) {
         }
         showSubmenu(clicked);
     }, 100);
+    return false;
 }
 
 function showSubmenu(clicked) {
@@ -122,16 +122,17 @@ function showSubmenu(clicked) {
     var name = clicked.myName;
     var path = clicked.myPath;
     var pub;
-    if(clicked.isPublic == "true"){
-        pub = "<li><a hef=\"#\" onclick=jump(\'Main?path=" + path +"&name=" + name + "&public="+clicked.isPublic +"\',\'post\')>非公開にする</a></li>";
-    }else{s
-        pub = "<li><a href=\"#\" onclick=jump(\'Main?path=" + path +"&name=" + name + "&public="+clicked.isPublic +"\',\'post\')>公開にする</a></li>";
+    if (clicked.isPublic == "true") {
+        pub = "<li><a hef=\"#\" onclick=jump(\'Main?path=" + path + "&name=" + name + "&public=" + !clicked.isPublic + "\',\'post\')>非公開にする</a></li>";
+    } else {
+        s
+        pub = "<li><a href=\"#\" onclick=jump(\'Main?path=" + path + "&name=" + name + "&public=" + !clicked.isPublic + "\',\'post\')>公開にする</a></li>";
     }
     if (clicked.myType == 0) {
-        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub +"</ul>";
-        submenu.style.height="90px";
+        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub + "</ul>";
+        submenu.style.height = "90px";
     } else {
-        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub +"</ul>";
+        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub + "</ul>";
         submenu.style.height = "90px";
     }
     submenu.style.position = 'absolute';
@@ -176,7 +177,7 @@ function submitNewFolder() {
     console.log("in");
     if (duplicate("foldername")) {
         alert("名前が重複しています");
-    }else{
+    } else {
         document.getElementById("new_folder_form").submit();
     }
 }
@@ -195,11 +196,11 @@ function closeUploadWindow() {
     document.getElementById("upload_content").style.display = "none";
 }
 
-function submitUpload(){
+function submitUpload() {
     console.log("in");
-    if(duplicate("upload_filename")){
+    if (duplicate("upload_filename")) {
         alert("名前が重複しています");
-    }else{
+    } else {
         document.getElementById("upload_form").submit();
     }
 }
