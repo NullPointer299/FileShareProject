@@ -46,6 +46,7 @@
     <script type="text/javascript" src="js/sort.js"></script>
     <script type="text/javascript">
         window.onload = function() {
+            loadNowPage("trash");
             var dirs = [];
             var files = [];
             <%for (File f : dirs) {%>

@@ -47,6 +47,7 @@
     <script type="text/javascript" src="../js/sort.js"></script>
     <script type="text/javascript">
         window.onload = function() {
+            loadNowPage("others_dir"); 
             var dirs = [];
             var files = [];
             <%for (File f : dirs) {%>
@@ -57,7 +58,7 @@
             <%}%>
             sortLoad(dirs, files);
             loadBreadcrumb(<%="'"+current+"'"%>);
-            loadNowPage("others_dir");                         
+                                    
             var box = document.getElementById("content");
             box.addEventListener("contextmenu", function(e){
                     e.preventDefault();

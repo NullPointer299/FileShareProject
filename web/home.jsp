@@ -49,6 +49,7 @@
         window.onload = function() {
             var dirs = [];
             var files = [];
+            loadNowPage("home");
             <%for (File f : dirs) {%>
             dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>,<%="'"+f.isPublic()+"'"%>));
             <%}%>
@@ -57,7 +58,7 @@
             <%}%>
             sortLoad(dirs, files);
             loadBreadcrumb(<%="'"+current+"'"%>);
-            loadNowPage("home");
+            
                                      
             var box = document.getElementById("content");
             box.addEventListener("contextmenu", function(e){
