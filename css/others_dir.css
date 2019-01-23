@@ -1,0 +1,595 @@
+@import url(main.css);
+
+/*
+----------------------------------------------------------------
+body
+-----------------------------------------------------------------
+*/
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.wrapper {}
+
+/*----------------------------------------------------------------
+sidebar
+-----------------------------------------------------------------*/
+
+#myFolder {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/*------------------------------------------------------------------
+content
+------------------------------------------------------------------*/
+
+div.content_top_bar {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px 8px 0 0;
+    width: 100%;
+}
+
+ul.menu {
+    margin: 0;
+    padding: 0 0 0 0;
+}
+
+.content_top_bar_left {
+    float: left;
+}
+
+.content_top_bar_left li {
+    border-left: none;
+    border-right: 1px solid white;
+}
+
+#left_con {
+    border-radius: 8px 0 0 0;
+}
+
+ul.menu li {
+    float: right;
+    font-size: 13px;
+    text-align: center;
+    width: 90px;
+    display: inline-block;
+    list-style-type: none;
+    position: relative;
+}
+
+.content_top_bar_right li {
+    border-left: 1px solid white;
+}
+
+ul.menu a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    background-color: transparent;
+}
+
+.tooltips {
+    display: none;
+    position: absolute;
+    bottom: -2.8em;
+    left: 0.3em;
+    z-index: 9999;
+    padding: 0.3em 0.5em;
+    color: black;
+    background: lightgray;
+    border-radius: 0.5em;
+    font-size: 12px;
+}
+
+.tooltips:after {
+    width: 100%;
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0.5em;
+    top: -8px;
+    border-top: 8px solid transparent;
+    border-left: 8px solid lightgray;
+}
+
+ul.menu li:hover .tooltips {
+    display: block;
+}
+
+
+ul.menu a:hover {
+    background-color: white;
+    color: gray;
+}
+
+ul.menu ul {
+    margin: 0;
+    padding: 0;
+    width: 90px;
+    display: none;
+    position: absolute;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+#ddmenu li:nth-child(1) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    width: 89px;
+}
+
+#time,
+#size,
+#desc {
+    color: transparent;
+}
+
+ul.menu ul li {
+    width: 89px;
+    border-top: 1px solid white;
+    background-color: white;
+}
+
+ul.menu ul li a {
+    line-height: 20px;
+    font-weight: normal;
+}
+
+ul.menu ul li a:hover {
+    background-color: white;
+    color: gray;
+}
+
+
+div.content {
+    min-height: 200px;
+    position: absolute;
+    top: 120px;
+    left: 175px;
+    width: -webkit-calc(100% - 185px);
+    min-width: 540px;
+    height: -webkit-calc(100% - 130px);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+}
+
+#right_con {
+    border-radius: 0 8px 0 0;
+    line-height: 25px;
+}
+
+/*------------------------------------------------------
+main
+-----------------------------------------------------------*/
+#main {
+    margin: 50px 0 0 0;
+}
+
+.folder {
+    height: 120px;
+    width: 120px;
+    margin: 10px 20px 0 20px;
+}
+
+.file {
+    height: 100px;
+    width: 120px;
+    margin: 20px 20px 10px 20px;
+}
+
+.file:hover,
+.folder:hover {
+    opacity: 0.6;
+}
+
+.node {
+    position: relative;
+    float: left;
+    height: 170px;
+    width: 160px;
+    z-index: 0;
+    background-color: white;
+}
+
+.node a {
+    color: black;
+    text-decoration: none;
+}
+
+.node:hover {
+    z-index: 1;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.filename {
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    word-wrap: break-word;
+    background-color: white;
+}
+
+/*-------------------------------------------------------------
+checkbox
+--------------------------------------------------------------*/
+.check_box {
+    border: 2px solid gray;
+    width: 15px;
+    height: 15px;
+    border-radius: 6px;
+    position: absolute;
+    top: 3px;
+    right: 10px;
+}
+
+.check {
+    border-right: 2px solid;
+    border-bottom: 2px solid;
+    width: 7px;
+    height: 12px;
+    border-color: deepskyblue;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 3px;
+    right: 16px;
+    display: none;
+}
+
+/*-------------------------------------------------------------
+rightclick
+--------------------------------------------------------------*/
+
+.submenu {
+    background-color: gainsboro;
+    border-radius: 2px;
+    display: none;
+    width: 90px;
+    height: 400px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    z-index: 1000;
+}
+
+.submenu.show {
+    display: block;
+}
+
+.submenu ul {
+    margin: 0;
+    width: 80px;
+    list-style: none;
+    padding: 2px 5px;
+}
+
+.submenu ul li {
+    color: #333;
+    font-size: 13px;
+}
+
+.submenu a {
+    text-decoration: none;
+    color: black;
+}
+
+.submenu ul li:first-child {
+    font-weight: 600;
+    border-bottom: 2px solid black;
+    width: 60px;
+    text-overflow: ellipsis;
+}
+
+.submenu ul li a:hover {
+    background-color: darkgray;
+}
+
+h6.cut {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    width: 60px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+/*-------------------------------------------------------------
+breadcrumb
+-------------------------------------------------------------*/
+
+.breadcrumb {
+    position: absolute;
+    top: 15px;
+    left: -30px;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.breadcrumb li {
+    display: inline;
+    list-style: none;
+    font-weight: bold;
+}
+
+.breadcrumb li:after {
+    content: '>';
+    padding: 0 3px;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 14px;
+}
+
+.breadcrumb li:last-child:after {
+    content: '';
+}
+
+.breadcrumb li a {
+    text-decoration: none;
+    color: dimgray;
+    font-size: 15px;
+    /*色*/
+}
+
+.breadcrumb li a:hover {
+    text-decoration: underline;
+}
+
+/*------------------------------------------------------------
+new_folder
+-------------------------------------------------------------*/
+
+#new_folder_content {
+    z-index: 1000;
+    display: none;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: white;
+    height: 320px;
+    width: 350px;
+}
+
+.radioButtonOfNewFolder{
+    position: absolute;
+    top: 200px;
+    left: 100px;
+}
+
+#new_folder_content a{
+    text-decoration: none;
+}
+.new_folder_main {
+    width: 330px;
+}
+
+.header {
+    height: 50px;
+}
+
+body.header h1 {
+    font-size: 30px;
+}
+
+.new_folder_fieldset {
+    border-radius: 20px;
+    border-color: rgba(0, 0, 0, 0.3);
+    padding: 0 0 10px 0;
+    width: 340px;
+    height: 220px;
+}
+
+hr.new_folder {
+    margin: 0;
+    padding: 0;
+}
+
+p.new_folder {
+    padding: 5px;
+    width: 280px;
+    text-align: center;
+    margin: auto;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#new_folder_text {
+    position: absolute;
+    top: 110px;
+    left: 10px;
+}
+
+#foldername {
+    margin: 0;
+    height: 20px;
+    font-size: 13px;
+    position: absolute;
+    top: 150px;
+    left: 25px;
+    width: 285px;
+}
+
+input[type="submit"].new_folder {
+    position: absolute;
+    top: 240px;
+    width: 120px;
+    left: 105px;
+    padding: 6px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: whitesmoke;
+    border: 4px solid rgba(0, 0, 0, 0.3);
+    margin: auto;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"].new_folder:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 3px solid black;
+}
+
+#cover {
+    display: none;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 2;
+}
+
+
+
+.new_folder_closeButton {
+    position: relative;
+    top: -65px;
+    left: 325px;
+    width: 20px;
+    height: 20px;
+}
+
+.new_folder_closeButton p {
+    font-size: 25px;
+    color: red;
+    font-weight: 800;
+}
+
+/*upload*/
+
+#upload_content {
+    z-index: 1000;
+    display: none;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: white;
+    height: 380px;
+    width: 350px;
+}
+
+.upload_main {
+    width: 340px;
+    height: 280px;
+}
+
+fieldset.upload_fieldset {
+    border-radius: 20px;
+    border-color: rgba(0, 0, 0, 0.3);
+    padding: 0 0 10px 0;
+    width: 340px;
+    height: 280px;
+}
+
+.upload_hr {
+    margin: 0;
+    padding: 0;
+}
+
+p.upload_midasi {
+    padding: 5px;
+    width: 280px;
+    text-align: center;
+    margin: auto;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="text"] {
+    margin: 0;
+    height: 20px;
+    width: 238px;
+    font-size: 13px;
+}
+
+label.fileSelect {
+    margin: 0;
+    color: black;
+    font-size: 14px;
+    background-color: darkgray;
+    border: 1px solid black;
+    padding: 2px;
+    height: 22px;
+}
+
+#filePosition {
+    position: absolute;
+    top: 140px;
+    left: 25px;
+}
+
+.fileSelect {
+    position: absolute;
+    top: 140px;
+    left: 270px;
+}
+
+
+.upload_text {
+    position: absolute;
+    top: 180px;
+    left: 10px;
+}
+
+#upload_filename {
+    position: absolute;
+    top: 210px;
+    left: 25px;
+    width: 285px;
+}
+
+#newFolder {
+    position: absolute;
+    top: 300px;
+    left: 105px;
+}
+
+input[type="submit"]#newFolder {
+    padding: 6px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: whitesmoke;
+    border: 4px solid rgba(0, 0, 0, 0.3);
+    margin: auto;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]#newFolder:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 3px solid black;
+}
+
+.radioButton {
+    position: absolute;
+    top: 260px;
+    left: 105px;
+
+}
+
+.upload_close_button {
+    position: absolute;
+    top: 5px;
+    left: 320px;
+    font-size: 25px;
+    color: red;
+    font-weight: 600;
+}

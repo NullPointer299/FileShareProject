@@ -125,7 +125,6 @@ function showSubmenu(clicked) {
     if (clicked.isPublic == "true") {
         pub = "<li><a hef=\"#\" onclick=jump(\'Main?path=" + path + "&name=" + name + "&public=" + !clicked.isPublic + "\',\'post\')>非公開にする</a></li>";
     } else {
-        s
         pub = "<li><a href=\"#\" onclick=jump(\'Main?path=" + path + "&name=" + name + "&public=" + !clicked.isPublic + "\',\'post\')>公開にする</a></li>";
     }
     if (clicked.myType == 0) {
@@ -240,7 +239,7 @@ function deleteThings() {
             return;
         }
     }
-    jump("Main?req=delete?names=" + temp + "&path=" + path, "post");
+    jump("Main?req=remove?names=" + temp + "&path=" + path, "post");
 }
 
 /*--------------------------------------------------------------

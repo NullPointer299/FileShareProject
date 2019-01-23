@@ -162,17 +162,8 @@
             <div class="content_top_bar">
                 <div class="content_top_bar_left">
                     <ul class="menu">
-                        <li><a href="#" onclick="deleteThings()"><i class="material-icons"> delete </i></a>
-                            <div class="tooltips">選択を削除</div>
-                        </li>
-                        <li><a href="#" onclick="exeDownload()"><i class="material-icons"> cloud_download </i></a>
+                        <li><a id="left_con" href="#" onclick="exeDownload()"><i class="material-icons"> cloud_download </i></a>
                             <div class="tooltips">ダウンロード</div>
-                        </li>
-                        <li><a href="#" onclick="openUploadWindow()"><i class="material-icons"> cloud_upload </i></a>
-                            <div class="tooltips">アップロード</div>
-                        </li>
-                        <li><a id="left_con" href="#" onclick="openNewFolderWindow()"><i class="material-icons"> add </i></a>
-                            <div class="tooltips">新規フォルダ</div>
                         </li>
                     </ul>
                 </div>
