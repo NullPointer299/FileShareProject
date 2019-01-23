@@ -29,7 +29,7 @@ function createMainOfUser() {
     var target = document.getElementById("main");
     var temp = "";
     for (var v of showUsers) {
-        temp += "<div class=\"person\" onclick=jump(\'Main?req=show_dir&id=\'" + v.myId +"\',\"post\")><a href=\"#\"><i class=\"material-icons\">person</i> 名前:" + v.myLName + " " + v.myFName + "   ID:" + v.myId + "</a></div>";
+        temp += "<div class=\"person\" onclick=jump(---------------------------パラメータとか----------------------,\"post\")><a href=\"#\"><i class=\"material-icons\">person</i> 名前:" + v.myLName + " " + v.myFName + "   ID:" + v.myId + "</a></div>";
     }
     target.innerHTML = temp;
 
