@@ -34,7 +34,7 @@ div.content_top_bar {
 
 ul.menu {
     margin: 0;
-    padding: 0px 0px 0px 0px;
+    padding: 0 0 0 0;
 }
 
 .content_top_bar_left {
@@ -106,8 +106,8 @@ ul.menu a:hover {
 }
 
 ul.menu ul {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     width: 90px;
     display: none;
     position: absolute;
@@ -171,7 +171,7 @@ main
 .folder {
     height: 120px;
     width: 120px;
-    margin: 10px 20px 0px 20px;
+    margin: 10px 20px 0 20px;
 }
 
 .file {
@@ -209,7 +209,6 @@ input[type="checkbox"] {
 
 .filename {
     font-size: 14px;
-    font-weight: 8;
     width: 100%;
     text-align: center;
     word-wrap: break-word;
@@ -459,7 +458,7 @@ input[type="submit"].new_folder:hover {
     position: relative;
     top: -65px;
     left: 325px;
-    widows: 20px;
+    width: 20px;
     height: 20px;
 }
 
