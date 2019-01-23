@@ -121,7 +121,7 @@ function showSubmenu(clicked) {
     var path = clicked.myPath;
     var pub;
     if (clicked.isPublic == "true") {
-        pub = "<li><a hef=\"#\" onclick=jump(\'Main?req=change_publishing&path=" + path + "&name=" + name + "&public=" + !clicked.isPublic + "\',\'post\')>非公開にする</a></li>";
+        pub = "<li><a href=\"#\" onclick=jump(\'Main?req=change_publishing&path=" + path + "&name=" + name + "&public=" + !clicked.isPublic + "\',\'post\')>非公開にする</a></li>";
     } else {
         pub = "<li><a href=\"#\" onclick=jump(\'Main?req=change_publishing&path=" + path + "&name=" + name + "&public=" + !clicked.isPublic + "\',\'post\')>公開にする</a></li>";
     }
