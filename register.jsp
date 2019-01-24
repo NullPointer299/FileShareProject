@@ -44,7 +44,7 @@
 
                     <div class="form"><label for="firstName" class="form">名</label><input id="firstName" type="text" name="fName" placeholder=" (例)太郎" required></div>
 
-                    <div class="form"><label for="id" class="form">ID</label><input id="id" type="text" name="id" placeholder=" (例)tarou" required></div>
+                    <div class="form"><label for="id" class="form">ID</label><input id="id" oninput="checkId(this)" type="text" name="id" placeholder=" (例)tarou" required></div>
 
                     <div class="form"><label for="password" class="form">パスワード</label><input name="password" id="password" type="password" required></div>
 

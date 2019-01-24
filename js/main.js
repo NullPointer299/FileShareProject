@@ -165,7 +165,7 @@ function showSubmenu(clicked) {
             submenu.style.height = "60px";
         } else {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li></ul>";
-            submenu.style.height="60px";
+            submenu.style.height = "60px";
         }
     } else if (nowPage == "favorite") {
         const lName = clicked.myLName;
@@ -175,12 +175,12 @@ function showSubmenu(clicked) {
     } else if (nowPage == "search_user") {
         const lName = clicked.myLName;
         const fName = clicked.myFName;
-        if (clicked.isFav =="true") {
+        if (clicked.isFav == "true") {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump()>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump()>お気に入り解除</a></li></ul>";
         } else {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump()>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump()>お気に入り登録</a></li></ul>";
         }
-        submenu.style.height ="80px";
+        submenu.style.height = "80px";
     }
     submenu.style.position = 'absolute';
     submenu.style.left = posX + "px";
@@ -286,17 +286,27 @@ function deleteThings() {
 重複
 -----------------------------------------------------------------*/
 function duplicate(target) {
-    var name = document.getElementById(target).value;
-    var flag = false;
+    const name = document.getElementById(target).value;
+    let temp = document.getElementById("file").value.split("/");
+    const srcName=temp[temp.length-1];
+    let flag = false;
     for (let f of haveFiles) {
         if (f.myName == name) {
             flag = true;
             break;
+        }else if(f.myName == ""){
+            if(f.myName == srcName){
+                flag = true;
+                break;
+            }
         }
     }
     if (!flag) {
-        for (let f of haveFolders) {
-            if (f.myName == name) {
+        if (f.myName == name) {
+            flag = true;
+            break;
+        }else if(f.myName == ""){
+            if(f.myName == srcName){
                 flag = true;
                 break;
             }
@@ -320,4 +330,23 @@ function loadBreadcrumb(path) {
     }
     temp += "</ul>";
     target.innerHTML = temp;
+}
+
+/*-----------------------------------------------------------------
+文字フィルタ
+------------------------------------------------------------------*/
+function checkFileName(target) {
+    var str = target.value;
+    if (str.match(/[<>:;\$\|\&?!/\\%,"'#\[\]\{\}\^~=\+\*]/)) {
+        str = str.replace(/[<>:;\$\|\&?!/\\%,"'#\[\]\{\}\^~=\+\*]/, "");
+    }
+    target.value = str;
+}
+
+function checkId(target) {
+    var str = target.value;
+    while (str.match(/[^A-Z^a-z\d\_]/)) {
+        str = str.replace(/[^A-Z^a-z\d\_]/, "");
+    }
+    target.value = str;
 }

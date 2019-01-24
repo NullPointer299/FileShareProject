@@ -76,13 +76,13 @@
         </form>
     </div>
     <div class="side_bar">
-        <ul>
-            <li id="myFolder"><a href="#" onclick="jump('Main?req=home','post')">ホーム</a></li>
-            <li id="searchUser"><a href="#" onclick="jump('Main?req=sear_user','post')">ユーザ検索</a></li>
-            <li id="favorite"><a href="#" onclick="jump('Main?req=fav','post')">お気に入り</a></li>
-            <li id="trash"><a href="#" onclick="jump('Main?req=trash','post')">ゴミ箱</a></li>
-        </ul>
-    </div>
+            <ul>
+                <li id="myFolder"><a href="#" onclick="jump('Main?req=home','post')">ホーム</a></li>
+                <li id="searchUser"><a href="#" onclick="jump('Main?req=sear_user','post')">ユーザ検索</a></li>
+                <li id="favorite"><a href="#" onclick="jump('Main?req=fav','post')">お気に入り</a></li>
+                <li id="trash"><a href="#" onclick="jump('Trash?req=show','post')">ゴミ箱</a></li>
+            </ul>
+        </div>
     <div class="content" id="content">
         <div class="content_top_bar">
             <div class="content_top_bar_right">

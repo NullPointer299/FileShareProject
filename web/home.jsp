@@ -101,7 +101,7 @@
                             <input id="file" name="file" type="file" onchange="fileChange()" required>
                             <br>
                             <div class="upload_text">ファイル名を入力</div>
-                            <input id="upload_filename" type="text" name="fileName" placeholder="200文字以上は登録できません" maxlength="199"><br>
+                            <input oninput="checkFileName(this)" id="upload_filename" type="text" name="fileName" placeholder="200文字以上は登録できません" maxlength="199"><br>
                             <div class="radioButton">
                                 <input type="radio" name="public" value="true" checked>公開
                                 <input type="radio" name="public" value="false">非公開
@@ -130,7 +130,7 @@
                         <hr class="new_folder">
                         <form id="new_folder_form" class="form" onsubmit="return false;" action="Main?req=mkdir&path=<%=current%>" method="post">
                             <div id="new_folder_text">フォルダ名を入力</div>
-                            <input id="foldername" type="text" name="name" placeholder="200文字以上は登録できません" maxlength="199" required><br>
+                            <input oninput="checkFileName(this)" id="foldername" type="text" name="name" placeholder="200文字以上は登録できません" maxlength="199" required><br>
                             <div class="radioButtonOfNewFolder">
                                 <input type="radio" name="public" value="true" checked>公開
                                 <input type="radio" name="public" value="false">非公開
@@ -156,7 +156,7 @@
                 <li id="myFolder"><a href="#" onclick="jump('Main?req=home','post')">ホーム</a></li>
                 <li id="searchUser"><a href="#" onclick="jump('Main?req=sear_user','post')">ユーザ検索</a></li>
                 <li id="favorite"><a href="#" onclick="jump('Main?req=fav','post')">お気に入り</a></li>
-                <li id="trash"><a href="#" onclick="jump('Main?req=trash','post')">ゴミ箱</a></li>
+                <li id="trash"><a href="#" onclick="jump('Trash?req=show','post')">ゴミ箱</a></li>
             </ul>
         </div>
         <div class="content" id="content">

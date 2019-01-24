@@ -1,2 +1,9 @@
 @import url("style.css");
 
+fieldset h1{
+    color: brown;
+}
+
+a{
+    float: right;
+}
