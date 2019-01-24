@@ -288,14 +288,14 @@ function deleteThings() {
 function duplicate(target) {
     const name = document.getElementById(target).value;
     let temp = document.getElementById("file").value.split("/");
-    const srcName = temp[temp.length - 1];
+    const srcName=temp[temp.length-1];
     let flag = false;
     for (let f of haveFiles) {
         if (f.myName == name) {
             flag = true;
             break;
-        } else if (f.myName == "") {
-            if (f.myName == srcName) {
+        }else if(f.myName == ""){
+            if(f.myName == srcName){
                 flag = true;
                 break;
             }
@@ -304,8 +304,8 @@ function duplicate(target) {
     if (!flag) {
         if (f.myName == name) {
             flag = true;
-        } else if (f.myName == "") {
-            if (f.myName == srcName) {
+        }else if(f.myName == ""){
+            if(f.myName == srcName){
                 flag = true;
             }
         }
@@ -321,16 +321,10 @@ function loadBreadcrumb(path) {
     var pathArray = path.split("/");
     var temp = "<ul>";
     var parent = pathArray[0];
-    if (nowPage == "trash") {
-        for (var i = 1; i < pathArray.length; i++) {
-            temp += "<li><a href=\"#\" onclick=jump(\'Trash?req=cd&&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
-            parent += "/" + pathArray[i];
-        }
-    } else {
-        for (var i = 1; i < pathArray.length; i++) {
-            temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
-            parent += "/" + pathArray[i];
-        }
+
+    for (var i = 1; i < pathArray.length; i++) {
+        temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
+        parent += "/" + pathArray[i];
     }
     temp += "</ul>";
     target.innerHTML = temp;
@@ -358,6 +352,6 @@ function checkId(target) {
 エラー
 -----------------------------------------------------------------------*/
 
-function error() {
+function error(){
     alert("処理を実行できませんでした");
 }
