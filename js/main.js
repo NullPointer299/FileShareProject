@@ -134,7 +134,6 @@ function showSubmenu(clicked) {
             is = "true";
         }
         let pub;
-        console.log(clicked.isPublic);
         if (clicked.isPublic == "true") {
             pub = "<li><a href=\"#\" onclick=jump(\'Main?req=change_publishing&path=" + path + "&name=" + name + "&public=" + is + "\',\'post\')>非公開にする</a></li>";
         } else {
@@ -150,8 +149,9 @@ function showSubmenu(clicked) {
     } else if (nowPage == "trash") {
         const name = clicked.myName;
         const path = clicked.myPath;
+        //clickedの戻すことが可能を見て分岐させたい
         if (clicked.myType == 0) {
-            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=jump(ここに戻すときのURL)>もとの場所に戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
             submenu.style.height = "60px";
         } else {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";

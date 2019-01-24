@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     User user = (User) session.getAttribute("USER");
-    Map<User, Boolean> users = (Map<User, Boolean>) session.getAttribute("USERS");
+    List<SearchedUser> users = (List<SearchedUser></SearchedUser>) session.getAttribute("USERS");
     String error = (String)request.getParameter("ERROR");
 %>
 
@@ -45,8 +45,8 @@
             <%}%>
             let users = [];
             let fav = [];
-            <%for (Map.Entry<User,Boolean> m : users.entrySet()) {%>
-            users.push(new User(<%="'"+m.getKey().getLastName()+"'"%>, <%="'"+m.getKey().getFirstName()+"'"%>, <%="'"+m.getKey().getId()+"'"%>, <%="'"+m.getValue().toString()+"'"%>));
+            <%for (SearchedUser m : users) {%>
+            users.push(new User(<%="'"+m.getLastName()+"'"%>, <%="'"+m.getFirstName()+"'"%>, <%="'"+m.getId()+"'"%>, <%="'"+m.isFavorited+"'"%>));
             <%}%>
 
             loadUser(users);
