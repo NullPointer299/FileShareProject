@@ -123,9 +123,6 @@
                     <img class="folder" src="picture/folder.png">
                 </div>
             </div>
-            <div>
-                <form id="hideForm" action="Main?req=home&method=post"></form>
-            </div>
         </div>
     </div>
 </body>

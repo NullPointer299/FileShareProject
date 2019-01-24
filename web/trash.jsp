@@ -133,10 +133,6 @@
             </div>
             <div id="main">
             </div>
-            <div>
-                <form id="hideForm" action="/home/fukui-hiraku/BracketsFile/login.html">
-                </form>
-            </div>
         </div>
     </div>
 </body>
