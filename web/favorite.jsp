@@ -12,7 +12,7 @@
 <%
     User user = (User) session.getAttribute("USER");
     Map<User, Boolean> users = (Map<User, Boolean>) session.getAttribute("USERS");
-
+    String error = (String)request.getParameter("ERROR");
 %>
 
 <!DOCTYPE html>
@@ -40,6 +40,9 @@
 
         window.onload = function () {
             loadNowPage("favorite");
+            <%if(error != null) {%>
+                error();
+            <%}%>
             let users = [];
             let fav = [];
             <%for (Map.Entry<User,Boolean> m : users.entrySet()) {%>

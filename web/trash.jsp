@@ -13,6 +13,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     User user=(User)session.getAttribute("USER");
+   String error = (String)request.getParameter("ERROR");
     List<File> files = (List<File>) session.getAttribute("FILES");
     List<File> dirs = files.stream().filter(f -> f.isDirectory()).collect(Collectors.toList());
     List<File> normal = files.stream().filter(f -> !f.isDirectory()).collect(Collectors.toList());
@@ -47,6 +48,9 @@
     <script type="text/javascript">
         window.onload = function() {
             loadNowPage("trash");
+            <%if(error != null) {%>
+                error();
+            <%}%>
             var dirs = [];
             var files = [];
             <%for (File f : dirs) {%>
@@ -116,6 +120,7 @@
                             <div class="tooltips">ダウンロード</div>
                         </li>
                     </ul>
+                    ｜
                 </div>
                 <div class="content_top_bar_right">
                     <ul class="menu">

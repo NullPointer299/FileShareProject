@@ -14,6 +14,7 @@
 
 <%
     User user = (User) session.getAttribute("USER");
+   String error = (String)request.getParameter("ERROR");
     List<File> files = (List<File>) session.getAttribute("FILES");
     List<File> dirs = files.stream().filter(f -> f.isDirectory()).collect(Collectors.toList());
     List<File> normal = files.stream().filter(f -> !f.isDirectory()).collect(Collectors.toList());
@@ -48,6 +49,9 @@
     <script type="text/javascript">
         window.onload = function() {
             loadNowPage("others_dir"); 
+            <%if(error != null) {%>
+                error();
+            <%}%>
             var dirs = [];
             var files = [];
             <%for (File f : dirs) {%>
