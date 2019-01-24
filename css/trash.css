@@ -167,8 +167,6 @@ h6.cut {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-text-overflow: ellipsis;
-    text-overflow: ellipsis;
 }
 
 /*------------------------------------------------------

@@ -20,4 +20,3 @@ function closeConfirm() {
 function submitConfirm() {
     document.getElementById("registerForm").submit();
 }
-}

@@ -304,11 +304,9 @@ function duplicate(target) {
     if (!flag) {
         if (f.myName == name) {
             flag = true;
-            break;
         }else if(f.myName == ""){
             if(f.myName == srcName){
                 flag = true;
-                break;
             }
         }
     }
