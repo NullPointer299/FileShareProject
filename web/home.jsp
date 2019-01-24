@@ -27,7 +27,7 @@
     <title>MyDrive</title>
     <meta name="description" content="ファイル共有サービス">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="css/home.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
@@ -193,7 +193,7 @@
             </div>
             <div id="main">
                 <div class="node">
-                    <img class="folder" src="../picture/folder.png">
+                    <img class="folder" src="picture/folder.png">
                 </div>
             </div>
             <div>
@@ -204,83 +204,3 @@
 </body>
 
 </html>
-
-<%--<html>--%>
-<%--<head>--%>
-<%--<title>MyDrive</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-
-<%--<h1>MyDrive</h1>--%>
-<%--<h2>My directories</h2>--%>
-
-<%--<form action="Configuration" method="get">--%>
-<%--<input type="submit" value="config">--%>
-<%--</form>--%>
-<%--<form action="Logout" method="post">--%>
-<%--<input type="submit" value="logout">--%>
-<%--</form>--%>
-<%--<form action="Main?req=home" method="post">--%>
-<%--<input type="submit" value="home">--%>
-<%--</form>--%>
-<%--<form action="Main?req=sear_user" method="post">--%>
-<%--<input type="submit" value="sear_user">--%>
-<%--</form>--%>
-<%--<form action="Main?req=fav" method="post">--%>
-<%--<input type="submit" value="fav">--%>
-<%--</form>--%>
-<%--<form action="Main?req=trash" method="post">--%>
-<%--<input type="submit" value="trash">--%>
-<%--</form>--%>
-<%--<form enctype="multipart/form-data" action="Upload?path=<%=current%>" method="post">--%>
-<%--<input type="file" name="file"><br>--%>
-<%--<input type="submit" value="upload">--%>
-<%--</form>--%>
-<%--<form name="dl" action="Download" method="post">--%>
-<%--<a href="#" onClick="dl.submit();">ダウンロード</a>--%>
-<%--</form>--%>
-<%--<form action="Main?req=mkdir&path=<%=current%>" method="post">--%>
-<%--ディレクトリ名：<input type="text" name="name">--%>
-<%--<input type="submit" value="create">--%>
-<%--</form>--%>
-
-<%--<%--%>
-<%--out.println("BreadCrumbles<br>");--%>
-<%--Path pos = current.getName(0);--%>
-<%--for (int i = 1; i < current.getNameCount(); i++) {--%>
-<%--out.println("<form action=\"Main?req=move&src=home&name=" + current.getName(i) +--%>
-<%--"&path=" + src.relativize(src.resolve(pos)) +--%>
-<%--" \"method=\"post\">");--%>
-<%--out.println("<input type=\"submit\" value=\"" + current.getName(i) + "\">");--%>
-<%--out.println("</form>");--%>
-<%--if (current.getNameCount() - 1 != i)--%>
-<%--out.println(" -> ");--%>
-<%--pos = pos.resolve(current.getName(i));--%>
-<%--}--%>
-<%--out.println("<br>");--%>
-<%--%>--%>
-
-<%--<form action="Main?req=delete" method="post">--%>
-
-<%--<%--%>
-<%--out.println("Contents<br>");--%>
-<%--int i = 0;--%>
-<%--for (File f : files) {--%>
-<%--out.println("<input type=\"checkbox\" name=\"check\" value=\"" + i++ + "\">");--%>
-<%--if (Files.isDirectory(src.resolve(f.getPath()).resolve(f.getName()))) {--%>
-<%--//                out.println("<a href=\"Main?req=move&src=home&name=" +--%>
-<%--//                        f.getName() + "&path=" + f.getPath() + "\" method=\"post\">");--%>
-<%--//                out.println("</form>");--%>
-<%--} else {--%>
-<%--out.println(f.getName());--%>
-<%--}--%>
-<%--}--%>
-<%--%>--%>
-
-<%--<input type="submit" value="delete">--%>
-<%--</form>--%>
-
-<%--<br>This is home.jsp!!!<br>--%>
-
-<%--</body>--%>
-<%--</html>--%>

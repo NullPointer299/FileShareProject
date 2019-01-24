@@ -18,9 +18,9 @@
     <title>MyDrive</title>
     <meta name="description" content="ファイル共有サービス">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="../css/main.css">
-    <script type="text/javascript" src="../js/configuration.js"></script>
-    <script type="text/javascript" src="../js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="js/configuration.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript">
         window.onload = function() {
             loadConfig(<%="'"+user.getLastName()+"'"%>,<%="'"+user.getFirstName()+"'"%>,<%="'"+user.isPublic() +"'"%>);
