@@ -120,7 +120,6 @@
                             <div class="tooltips">ダウンロード</div>
                         </li>
                     </ul>
-                    ｜
                 </div>
                 <div class="content_top_bar_right">
                     <ul class="menu">
@@ -134,7 +133,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="breadcrumb">
+            <div class="breadcrumb" id="breadcrumb">
             </div>
             <div id="main">
             </div>
