@@ -301,15 +301,6 @@ function duplicate(target) {
             }
         }
     }
-    if (!flag) {
-        if (f.myName == name) {
-            flag = true;
-        } else if (f.myName == "") {
-            if (f.myName == srcName) {
-                flag = true;
-            }
-        }
-    }
     return flag;
 }
 /*---------------------------------------------------------------
