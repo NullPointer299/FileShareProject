@@ -144,7 +144,7 @@ function showSubmenu(clicked) {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub + "</ul>";
             submenu.style.height = "80px";
         } else {
-            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub + "</ul>";
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub + "</ul>";
             submenu.style.height = "80px";
         }
     } else if (nowPage == "trash") {
@@ -154,7 +154,7 @@ function showSubmenu(clicked) {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
             submenu.style.height = "60px";
         } else {
-            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
             submenu.style.height = "60px";
         }
     } else if (nowPage == "others_dir") {
@@ -164,7 +164,7 @@ function showSubmenu(clicked) {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li></ul>";
             submenu.style.height = "60px";
         } else {
-            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li></ul>";
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li></ul>";
             submenu.style.height="60px";
         }
     } else if (nowPage == "favorite") {
@@ -315,7 +315,7 @@ function loadBreadcrumb(path) {
     var parent = pathArray[0];
 
     for (var i = 1; i < pathArray.length; i++) {
-        temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&src=home&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
+        temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
         parent += "/" + pathArray[i];
     }
     temp += "</ul>";
