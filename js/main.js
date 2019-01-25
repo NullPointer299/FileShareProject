@@ -152,7 +152,7 @@ function showSubmenu(clicked) {
         if (clicked.isRestore == "true") {
             if (clicked.myType == 0) {
                 submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name + "&path=" + path + "\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
-                submenu.style.height = "60px";
+                submenu.style.height = "80px";
                 submenu.style.width = "100px";
             } else {
                 submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Trash?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name + "&path=" + path + "\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
