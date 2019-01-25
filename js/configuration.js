@@ -25,5 +25,9 @@ function loadConfig(l, f, p) {
     lName.placeholder = l;
     fName.placeholder = f;
 
-    select.value = p;
+    if(p == "true"){
+        document.getElementById("public").checked=true;
+    }else{
+        document.getElementById("unPublic").checked=true;
+    }
 }

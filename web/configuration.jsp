@@ -41,33 +41,38 @@
 
     <div class="wrapper">
         <fieldset>
+            <h1><i class="material-icons">
+                    settings
+                </i>設定変更<i class="material-icons">
+                    settings
+                </i></h1>
+            <hr>
             <form id="configForm" action="Configuration" onsubmit="return false;" method="post">
-                <h2>名前変更</h2>
-                <br>
+                <h3>名前変更</h3>
+                <hr class="in">
                 <div class="formNode">
-                    姓<input id="lName" type="text" name="lName">
+                    姓：<input id="lName" type="text" name="lName">
                 </div>
                 <div class="formNode">
-                    名<input id="fName" type="text" name=fName>
+                    名：<input id="fName" type="text" name=fName>
                 </div>
-
-                <br>
+                <hr class="in">
+                <h3>パスワード変更</h3>
+                <hr>
                 <div class="formNode">
-                    パスワード変更<input id="password" type="password" name="password">
+                    新規パスワード：<input id="password" oninput="checkForm(this)" type="password" name="password">
                 </div>
-                <br>
                 <div class="formNode">
-                    パスワード確認<input id="passwordCheck" type="password">
+                    パスワード確認：<input id="passwordCheck" oninput="checkForm(this)" type="password">
                 </div>
-                <br>
-                ユーザ公開設定
+                <hr>
+                <h3>ユーザ公開設定</h3>
+                <hr>
                 <div class="formNode">
-                    <select name="public" id="public">
-                        <option value="true">公開</option>
-                        <option value="false">非公開</option>
-                    </select>
+                    <input type="radio" name="public" id="public" value="true">公開
+                    <input type="radio" name="public" id="unPublic" value="false">非公開
                 </div>
-                <br>
+                <hr>
                 <input type="submit" onclick="checkPassword()" value="適用">
                 <br>
             </form>
