@@ -47,7 +47,7 @@ function exeDownload() {
         if (array.length == 0) {
             alert("ファイルが選択されていません");
         } else {
-            new XMLHttpRequest.opjump("Download?name=" + array.join(",") + "&path=" +  path, "post");
+            jump("Download?name=" + array.join(",") + "&path=" +  path, "post");
         }
     } else {
         alert("フォルダはダウンロードできません");
