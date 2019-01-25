@@ -155,7 +155,7 @@ function showSubmenu(clicked) {
                 submenu.style.height = "60px";
                 submenu.style.width = "100px";
             } else {
-                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name + "&path=" + path + "\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Trash?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name + "&path=" + path + "\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
                 submenu.style.height = "80px";
                 submenu.style.width = "100px";
             }
@@ -164,7 +164,7 @@ function showSubmenu(clicked) {
                 submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=\"alert(\'もとのディレクトリが存在しないため戻せません\')\">もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
                 submenu.style.height = "80px";
             } else {
-                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=\"alert(\'もとのディレクトリが存在しないため戻せません\')\">もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Trash?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=\"alert(\'もとのディレクトリが存在しないため戻せません\')\">もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
                 submenu.style.height = "80px";
             }
         }
@@ -181,7 +181,7 @@ function showSubmenu(clicked) {
     } else if (nowPage == "favorite") {
         const lName = clicked.myLName;
         const fName = clicked.myFName;
-        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump()>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump()>お気に入り解除</a></li></ul>";
+        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump()>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump(\'Main?req=record&id=" + clicked.myId + ")>お気に入り解除</a></li></ul>";
         submenu.style.height = "80px";
     } else if (nowPage == "search_user") {
         const lName = clicked.myLName;

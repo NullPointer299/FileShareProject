@@ -29,14 +29,12 @@ function loadUser(u) {
 }
 
 function createMainOfUser() {
-    console.log("in");
     var target = document.getElementById("main");
     var temp = "";
     for (var v of showUsers) {
-        temp += "<div class=\"person\" onclick=jump(),\"post\")><a href=\"#\"><i class=\"material-icons\">person</i> 名前:" + v.myLName + " " + v.myFName + "   ID:" + v.myId + "</a></div>";
+        temp += "<div class=\"person\" onclick=jump(\'\',\"post\") oncontextmenu=\"return rightclick(new User(\'" + v.myLName + "\',\'" + v.FName + "\',\'" + v.myId + "\',\'" + v.isFav + "\'))\"><a href=\"#\"><i class=\"material-icons\">person</i> 名前:" + v.myLName + " " + v.myFName + "   ID:" + v.myId + "</a></div>";
     }
     target.innerHTML = temp;
-
 }
 
 function charFilterOfUser() {
