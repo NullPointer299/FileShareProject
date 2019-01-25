@@ -28,8 +28,9 @@ function selectDesc() {
 }
 
 function exeDownload() {
-    var array = [];
-    var flag;
+    const array = [];
+    let flag;
+    let path;
     for (var v of showFolders) {
         if (document.getElementById(v.myName).checked) {
             flag = true;
@@ -39,15 +40,14 @@ function exeDownload() {
     if (!flag) {
         for (var v of showFiles) {
             if (document.getElementById(v.myName).checked) {
-                array.push(v);
+                array.push(v.myName);
+                path=v.myPath;
             }
         }
         if (array.length == 0) {
             alert("ファイルが選択されていません");
         } else {
-            for (var f of array) {
-                window.setTimeout(jump("Download?name=" + f.myName + "&path=" + f.myPath, "post"), 100);
-            }
+            new XMLHttpRequest.opjump("Download?name=" + array.join(",") + "&path=" +  path, "post");
         }
     } else {
         alert("フォルダはダウンロードできません");
