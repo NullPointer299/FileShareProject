@@ -327,10 +327,14 @@ function loadBreadcrumb(path) {
     var temp = "<ul>";
     var parent = pathArray[0];
     if (nowPage == "trash") {
-        parent += "/" + pathArray[1];
-        for (var i = 2; i < pathArray.length; i++) {
-            temp += "<li><a href=\"#\" onclick=jump(\'Trash?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i].slice(0,-3) + "</a></li>";
-            parent += "/" + pathArray[i];
+        for (var i = 1; i < pathArray.length; i++) {
+            if (i == 1) {
+                temp += "<li><a href=\"#\" onclick=jump(\'Trash?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
+                parent += "/" + pathArray[i];
+            }else{
+                temp += "<li><a href=\"#\" onclick=jump(\'Trash?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i].slice(0, -3) + "</a></li>";
+                parent += "/" + pathArray[i];
+            }
         }
     } else {
         for (var i = 1; i < pathArray.length; i++) {
