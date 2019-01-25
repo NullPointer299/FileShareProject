@@ -153,7 +153,7 @@
         <div class="top_bar">
             <input type="submit" class="top_con login_con" value="ログアウト" onclick="jump('Logout','post')"> <input type="submit" class="top_con" value="設定" onclick="jump('Configuration','get')">
             <form action="#">
-                <input id="topText" type="text" class="top_con" onkeyup="charFilter()" placeholder="ファイルの検索">
+                <input id="topText" type="text" oninput="checkFileName(this)" class="top_con" onkeyup="charFilter()" placeholder="ファイルを絞り込む">
             </form>
         </div>
         <div class="side_bar">

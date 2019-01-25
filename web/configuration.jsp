@@ -50,19 +50,19 @@
                 <hr>
                 <h3>名前変更</h3>
                 <div class="formNode">
-                    姓：<input id="lName" type="text" name="lName">
+                    姓：<input id="lName" type="text" name="lName" maxlength="20">
                 </div>
                 <div class="formNode">
-                    名：<input id="fName" type="text" name=fName>
+                    名：<input id="fName" type="text" name=fName maxlength="20">
                 </div>
                 <hr class="in">
                 <h3>パスワード変更</h3>
 
                 <div class="formNode">
-                    新規パスワード：<input id="password" oninput="checkForm(this)" type="password" name="password">
+                    新規パスワード：<input id="password" oninput="checkForm(this)" type="password" name="password" maxlength="20">
                 </div>
                 <div class="formNode">
-                    パスワード確認：<input id="passwordCheck" oninput="checkForm(this)" type="password">
+                    パスワード確認：<input id="passwordCheck" oninput="checkForm(this)" type="password" maxlength="20">
                 </div>
                 <hr>
                 <h3>ユーザ公開設定</h3>

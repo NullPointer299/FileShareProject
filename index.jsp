@@ -20,49 +20,44 @@
 </head>
 
 <body>
-<div class="wrapper">
-    <div class="empty"></div>
-    <div class="content">
-        <form action="Login" method="post">
-            <fieldset class="login">
-                <h1>
-                    <font class="M">M</font>y<font class="D">D</font>rive
-                </h1>
-                <h2 class="title">サインイン</h2>
+    <div class="wrapper">
+        <div class="empty"></div>
+        <div class="content">
+            <form action="Login" method="post">
+                <fieldset class="login">
+                    <h1>
+                        <font class="M">M</font>y<font class="D">D</font>rive
+                    </h1>
+                    <h2 class="title">サインイン</h2>
 
-                <div class="info">
-                    <div class="form">
-                        <label for="id" class="form">ID</label><input id="id" min="5"
-                                                                      maxlength="10" type="text"
-                                                                      placeholder=" ユーザIDを入力してください"
-                                                                      required name="id">
-                    </div>
+                    <div class="info">
+                        <div class="form">
+                            <label for="id" class="form">ID</label><input id="id" min="5" maxlength="20" type="text" placeholder=" ユーザIDを入力してください" required name="id" oninput="checkId(this)">
+                        </div>
 
-                    <div class="form">
-                        <label for="password" class="form">パスワード</label><input
-                            id="password" type="password" placeholder="パスワードを入力してください"
-                            maxlength="20" required name="pass">
+                        <div class="form">
+                            <label for="password" class="form">パスワード</label><input id="password" type="password" placeholder="パスワードを入力してください" maxlength="20" required name="pass" oninput="checkId(this)">
+                        </div>
                     </div>
+                    <%=stat != null && stat.equals("failed") ? "<div class=\"error\" color=\"red\">ログイン失敗</div>" : ""%>
+                    <div class="submit form">
+                        <input type="submit" value="サインイン">
+                    </div>
+                </fieldset>
+            </form>
+            <fieldset class="registerbox">
+                <div class="register_text">
+                    <p>アカウント未登録の方</p>
                 </div>
-                <%=stat != null && stat.equals("failed") ? "<div class=\"error\" color=\"red\">ログイン失敗</div>" : ""%>
-                <div class="submit form">
-                    <input type="submit" value="サインイン">
+                <div class="register_button">
+                    <form action="register.jsp">
+                        <input type="submit" name="register_button" value="新規登録">
+                    </form>
                 </div>
             </fieldset>
-        </form>
-        <fieldset class="registerbox">
-            <div class="register_text">
-                <p>アカウント未登録の方</p>
-            </div>
-            <div class="register_button">
-                <form action="register.jsp">
-                    <input type="submit" name="register_button" value="新規登録">
-                </form>
-            </div>
-        </fieldset>
-    </div>
+        </div>
 
-</div>
+    </div>
 </body>
 
 </html>
