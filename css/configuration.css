@@ -4,6 +4,33 @@ fieldset h1{
     color: brown;
 }
 
-a{
+.remove{
+    color: red;
     float: right;
+    font-size: 14px;
+}
+
+.home{
+    float: left;
+    color: orange;
+    font-size: 14px;
+}
+.formNode{
+    padding-left: 50px;
+}
+
+input[type="submit"]{
+    border: 2px solid;
+    background-color: lightgray;
+    float: right;
+    padding: 5px;
+    margin: 10px;
+    width: 70px;
+    height: 30px;
+}
+
+input[type="submit"]:hover{
+    background-color: gray;
+    color: white;
+    border-color: black;
 }

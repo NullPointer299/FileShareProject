@@ -1,4 +1,4 @@
-<%@ page import="model.LoggedUser" %>
+<%@ page import="model.User" %>
 <%--
   Created by IntelliJ IDEA.
   User: nullpo299
@@ -27,7 +27,6 @@
         window.onload = function() {
             loadConfig(<%="'"+user.getLastName()+"'"%>, <%="'"+user.getFirstName()+"'"%>, <%="'"+user.isPublic() +"'"%>);
         }
-
     </script>
 </head>
 
@@ -41,15 +40,15 @@
 
     <div class="wrapper">
         <fieldset>
-            <h1><i class="material-icons">
-                    settings
-                </i>設定変更<i class="material-icons">
-                    settings
-                </i></h1>
-            <hr>
             <form id="configForm" action="Configuration" onsubmit="return false;" method="post">
+                <h1 style="display: inline"><i class="material-icons">
+                        settings
+                    </i>アカウント設定<i class="material-icons">
+                        settings
+                    </i></h1>
+                <input type="submit" onclick="checkPassword()" value="適用">
+                <hr>
                 <h3>名前変更</h3>
-                <hr class="in">
                 <div class="formNode">
                     姓：<input id="lName" type="text" name="lName">
                 </div>
@@ -58,7 +57,7 @@
                 </div>
                 <hr class="in">
                 <h3>パスワード変更</h3>
-                <hr>
+
                 <div class="formNode">
                     新規パスワード：<input id="password" oninput="checkForm(this)" type="password" name="password">
                 </div>
@@ -67,19 +66,17 @@
                 </div>
                 <hr>
                 <h3>ユーザ公開設定</h3>
-                <hr>
                 <div class="formNode">
                     <input type="radio" name="public" id="public" value="true">公開
                     <input type="radio" name="public" id="unPublic" value="false">非公開
                 </div>
                 <hr>
-                <input type="submit" onclick="checkPassword()" value="適用">
-                <br>
             </form>
-            <a href="#" onclick="deleteAccount()">アカウント削除</a>
-            <a href="#" onclick="home()">ホームに戻る</a>
+            <a href="#" class="remove" onclick="deleteAccount()">アカウント削除</a>
+            <a href="#" class="home" onclick="home()">ホームに戻る</a>
         </fieldset>
     </div>
 </body>
+
 
 </html>
