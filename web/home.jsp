@@ -1,8 +1,9 @@
-<%@ page import="model.User" %>
+<%--suppress unchecked --%>
 <%@ page import="java.util.List" %>
-<%@ page import="model.File" %>
 <%@ page import="java.nio.file.Path" %>
 <%@ page import="java.util.stream.Collectors" %>
+<%@ page import="model.LoggedUser" %>
+<%@ page import="model.NormalFile" %>
 <%--
   Created by IntelliJ IDEA.
   User: nullpo299
@@ -13,11 +14,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    User user = (User) session.getAttribute("USER");
-    String error = (String)request.getParameter("ERROR");
-    List<File> files = (List<File>) session.getAttribute("FILES");
-    List<File> dirs = files.stream().filter(f -> f.isDirectory()).collect(Collectors.toList());
-    List<File> normal = files.stream().filter(f -> !f.isDirectory()).collect(Collectors.toList());
+    LoggedUser user = (LoggedUser) session.getAttribute("USER");
+    String error = request.getParameter("ERROR");
+    List<NormalFile> files = (List<NormalFile>) session.getAttribute("FILES");
+    List<NormalFile> dirs = files.stream().filter(f -> f.isDirectory()).collect(Collectors.toList());
+    List<NormalFile> normal = files.stream().filter(f -> !f.isDirectory()).collect(Collectors.toList());
     Path current = (Path) session.getAttribute("CURRENT");
 %>
 
@@ -44,8 +45,8 @@
         });
 
     </script>
-    <script type="text/javascript" src="../js/main.js"></script>
-    <script type="text/javascript" src="../js/sort.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/sort.js"></script>
     <script type="text/javascript">
         window.onload = function() {
             <%if(error != null) {%>
@@ -54,10 +55,10 @@
             var dirs = [];
             var files = [];
             loadNowPage("home");
-            <%for (File f : dirs) {%>
+            <%for (NormalFile f : dirs) {%>
             dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>,<%="'"+f.isPublic()+"'"%>));
             <%}%>
-            <%for (File f : normal) {%>
+            <%for (NormalFile f : normal) {%>
             files.push(new File(<%="'"+f.getName()+"'"%>, 1, <%="'"+f.getPath()+"'"%>,<%="'"+f.isPublic()+"'"%>));
             <%}%>
             sortLoad(dirs, files);

@@ -1,6 +1,6 @@
-<%@ page import="model.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.Map" %>
+<%@ page import="model.LoggedUser" %>
+<%@ page import="model.SearchedUser" %>
 <%--
   Created by IntelliJ IDEA.
   User: nullpo299
@@ -10,9 +10,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    User user = (User) session.getAttribute("USER");
-    List<SearchedUser> users = (List<SearchedUser></SearchedUser>) session.getAttribute("USERS");
-    String error = (String)request.getParameter("ERROR");
+    LoggedUser user = (LoggedUser) session.getAttribute("USER");
+    List<SearchedUser> users = (List<SearchedUser>) session.getAttribute("USERS");
+    String error = request.getParameter("ERROR");
 %>
 
 <!DOCTYPE html>

@@ -1,4 +1,4 @@
-<%@ page import="model.User" %>
+<%@ page import="model.LoggedUser" %>
 <%--
   Created by IntelliJ IDEA.
   User: nullpo299
@@ -8,7 +8,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    User user = (User) session.getAttribute("USER");
+    LoggedUser user = (LoggedUser) session.getAttribute("USER");
     String stat = request.getParameter("stat");
 %>
 
