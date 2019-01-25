@@ -20,6 +20,9 @@
     List<NormalFile> dirs = files.stream().filter(f -> f.isDirectory()).collect(Collectors.toList());
     List<NormalFile> normal = files.stream().filter(f -> !f.isDirectory()).collect(Collectors.toList());
     Path current = (Path) session.getAttribute("CURRENT");
+    SerachedUser target=(SearchedUser)session.getAttribute("TARGET");
+    String targetId = target.getId();
+    boolean isFavorited = target.isFavorited();
 %>
 
 <html>
@@ -49,26 +52,27 @@
     <script type="text/javascript" src="js/sort.js"></script>
     <script type="text/javascript">
         window.onload = function() {
-            loadNowPage("others_dir"); 
+            loadNowPage("others_dir");
             <%if(error != null) {%>
-                error();
+            error();
             <%}%>
             var dirs = [];
             var files = [];
             <%for (NormalFile f : dirs) {%>
-            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>,<%="'"+f.isPublic()+"'"%>));
+            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>, <%="'"+f.isPublic()+"'"%>));
             <%}%>
             <%for (NormalFile f : normal) {%>
-            files.push(new File(<%="'"+f.getName()+"'"%>, 1, <%="'"+f.getPath()+"'"%>,<%="'"+f.isPublic()+"'"%>));
+            files.push(new File(<%="'"+f.getName()+"'"%>, 1, <%="'"+f.getPath()+"'"%>, <%="'"+f.isPublic()+"'"%>));
             <%}%>
             sortLoad(dirs, files);
             loadBreadcrumb(<%="'"+current+"'"%>);
-                                    
+
             var box = document.getElementById("content");
-            box.addEventListener("contextmenu", function(e){
-                    e.preventDefault();
-                }, false);
+            box.addEventListener("contextmenu", function(e) {
+                e.preventDefault();
+            }, false);
         }
+
     </script>
 </head>
 
@@ -104,6 +108,19 @@
             <div class="content_top_bar">
                 <div class="content_top_bar_left">
                     <ul class="menu">
+                        <%if(isFavorited) {%>
+                        <li><a href="#" onclick="jump(\'Main?req=record&id=<%=targetId%>\')"><i class="material-icons">
+                                    favorite_border
+                                </i></a>
+                            <div class="tooltips">お気に入り解除</div>
+                        </li>
+                        <%}else{%>
+                            <li><a href="#" onclick="jump(\'Main?req=record&id=<%=targetId%>\')"><i class="material-icons">
+                                    favorite
+                                </i></a>
+                            <div class="tooltips">お気に入り登録</div>
+                        </li>
+                        <%}%>
                         <li><a id="left_con" href="#" onclick="exeDownload()"><i class="material-icons"> cloud_download </i></a>
                             <div class="tooltips">ダウンロード</div>
                         </li>
