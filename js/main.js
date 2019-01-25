@@ -143,7 +143,7 @@ function showSubmenu(clicked) {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub + "</ul>";
             submenu.style.height = "80px";
         } else {
-            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub + "</ul>";
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li>" + pub + "</ul>";
             submenu.style.height = "80px";
         }
     } else if (nowPage == "trash") {
@@ -156,7 +156,7 @@ function showSubmenu(clicked) {
                 submenu.style.height = "80px";
                 submenu.style.width = "100px";
             } else {
-                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + dispName + "</h6></li><li><a href=\"#\" onclick=jump(\'Trash?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name + "&path=" + path + "\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + dispName + "</h6></li><li><a href=\"#\" onclick=jump(\'Trash?req=cd&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name + "&path=" + path + "\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
                 submenu.style.height = "80px";
                 submenu.style.width = "100px";
             }
@@ -165,7 +165,7 @@ function showSubmenu(clicked) {
                 submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + dispName + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=\"alert(\'もとのディレクトリが存在しないため戻せません\')\">もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
                 submenu.style.height = "80px";
             } else {
-                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + dispName + "</h6></li><li><a href=\"#\" onclick=jump(\'Trash?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=\"alert(\'もとのディレクトリが存在しないため戻せません\')\">もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + dispName + "</h6></li><li><a href=\"#\" onclick=jump(\'Trash?req=cd&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=\"alert(\'もとのディレクトリが存在しないため戻せません\')\">もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
                 submenu.style.height = "80px";
             }
         }
@@ -176,7 +176,7 @@ function showSubmenu(clicked) {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li></ul>";
             submenu.style.height = "60px";
         } else {
-            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li></ul>";
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li></ul>";
             submenu.style.height = "60px";
         }
     } else if (nowPage == "favorite") {
@@ -327,13 +327,14 @@ function loadBreadcrumb(path) {
     var temp = "<ul>";
     var parent = pathArray[0];
     if (nowPage == "trash") {
-        for (var i = 1; i < pathArray.length; i++) {
-            temp += "<li><a href=\"#\" onclick=jump(\'Trash?req=cd&&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i].slice(0,-3) + "</a></li>";
+        parent += "/" + pathArray[1];
+        for (var i = 2; i < pathArray.length; i++) {
+            temp += "<li><a href=\"#\" onclick=jump(\'Trash?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i].slice(0,-3) + "</a></li>";
             parent += "/" + pathArray[i];
         }
     } else {
         for (var i = 1; i < pathArray.length; i++) {
-            temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
+            temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
             parent += "/" + pathArray[i];
         }
     }
