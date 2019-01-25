@@ -1,4 +1,4 @@
-<%@ page import="model.User" %>
+<%@ page import="model.LoggedUser" %>
 <%--
   Created by IntelliJ IDEA.
   User: nullpo299

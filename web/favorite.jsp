@@ -46,7 +46,7 @@
             let users = [];
             let fav = [];
             <%for (SearchedUser m : users) {%>
-            users.push(new User(<%="'"+m.getLastName()+"'"%>, <%="'"+m.getFirstName()+"'"%>, <%="'"+m.getId()+"'"%>, <%="'"+m.isFavorited+"'"%>));
+            users.push(new User(<%="'"+m.getLastName()+"'"%>, <%="'"+m.getFirstName()+"'"%>, <%="'"+m.getId()+"'"%>, <%="'"+m.isFavorited()+"'"%>));
             <%}%>
 
             loadUser(users);

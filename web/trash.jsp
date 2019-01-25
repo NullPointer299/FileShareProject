@@ -45,6 +45,7 @@
     </script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/sort.js"></script>
+    <script type="text/javascript" src="js/trash.js"></script>
     <script type="text/javascript">
         window.onload = function () {
             loadNowPage("trash");
@@ -54,10 +55,10 @@
             var dirs = [];
             var files = [];
             <%for (TrashFile f : dirs) {%>
-            dirs.push(new trashFolder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>,<%="'"+f.isRestore() +"'"%><%="'"+f.getDispName() +"'"%>));
+            dirs.push(new trashFolder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>, <%="'"+f.isRestore() +"'"%>, <%="'"+f.getDispName() +"'"%>));
             <%}%>
             <%for (TrashFile f : normal) {%>
-            files.push(new trashFolder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>,<%="'"+f.isRestore() +"'"%><%="'"+f.getDispName() +"'"%>));
+            files.push(new trashFolder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>, <%="'"+f.isRestore() +"'"%>, <%="'"+f.getDispName() +"'"%>));
             <%}%>
             sortLoad(dirs, files);
             loadBreadcrumb(<%="'" +current+"'"%>);
