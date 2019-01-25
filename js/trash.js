@@ -1,5 +1,7 @@
 function deleteAll() {
-    jump("Trash?req=deleteAll", "post");
+    if (confirm("全削除しますがよろしいですか？")) {
+        jump("Trash?req=deleteAll", "post");
+    }
 }
 
 class trashFile {
@@ -82,5 +84,7 @@ function deleteThingsAtTrash() {
             return;
         }
     }
-    jump("Trash?req=delete?names=" + temp + "&path=" + path, "post");
+    if (confirm("選択済みを削除しますがよろしいですか？")) {
+        jump("Trash?req=delete?names=" + temp + "&path=" + path, "post");
+    }
 }

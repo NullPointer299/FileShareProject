@@ -41,13 +41,13 @@ function exeDownload() {
         for (var v of showFiles) {
             if (document.getElementById(v.myName).checked) {
                 array.push(v.myName);
-                path=v.myPath;
+                path = v.myPath;
             }
         }
         if (array.length == 0) {
             alert("ファイルが選択されていません");
         } else {
-            jump("Download?name=" + array.join(",") + "&path=" +  path, "post");
+            jump("Download?name=" + array.join(",") + "&path=" + path, "post");
         }
     } else {
         alert("フォルダはダウンロードできません");
@@ -151,15 +151,15 @@ function showSubmenu(clicked) {
         const path = clicked.myPath;
         if (clicked.isRestore == "true") {
             if (clicked.myType == 0) {
-                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name +"&path=" + path+"\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name + "&path=" + path + "\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
                 submenu.style.height = "60px";
-                submenu.style.width ="100px";
+                submenu.style.width = "100px";
             } else {
-                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name +"&path=" + path+"\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name + "&path=" + path + "\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
                 submenu.style.height = "80px";
-                submenu.style.width ="100px";
+                submenu.style.width = "100px";
             }
-        }else{
+        } else {
             if (clicked.myType == 0) {
                 submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=\"alert(\'もとのディレクトリが存在しないため戻せません\')\">もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
                 submenu.style.height = "80px";
@@ -290,7 +290,9 @@ function deleteThings() {
             return;
         }
     }
-    jump("Main?req=mv_to_trash&names=" + temp + "&path=" + path, "post");
+    if (confirm("選択済みを削除しますがよろしいですか？")) {
+        jump("Main?req=mv_to_trash&names=" + temp + "&path=" + path, "post");
+    }
 }
 
 /*--------------------------------------------------------------
