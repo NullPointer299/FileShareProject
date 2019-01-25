@@ -277,6 +277,14 @@ rightclick
     color: black;
 }
 
+.submenu ul li{
+    border-bottom: 1px solid black;
+}
+
+.submenu ul li:last-child{
+    border-bottom: none;
+}
+
 .submenu ul li:first-child {
     font-weight: 600;
     border-bottom: 2px solid black;

@@ -147,15 +147,26 @@ function showSubmenu(clicked) {
             submenu.style.height = "80px";
         }
     } else if (nowPage == "trash") {
-        const name = clicked.myName;
+        const name = clicked.myDispName;
         const path = clicked.myPath;
-        //clickedの戻すことが可能を見て分岐させたい
-        if (clicked.myType == 0) {
-            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=jump(ここに戻すときのURL)>もとの場所に戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
-            submenu.style.height = "60px";
-        } else {
-            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
-            submenu.style.height = "60px";
+        if (clicked.isRestore == "true") {
+            if (clicked.myType == 0) {
+                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name +"&path=" + path+"\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+                submenu.style.height = "60px";
+                submenu.style.width ="100px";
+            } else {
+                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name +"&path=" + path+"\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+                submenu.style.height = "80px";
+                submenu.style.width ="100px";
+            }
+        }else{
+            if (clicked.myType == 0) {
+                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=\"alert(\'もとのディレクトリが存在しないため戻せません\')\">もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+                submenu.style.height = "80px";
+            } else {
+                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=\"alert(\'もとのディレクトリが存在しないため戻せません\')\">もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+                submenu.style.height = "80px";
+            }
         }
     } else if (nowPage == "others_dir") {
         const name = clicked.myName;

@@ -66,7 +66,7 @@ class Folder {
 }
 
 function sortByName() {
-    if (nowPage == "home"||nowPage=="trash"||nowPage=="others_dir") {
+    if (nowPage == "home" || nowPage == "trash" || nowPage == "others_dir") {
         if (order == 0) {
             showFolders.sort(function (a, b) {
                 if (a.myName < b.myName) return -1;
@@ -115,16 +115,28 @@ function createMain() {
 
 function createMainFile() {
     var temp = "";
-    for (var v of showFiles) {
-        temp += "<div class=\"node\" onclick=\"check(\'" + v.myName + "\')\" oncontextmenu=\"return rightclick(new File(\'" + v.myName + "\',0,\'" + v.myPath + "\',\'" + v.isPublic + "\'))\"><a href=\"#\"><input type=\"checkbox\" name=\"" + v.myName + "\" id=\"" + v.myName + "\"><img class=\"file\" src=\"../picture/file.png\"><div class=\"check_box\"></div><div class=\"check\" id=\"" + v.myName + "_check\"></div><div class=\"filename\">" + v.myName + "</div></div>";
+    if (nowPage != "trash") {
+        for (var v of showFiles) {
+            temp += "<div class=\"node\" onclick=\"check(\'" + v.myName + "\')\" oncontextmenu=\"return rightclick(new File(\'" + v.myName + "\',0,\'" + v.myPath + "\',\'" + v.isPublic + "\'))\"><a href=\"#\"><input type=\"checkbox\" name=\"" + v.myName + "\" id=\"" + v.myName + "\"><img class=\"file\" src=\"../picture/file.png\"><div class=\"check_box\"></div><div class=\"check\" id=\"" + v.myName + "_check\"></div><div class=\"filename\">" + v.myName + "</div></div>";
+        }
+    } else {
+        for (var v of showFiles) {
+            temp += "<div class=\"node\" onclick=\"check(\'" + v.myName + "\')\" oncontextmenu=\"return rightclick(new trashFile(\'" + v.myName + "\',0,\'" + v.myPath + "\',\'" + v.isRestore + "\',\'" + v.myDispName + "\'))\"><a href=\"#\"><input type=\"checkbox\" name=\"" + v.myName + "\" id=\"" + v.myName + "\"><img class=\"file\" src=\"../picture/file.png\"><div class=\"check_box\"></div><div class=\"check\" id=\"" + v.myName + "_check\"></div><div class=\"filename\">" + v.myDispName + "</div></div>";
+        }
     }
     return temp;
 }
 
 function createMainFolder() {
     var temp = "";
-    for (var v of showFolders) {
-        temp += "<div class=\"node\" ondblclick=jump(\'Main?req=cd&&name=" + v.myName + "&path=" + v.myPath + "\',\"post\") onclick=\"check(\'" + v.myName + "\')\" oncontextmenu=\"return rightclick(new Folder(\'" + v.myName + "\',1,\'" + v.myPath + "\',\'" + v.isPublic + "\'))\"><img class=\"folder\" src=\"../picture/folder.png\"><a href=\"#\"></a><div class=\"check_box\"></div><div class=\"check\" id=\"" + v.myName + "_check\"></div><input type=\"checkbox\" name=\'" + v.myName + "\' id=\'" + v.myName + "\'><div class=\"filename\">" + v.myName + "</div></div>";
+    if (nowPage != "trash") {
+        for (var v of showFolders) {
+            temp += "<div class=\"node\" ondblclick=jump(\'Main?req=cd&&name=" + v.myName + "&path=" + v.myPath + "\',\"post\") onclick=\"check(\'" + v.myName + "\')\" oncontextmenu=\"return rightclick(new Folder(\'" + v.myName + "\',1,\'" + v.myPath + "\',\'" + v.isPublic + "\'))\"><img class=\"folder\" src=\"../picture/folder.png\"><a href=\"#\"></a><div class=\"check_box\"></div><div class=\"check\" id=\"" + v.myName + "_check\"></div><input type=\"checkbox\" name=\'" + v.myName + "\' id=\'" + v.myName + "\'><div class=\"filename\">" + v.myName + "</div></div>";
+        }
+    } else {
+        for (var v of showFolders) {
+            temp += "<div class=\"node\" ondblclick=jump(\'Trash?req=cd&&name=" + v.myName + "&path=" + v.myPath + "\',\"post\") onclick=\"check(\'" + v.myName + "\')\" oncontextmenu=\"return rightclick(new trashFolder(\'" + v.myName + "\',1,\'" + v.myPath + "\',\'" + v.isRestore + "\',\'" + v.myDispName +"\'))\"><img class=\"folder\" src=\"../picture/folder.png\"><a href=\"#\"></a><div class=\"check_box\"></div><div class=\"check\" id=\"" + v.myName + "_check\"></div><input type=\"checkbox\" name=\'" + v.myName + "\' id=\'" + v.myName + "\'><div class=\"filename\">" + v.myDispName + "</div></div>";
+        }
     }
     return temp;
 }

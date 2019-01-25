@@ -271,7 +271,6 @@ rightclick
 
 .submenu ul {
     margin: 0;
-    width: 80px;;
     list-style: none;
     padding: 2px 5px;
 }
@@ -284,12 +283,19 @@ rightclick
 .submenu ul li a{
     text-decoration: none;
     color: black;
-    width: 80px;
+}
+
+.submenu ul li{
+    border-bottom: 1px solid black;
 }
 
 .submenu ul li:first-child{
     font-weight: 600;
     border-bottom: 2px solid black;
+}
+
+.submenu ul li:last-child{
+    border: none;
 }
 
 .submenu ul li a:hover{

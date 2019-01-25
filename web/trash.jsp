@@ -54,10 +54,10 @@
             var dirs = [];
             var files = [];
             <%for (TrashFile f : dirs) {%>
-            dirs.push(new Folder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>));
+            dirs.push(new trashFolder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>,<%="'"+f.isRestore() +"'"%><%="'"+f.getDispName() +"'"%>));
             <%}%>
             <%for (TrashFile f : normal) {%>
-            files.push(new File(<%="'"+f.getName()+"'"%>, 1, <%="'"+f.getPath()+"'"%>));
+            files.push(new trashFolder(<%="'"+f.getName()+"'"%>, 0, <%="'"+f.getPath()+"'"%>,<%="'"+f.isRestore() +"'"%><%="'"+f.getDispName() +"'"%>));
             <%}%>
             sortLoad(dirs, files);
             loadBreadcrumb(<%="'" +current+"'"%>);

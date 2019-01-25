@@ -1,5 +1,54 @@
 function deleteAll() {
-    jump("Trash?req=deleteAll","post");
+    jump("Trash?req=deleteAll", "post");
+}
+
+class trashFile {
+    constructor(name, type, path, restore, dispName) {
+        this.name = name;
+        this.type = type;
+        this.path = path;
+        this.restore = restore;
+        this.dispName = dispName;
+    }
+    get myName() {
+        return this.name;
+    }
+    get myType() {
+        return this.type;
+    }
+    get myPath() {
+        return this.path;
+    }
+    get isRestore() {
+        return this.restore;
+    }
+    get myDispName() {
+        return this.dispName;
+    }
+}
+class trashFolder {
+    constructor(name, type, path, restore, dispName) {
+        this.name = name;
+        this.type = type;
+        this.path = path;
+        this.restore = restore;
+        this.dispName = dispName;
+    }
+    get myName() {
+        return this.name;
+    }
+    get myType() {
+        return this.type;
+    }
+    get myPath() {
+        return this.path;
+    }
+    get isRestore() {
+        return this.restore;
+    }
+    get myDispName() {
+        return this.dispName;
+    }
 }
 
 function deleteThingsAtTrash() {
@@ -9,13 +58,13 @@ function deleteThingsAtTrash() {
     var path;
     for (let f of showFiles) {
         if (document.getElementById(f.myName).checked) {
-            path=f.myPath;
+            path = f.myPath;
             files.push(f.myName);
         }
     }
     for (let f of showFolders) {
         if (document.getElementById(f.myName).checked) {
-            path=f.myPath;
+            path = f.myPath;
             dirs.push(f.myName);
         }
     }
@@ -25,13 +74,13 @@ function deleteThingsAtTrash() {
         if (dirs.length != 0) {
             temp += "," + dirs.join();
         }
-    }else{
-        if(dirs.length != 0) {
+    } else {
+        if (dirs.length != 0) {
             temp += dirs.join();
-        }else{
+        } else {
             alert("削除対象を選択してください");
             return;
         }
     }
-    jump("Trash?req=delete?names=" + temp +"&path=" + path, "post");
+    jump("Trash?req=delete?names=" + temp + "&path=" + path, "post");
 }
