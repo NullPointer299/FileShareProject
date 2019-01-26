@@ -75,7 +75,7 @@
     <div class="top_bar">
         <input type="submit" class="top_con login_con" value="ログアウト">
         <input type="submit" class="top_con" value="設定">
-        <form action="\'Main?req=sear_word\'">
+        <form action="Main?req=sear_word">
             <input id="topText" type="text" name="keyword" class="top_con" onkeyup="charFilter()" placeholder="ユーザの検索">
         </form>
     </div>

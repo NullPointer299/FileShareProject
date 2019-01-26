@@ -116,7 +116,7 @@
                     </i></a>
                         <div class="tooltips">選択済み削除</div>
                     </li>
-                    <li><a href="#" onclick="openDownload()"><i class="material-icons">
+                    <li><a href="#" onclick="exeDownload()"><i class="material-icons">
                         cloud_download
                     </i></a>
                         <div class="tooltips">ダウンロード</div>
