@@ -66,7 +66,7 @@
             files.push(new File(<%="'"+f.getName()+"'"%>, 1, <%="'"+f.getPath()+"'"%>, <%="'"+f.isPublic()+"'"%>));
             <%}%>
             sortLoad(dirs, files);
-            loadBreadcrumb(<%="'"+current+"'"%>);
+            loadBreadcrumbAtOthersDir(<%="'"+current+"'"%>,<%="'"+targetId+"'"%>);
 
             var box = document.getElementById("content");
             box.addEventListener("contextmenu", function (e) {

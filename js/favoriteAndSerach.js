@@ -1,9 +1,9 @@
 class User {
-    constructor(fName,lName,id,favorite) {
+    constructor(fName, lName, id, favorite) {
         this.fName = fName;
-        this.lName=lName;
+        this.lName = lName;
         this.id = id;
-        this.favorite=favorite;
+        this.favorite = favorite;
     }
     get myFName() {
         return this.fName;
@@ -14,7 +14,7 @@ class User {
     get myId() {
         return this.id;
     }
-    get isFav(){
+    get isFav() {
         return this.favorite;
     }
 }
@@ -31,8 +31,14 @@ function loadUser(u) {
 function createMainOfUser() {
     var target = document.getElementById("main");
     var temp = "";
-    for (var v of showUsers) {
-        temp += "<div class=\"person\" ondblclick=jump(\'Main?req=show_dir&id=" + v.myId +"\',\"post\") oncontextmenu=\"return rightclick(new User(\'" + v.myLName + "\',\'" + v.FName + "\',\'" + v.myId + "\',\'" + v.isFav + "\'))\"><a href=\"#\"><i class=\"material-icons\">person</i> 名前:" + v.myLName + " " + v.myFName + "   ID:" + v.myId + "</a></div>";
+    console.log("alkesf");
+    if (showUsers.length != 0) {
+        for (var v of showUsers) {
+            temp += "<div class=\"person\" ondblclick=jump(\'Main?req=show_dir&id=" + v.myId + "\',\"post\") oncontextmenu=\"return rightclick(new User(\'" + v.myLName + "\',\'" + v.FName + "\',\'" + v.myId + "\',\'" + v.isFav + "\'))\"><a href=\"#\"><i class=\"material-icons\">person</i> 名前:" + v.myLName + " " + v.myFName + "   ID:" + v.myId + "</a></div>";
+        }
+    }else{
+        console.log("in");
+        temp += "<div class=\'empty\'><h1 style=\'color:lightgray\'>表示するUserが居ません</h1></div>";
     }
     target.innerHTML = temp;
 }

@@ -174,16 +174,16 @@ function showSubmenu(clicked) {
         const path = clicked.myPath;
         if (clicked.myType == 0) {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li></ul>";
-            submenu.style.height = "60px";
+            submenu.style.height = "40px";
         } else {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + name + "</h6></li><li><a href=\"#\" onclick=jump(\'Main?req=cd&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li></ul>";
-            submenu.style.height = "60px";
+            submenu.style.height = "40px";
         }
     } else if (nowPage == "favorite") {
         const lName = clicked.myLName;
         const fName = clicked.myFName;
-        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump()>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump(\'Main?req=record&id=" + clicked.myId + ")>お気に入り解除</a></li></ul>";
-        submenu.style.height = "80px";
+        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump(\'Main?req=cd&name=" + name + "&path=" + path + "\',\"post\")>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump(\'Main?req=record&id=" + clicked.myId + ")>お気に入り解除</a></li></ul>";
+        submenu.style.height = "60px";
     } else if (nowPage == "search_user") {
         const lName = clicked.myLName;
         const fName = clicked.myFName;
@@ -192,7 +192,7 @@ function showSubmenu(clicked) {
         } else {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump()>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump()>お気に入り登録</a></li></ul>";
         }
-        submenu.style.height = "80px";
+        submenu.style.height = "60px";
     }
     submenu.style.position = 'absolute';
     submenu.style.left = posX + "px";
@@ -331,7 +331,7 @@ function loadBreadcrumb(path) {
             if (i == 1) {
                 temp += "<li><a href=\"#\" onclick=jump(\'Trash?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
                 parent += "/" + pathArray[i];
-            }else{
+            } else {
                 temp += "<li><a href=\"#\" onclick=jump(\'Trash?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i].slice(0, -3) + "</a></li>";
                 parent += "/" + pathArray[i];
             }
@@ -344,6 +344,19 @@ function loadBreadcrumb(path) {
     }
     temp += "</ul>";
     target.innerHTML = temp;
+}
+
+function loadBreadcrumbAtOthersDir(path, id) {
+    var target = document.getElementById("breadcrumb");
+    var pathArray = path.split("/");
+    var temp = "<ul>";
+    var parent = pathArray[0];
+    for (var i = 1; i < pathArray.length; i++) {
+        temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\'" + id +"\',\"post\")>" + pathArray[i] + "</a></li>";
+        parent += "/" + pathArray[i];
+    }
+    temp += "</ul>";
+    target.innerHTML=temp;
 }
 
 /*-----------------------------------------------------------------
