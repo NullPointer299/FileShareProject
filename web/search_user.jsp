@@ -13,7 +13,7 @@
     LoggedUser user = (LoggedUser) session.getAttribute("USER");
     List<SearchedUser> users = (List<SearchedUser>) session.getAttribute("USERS");
     String error = request.getParameter("ERROR");
-    String searchWord=request.getParameter("target");
+    String searchWord=request.getParameter("keyword");
 %>
 
 <html>
