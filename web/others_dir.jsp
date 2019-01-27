@@ -95,7 +95,7 @@
         <input type="submit" class="top_con login_con" value="ログアウト" onclick="jump('Logout','post')"> <input
             type="submit" class="top_con" value="設定" onclick="jump('Configuration','get')">
         <form action="#">
-            <input id="topText" type="text" class="top_con" onkeyup="charFilter()" placeholder="ファイルの検索">
+            <input onsubmit="return false" id="topText" type="text" class="top_con" onkeyup="charFilter()" placeholder="ファイルの検索">
         </form>
     </div>
     <div class="side_bar">

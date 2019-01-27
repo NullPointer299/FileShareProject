@@ -2,6 +2,7 @@
 
 fieldset h1{
     color: brown;
+    display: inline;
 }
 
 .remove{

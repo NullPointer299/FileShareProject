@@ -75,7 +75,7 @@
     <div class="top_bar">
         <input type="submit" class="top_con login_con" value="ログアウト">
         <input type="submit" class="top_con login_con" value="ログアウト" onclick="jump('Logout','post')"> <input type="submit" class="top_con" value="設定" onclick="jump('Configuration','get')">
-        <form action="#">
+        <form action="#" onsubmit="return false;">
             <input id="topText" onkeyup="charFilterOfUser()" type="text" class="top_con" placeholder="ユーザを絞る">
         </form>
     </div>

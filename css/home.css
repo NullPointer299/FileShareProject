@@ -1,4 +1,4 @@
-f@import url(main.css);
+@import url(main.css);
 
 /*
 ----------------------------------------------------------------
@@ -277,11 +277,11 @@ rightclick
     color: black;
 }
 
-.submenu ul li{
+.submenu ul li {
     border-bottom: 1px solid black;
 }
 
-.submenu ul li:last-child{
+.submenu ul li:last-child {
     border-bottom: none;
 }
 
@@ -364,15 +364,16 @@ new_folder
     width: 350px;
 }
 
-.radioButtonOfNewFolder{
+.radioButtonOfNewFolder {
     position: absolute;
     top: 200px;
     left: 100px;
 }
 
-#new_folder_content a{
+#new_folder_content a {
     text-decoration: none;
 }
+
 .new_folder_main {
     width: 330px;
 }
