@@ -111,13 +111,13 @@
             <div class="content_top_bar_left">
                 <ul class="menu">
                     <%if (isFavorited) {%>
-                    <li><a href="#" onclick="jump('Main?req=record&id=<%=targetId%>')"><i class="material-icons">
+                    <li><a href="#" onclick="jump('Main?req=record&id=<%=targetId%>'\'post\')"><i class="material-icons">
                         favorite_border
                     </i></a>
                         <div class="tooltips">お気に入り解除</div>
                     </li>
                     <%} else {%>
-                    <li><a href="#" onclick="jump('Main?req=record&id=<%=targetId%>')"><i class="material-icons">
+                    <li><a href="#" onclick="jump('Main?req=record&id=<%=targetId%>',\'post\')"><i class="material-icons">
                         favorite
                     </i></a>
                         <div class="tooltips">お気に入り登録</div>

@@ -98,22 +98,24 @@ document.addEventListener('click', function () {
 
 function rightclick(clicked) {
     window.setTimeout(function () {
-        for (let v of haveFiles) {
-            if (v.myName == clicked.myName) {
-                document.getElementById(v.myName).checked = true;
-                document.getElementById(v.myName + "_check").style.display = "block";
-            } else {
-                document.getElementById(v.myName).checked = false;
-                document.getElementById(v.myName + "_check").style.display = "none";
+        if (nowPage == "home" || nowPage == "trash"||nowPage=="others_dir") {
+            for (let v of haveFiles) {
+                if (v.myName == clicked.myName) {
+                    document.getElementById(v.myName).checked = true;
+                    document.getElementById(v.myName + "_check").style.display = "block";
+                } else {
+                    document.getElementById(v.myName).checked = false;
+                    document.getElementById(v.myName + "_check").style.display = "none";
+                }
             }
-        }
-        for (let v of haveFolders) {
-            if (v.myName == clicked.myName) {
-                document.getElementById(v.myName).checked = true;
-                document.getElementById(v.myName + "_check").style.display = "block";
-            } else {
-                document.getElementById(v.myName).checked = false;
-                document.getElementById(v.myName + "_check").style.display = "none";
+            for (let v of haveFolders) {
+                if (v.myName == clicked.myName) {
+                    document.getElementById(v.myName).checked = true;
+                    document.getElementById(v.myName + "_check").style.display = "block";
+                } else {
+                    document.getElementById(v.myName).checked = false;
+                    document.getElementById(v.myName + "_check").style.display = "none";
+                }
             }
         }
         showSubmenu(clicked);
@@ -185,6 +187,7 @@ function showSubmenu(clicked) {
         submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump(\'Main?req=cd&name=" + name + "&path=" + path + "\',\"post\")>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump(\'Main?req=record&id=" + clicked.myId + ")>お気に入り解除</a></li></ul>";
         submenu.style.height = "60px";
     } else if (nowPage == "search_user") {
+        console.log(clicked);
         const lName = clicked.myLName;
         const fName = clicked.myFName;
         if (clicked.isFav == "true") {
@@ -193,6 +196,7 @@ function showSubmenu(clicked) {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump()>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump()>お気に入り登録</a></li></ul>";
         }
         submenu.style.height = "60px";
+        submenu.style.width="130px";
     }
     submenu.style.position = 'absolute';
     submenu.style.left = posX + "px";
@@ -352,11 +356,11 @@ function loadBreadcrumbAtOthersDir(path, id) {
     var temp = "<ul>";
     var parent = pathArray[0];
     for (var i = 1; i < pathArray.length; i++) {
-        temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\'" + id +"\',\"post\")>" + pathArray[i] + "</a></li>";
+        temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\'" + id + "\',\"post\")>" + pathArray[i] + "</a></li>";
         parent += "/" + pathArray[i];
     }
     temp += "</ul>";
-    target.innerHTML=temp;
+    target.innerHTML = temp;
 }
 
 /*-----------------------------------------------------------------
