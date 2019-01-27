@@ -159,6 +159,18 @@ div.content {
     line-height: 25px;
 }
 
+div.empty{
+    height: 100px;
+    width: 400px;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin:auto;
+    position: absolute;
+}
+
+
 /*------------------------------------------------------
 main
 -----------------------------------------------------------*/
