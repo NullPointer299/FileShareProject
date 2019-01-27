@@ -191,9 +191,9 @@ function showSubmenu(clicked) {
         const lName = clicked.myLName;
         const fName = clicked.myFName;
         if (clicked.isFav == "true") {
-            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump()>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump(\'Main?req=record&id=" + clicked.myId + "\',\'post\')>お気に入り解除</a></li></ul>";
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump(\'Main?req=show_dir&id=" + v.myId + "\',\"post\")>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump(\'Main?req=record&id=" + clicked.myId + "\',\'post\')>お気に入り解除</a></li></ul>";
         } else {
-            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump()>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump(\'Main?req=record&id=" + clicked.myId + "\',\'post\')>お気に入り登録</a></li></ul>";
+            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump(\'Main?req=show_dir&id=" + v.myId + "\',\"post\")>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump(\'Main?req=record&id=" + clicked.myId + "\',\'post\')>お気に入り登録</a></li></ul>";
         }
         submenu.style.height = "60px";
         submenu.style.width="130px";
