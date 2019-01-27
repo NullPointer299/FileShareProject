@@ -88,7 +88,7 @@
         </div>
         <div class="content" id="content">
             <div class="content_top_bar">
-                <div style="float: left"><%=target%>の検索結果</div>
+                <div style="float: left"><%=searchWord%>の検索結果</div>
                 <div class="content_top_bar_right">
                     <ul class="menu">
                         <li><a id="right_con" href="#">ソート</a>
