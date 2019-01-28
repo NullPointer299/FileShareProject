@@ -85,7 +85,7 @@ function deleteThingsAtTrash() {
         }
     }
     if (confirm("選択済みを削除しますがよろしいですか？")) {
-        jump("Trash?req=delete?names=" + temp + "&path=" + path, "post");
+        jump("Trash?req=delete&names=" + temp + "&path=" + path, "post");
     }
 }
 
@@ -117,6 +117,6 @@ function deleteAll(){
         }
     }
     if (confirm("すべてを削除しますがよろしいですか？")) {
-        jump("Trash?req=delete?names=" + temp + "&path=" + path, "post");
+        jump("Trash?req=delete&names=" + temp + "&path=" + path, "post");
     }
 }

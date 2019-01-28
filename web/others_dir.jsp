@@ -112,24 +112,22 @@
         <div class="content_top_bar">
             <div class="content_top_bar_left">
                 <ul class="menu">
-                    <%if (isFavorited) {%>
-                    <li><a href="#" onclick="jump('Main?req=fav_unrecord&id=<%=targetId%>','post')"><i
-                            class="material-icons">
-                        favorite_border
-                    </i></a>
-                        <div class="tooltips">お気に入り解除</div>
-                    </li>
-                    <%} else {%>
-                    <li><a href="#" onclick="jump('Main?req=fav_record&id=<%=targetId%>','post')"><i
-                            class="material-icons">
-                        favorite
-                    </i></a>
-                        <div class="tooltips">お気に入り登録</div>
-                    </li>
-                    <%}%>
-                    <li><a id="left_con" href="#" onclick="exeDownload()"><i class="material-icons"> cloud_download </i></a>
-                        <div class="tooltips">ダウンロード</div>
-                    </li>
+                    <%if (isFavorited) {%><li><a href="#" onclick="jump('Main?req=fav_unrecord&id=<%=targetId%>','post')"><i class="material-icons">
+            favorite_border
+        </i></a>
+    <div class="tooltips">お気に入り解除</div>
+</li>
+<%} else {%>
+<li><a href="#" onclick="jump('Main?req=fav_record&id=<%=targetId%>','post')"><i class="material-icons">
+            favorite
+        </i></a>
+    <div class="tooltips">お気に入り登録</div>
+</li>
+<%}%>
+<li><a id="left_con" href="#" onclick="exeDownload()"><i class="material-icons"> cloud_download </i></a>
+    <div class="tooltips">ダウンロード</div>
+</li>
+<li style="width: 150px;height: 25px">ID:lskejafoi</li>
                 </ul>
             </div>
             <div class="content_top_bar_right">
@@ -144,10 +142,7 @@
                 </ul>
             </div>
         </div>
-        <div style="position: absolute;top: 24px;left: 10px;"><%=target.getLastName() + " " + target.getFirstName()%>
-            さんのディレクトリ
-        </div>
-        <div style="position: absolute;top: 34px;" class="breadcrumb" id="breadcrumb"></div>
+        <div class="breadcrumb" id="breadcrumb"></div>
         <div id="main"></div>
     </div>
 </div>
