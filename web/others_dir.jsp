@@ -16,7 +16,7 @@
 
 <%
     LoggedUser user = (LoggedUser) session.getAttribute("USER");
-    String error = (String) request.getParameter("ERROR");
+    String error = request.getParameter("error");
     List<NormalFile> files = (List<NormalFile>) session.getAttribute("FILES");
     List<NormalFile> dirs = files.stream().filter(f -> f.isDirectory()).collect(Collectors.toList());
     List<NormalFile> normal = files.stream().filter(f -> !f.isDirectory()).collect(Collectors.toList());

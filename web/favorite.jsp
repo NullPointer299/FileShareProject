@@ -12,7 +12,6 @@
 <%
     LoggedUser user = (LoggedUser) session.getAttribute("USER");
     List<SearchedUser> users = (List<SearchedUser>) session.getAttribute("USERS");
-    System.out.println(users);
     String error = request.getParameter("ERROR");
 %>
 

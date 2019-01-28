@@ -98,7 +98,7 @@ document.addEventListener('click', function () {
 
 function rightclick(clicked) {
     window.setTimeout(function () {
-        if (nowPage == "home" || nowPage == "trash"||nowPage=="others_dir") {
+        if (nowPage == "home" || nowPage == "trash" || nowPage == "others_dir") {
             for (let v of haveFiles) {
                 if (v.myName == clicked.myName) {
                     document.getElementById(v.myName).checked = true;
@@ -196,7 +196,7 @@ function showSubmenu(clicked) {
             submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump(\'Main?req=show_dir&id=" + clicked.myId + "\',\"post\")>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump(\'Main?req=fav_record&id=" + clicked.myId + "\',\'post\')>お気に入り登録</a></li></ul>";
         }
         submenu.style.height = "60px";
-        submenu.style.width="130px";
+        submenu.style.width = "130px";
     }
     submenu.style.position = 'absolute';
     submenu.style.left = posX + "px";
@@ -321,6 +321,7 @@ function duplicate(target) {
     }
     return flag;
 }
+
 /*---------------------------------------------------------------
 パンくずリスト
 -----------------------------------------------------------------*/
@@ -356,7 +357,7 @@ function loadBreadcrumbAtOthersDir(path, id) {
     var temp = "<ul>";
     var parent = pathArray[0];
     for (var i = 1; i < pathArray.length; i++) {
-        temp += "<li><a href=\"#\" onclick=jump('Main?req=cd&name=" + pathArray[i] + "&path=" + parent + "&id='" + id + ",\"post\")>" + pathArray[i] + "</a></li>";
+        temp += "<li><a href=\"#\" onclick=jump('Main?req=cd&name=" + pathArray[i] + "&path=" + parent + "&id=" + id + "',\"post\")>" + pathArray[i] + "</a></li>";
         parent += "/" + pathArray[i];
     }
     temp += "</ul>";
@@ -381,6 +382,7 @@ function checkId(target) {
     }
     target.value = str;
 }
+
 /*--------------------------------------------------------------------
 エラー
 -----------------------------------------------------------------------*/
