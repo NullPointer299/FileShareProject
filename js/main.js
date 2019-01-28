@@ -356,7 +356,7 @@ function loadBreadcrumbAtOthersDir(path, id) {
     var temp = "<ul>";
     var parent = pathArray[0];
     for (var i = 1; i < pathArray.length; i++) {
-        temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&name=" + pathArray[i] + "&path=" + parent + "\'&id=\'" + id + "\',\"post\")>" + pathArray[i] + "</a></li>";
+        temp += "<li><a href=\"#\" onclick=jump('Main?req=cd&name=" + pathArray[i] + "&path=" + parent + "&id='" + id + ",\"post\")>" + pathArray[i] + "</a></li>";
         parent += "/" + pathArray[i];
     }
     temp += "</ul>";
