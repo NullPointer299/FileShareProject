@@ -23,6 +23,7 @@
     Path current = (Path) session.getAttribute("CURRENT");
     SearchedUser target = (SearchedUser) session.getAttribute("TARGET");
     String targetId = target.getId();
+    System.out.println(targetId);
     boolean isFavorited = target.isFavorited();
 %>
 
