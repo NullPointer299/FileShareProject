@@ -127,7 +127,7 @@
 <li><a id="left_con" href="#" onclick="exeDownload()"><i class="material-icons"> cloud_download </i></a>
     <div class="tooltips">ダウンロード</div>
 </li>
-<li style="width: 150px;height: 25px">ID:lskejafoi</li>
+<li style="width: 150px;height: 25px">ID:<%=targetId%></li>
                 </ul>
             </div>
             <div class="content_top_bar_right">
