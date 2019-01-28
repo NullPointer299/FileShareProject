@@ -77,7 +77,7 @@
         <input type="submit" class="top_con login_con" value="ログアウト" onclick="jump('Logout','post')"> <input
             type="submit" class="top_con" value="設定" onclick="jump('Configuration','get')">
         <form action="Main?req=sear_word" method="post">
-            <input id="topText" type="text" name="keyword" class="top_con" onkeyup="charFilter()" placeholder="ユーザの検索">
+            <input id="topText" type="text" name="keyword" class="top_con" placeholder="ユーザの検索">
         </form>
     </div>
     <div class="side_bar">
@@ -93,7 +93,7 @@
             <%if (searchWord == null) {%>
             <div style="float: left">キーワードを入力してください</div>
             <%} else {%>
-            <div style="float: left">検索結果：<%=searchWord%>
+            <div style="float: left">検索ワード：<%=searchWord%>
             </div>
             <%}%>
             <div class="content_top_bar_right">
