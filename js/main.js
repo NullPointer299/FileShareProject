@@ -154,11 +154,11 @@ function showSubmenu(clicked) {
         const path = clicked.myPath;
         if (clicked.isRestore == "true") {
             if (clicked.myType == 0) {
-                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + dispName + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name + "&path=" + path + "\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + dispName + "</h6><li><a href=\"#\" onclick=exeDownload()>ダウンロード</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name + "&path=" + path + "\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThingsAtTrash()>削除</a></li></ul>";
                 submenu.style.height = "80px";
                 submenu.style.width = "100px";
             } else {
-                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + dispName + "</h6></li><li><a href=\"#\" onclick=jump(\'Trash?req=cd&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name + "&path=" + path + "\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThings()>削除</a></li></ul>";
+                submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + dispName + "</h6></li><li><a href=\"#\" onclick=jump(\'Trash?req=cd&name=" + name + "&path=" + path + "\',\"post\")>開く</a></li><li><a href=\"#\" onclick=jump(\'Trash?req=restore&name=" + name + "&path=" + path + "\',\'post\')>もとに戻す</a></li><li><a href=\"#\" onclick=deleteThingsAtTrash()>削除</a></li></ul>";
                 submenu.style.height = "80px";
                 submenu.style.width = "100px";
             }
@@ -296,7 +296,7 @@ function deleteThings() {
         }
     }
     if (confirm("選択済みを削除しますがよろしいですか？")) {
-        jump("Main?req=delete&names=" + temp + "&path=" + path, "post");
+        jump("Main?req=mv_to_trash&names=" + temp + "&path=" + path, "post");
     }
 }
 
