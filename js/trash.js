@@ -1,9 +1,3 @@
-function deleteAll() {
-    if (confirm("全削除しますがよろしいですか？")) {
-        jump("Trash?req=deleteAll", "post");
-    }
-}
-
 class trashFile {
     constructor(name, type, path, restore, dispName) {
         this.name = name;
