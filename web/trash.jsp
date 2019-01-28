@@ -111,7 +111,7 @@
                     </i></a>
                         <div class="tooltips">空にする</div>
                     </li>
-                    <li><a href="#" onclick="deleteThingsAtTrash()"><i class="material-icons">
+                    <li><a href="#" onclick="deleteAll()"><i class="material-icons">
                         delete
                     </i></a>
                         <div class="tooltips">選択済み削除</div>

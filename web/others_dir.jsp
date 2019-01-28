@@ -66,7 +66,7 @@
             <%for (NormalFile f : normal) {%>
             files.push(new File(<%="'"+f.getName()+"'"%>, 1, <%="'"+f.getPath()+"'"%>, <%="'"+f.isPublic()+"'"%>));
             <%}%>
-            sortLoad(dirs, files);
+            sortLoadAtOthers_dir(dirs, files,<%=target.getId()%>);
             loadBreadcrumbAtOthersDir(<%="'"+current+"'"%>, <%="'"+targetId+"'"%>);
 
             var box = document.getElementById("content");

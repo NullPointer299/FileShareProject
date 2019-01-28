@@ -88,3 +88,35 @@ function deleteThingsAtTrash() {
         jump("Trash?req=delete?names=" + temp + "&path=" + path, "post");
     }
 }
+
+function deleteAll(){
+    var temp = "";
+    var files = [];
+    var dirs = [];
+    var path;
+    for (let f of showFiles) {
+            path = f.myPath;
+            files.push(f.myName);
+    }
+    for (let f of showFolders) {
+            path = f.myPath;
+            dirs.push(f.myName);
+    }
+
+    if (files.length != 0) {
+        temp += files.join();
+        if (dirs.length != 0) {
+            temp += "," + dirs.join();
+        }
+    } else {
+        if (dirs.length != 0) {
+            temp += dirs.join();
+        } else {
+            alert("ファイルまたはディレクトリがありません");
+            return;
+        }
+    }
+    if (confirm("すべてを削除しますがよろしいですか？")) {
+        jump("Trash?req=delete?names=" + temp + "&path=" + path, "post");
+    }
+}

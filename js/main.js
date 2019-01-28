@@ -296,7 +296,7 @@ function deleteThings() {
         }
     }
     if (confirm("選択済みを削除しますがよろしいですか？")) {
-        jump("Main?req=mv_to_trash&names=" + temp + "&path=" + path, "post");
+        jump("Main?req=delete&names=" + temp + "&path=" + path, "post");
     }
 }
 
