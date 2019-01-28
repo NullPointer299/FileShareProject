@@ -143,7 +143,7 @@ function createMainFolder() {
     var temp = "";
     if(nowPage == "others_dir"){
         for (var v of showFolders) {
-            temp += "<div class=\"node\" ondblclick=jump(\'Main?req=cd&name=" + v.myName + "&path=" + v.myPath + "&id=" + id +"\',\"post\") onclick=\"check(\'" + v.myName + "\')\" oncontextmenu=\"return rightclick(new Folder(\'" + v.myName + "\',1,\'" + v.myPath + "\',\'" + v.isPublic + "\'))\"><img class=\"folder\" src=\"../picture/folder.png\"><a href=\"#\"></a><div class=\"check_box\"></div><div class=\"check\" id=\"" + v.myName + "_check\"></div><input type=\"checkbox\" name=\'" + v.myName + "\' id=\'" + v.myName + "\'><div class=\"filename\">" + v.myName + "</div></div>";
+            temp += "<div class=\"node\" ondblclick=jump(\'Main?req=cd&name=" + v.myName + "&path=" + v.myPath + "&id=" + usersId +"\',\"post\") onclick=\"check(\'" + v.myName + "\')\" oncontextmenu=\"return rightclick(new Folder(\'" + v.myName + "\',1,\'" + v.myPath + "\',\'" + v.isPublic + "\'))\"><img class=\"folder\" src=\"../picture/folder.png\"><a href=\"#\"></a><div class=\"check_box\"></div><div class=\"check\" id=\"" + v.myName + "_check\"></div><input type=\"checkbox\" name=\'" + v.myName + "\' id=\'" + v.myName + "\'><div class=\"filename\">" + v.myName + "</div></div>";
         }
     }else if (nowPage != "trash") {
         for (var v of showFolders) {
