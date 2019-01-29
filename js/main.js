@@ -323,7 +323,7 @@ function duplicate(target) {
 function deplicateOfFolders(target) {
     const name = document.getElementById(target).value;
     let flag = false;
-    for (let f of haveFiles) {
+    for (let f of haveFolders) {
         if (f.myName == name) {
             flag = true;
             break;
