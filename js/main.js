@@ -369,7 +369,7 @@ function loadBreadcrumb(path) {
     var parent = pathArray[0];
     if (nowPage == "trash") {
         for (var i = 1; i < pathArray.length; i++) {
-            if (i != 2) {
+            if (i == 2) {
                 temp += "<li><a href=\"#\" onclick=jump(\'Trash?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i].slice(0, -3) + "</a></li>";
                 parent += "/" + pathArray[i];
             } else {
