@@ -297,7 +297,6 @@ function deleteThings() {
         jump("Main?req=mv_to_trash&names=" + temp + "&path=" + path, "post");
     }
 }
-
 /*--------------------------------------------------------------
 重複
 -----------------------------------------------------------------*/
@@ -320,7 +319,7 @@ function duplicate(target) {
     return flag;
 }
 
-function deplicateOfFolders(target) {
+function duplicateOfFolders(target) {
     const name = document.getElementById(target).value;
     let flag = false;
     for (let f of haveFolders) {

@@ -45,11 +45,6 @@ ul.menu {
     border-left: none;
     border-right: 1px solid white;
 }
-
-#left_con {
-    border-radius: 8px 0 0 0;
-}
-
 ul.menu li {
     float: right;
     font-size: 13px;
@@ -74,7 +69,7 @@ ul.menu a {
 .tooltips {
     display: none;
     position: absolute;
-    bottom: -3.8em;
+    bottom: -2.8em;
     left: 0.3em;
     z-index: 9999;
     padding: 0.3em 0.5em;
@@ -90,9 +85,10 @@ ul.menu a {
     display: block;
     position: absolute;
     left: 0.5em;
-    top: -5px;
+    top: -8px;
     border-top: 8px solid transparent;
     border-left: 8px solid lightgray;
+    font-size: 12px;
 }
 
 ul.menu li:hover .tooltips {
