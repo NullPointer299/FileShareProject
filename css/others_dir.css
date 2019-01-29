@@ -74,7 +74,7 @@ ul.menu a {
 .tooltips {
     display: none;
     position: absolute;
-    bottom: -2.8em;
+    bottom: -3.8em;
     left: 0.3em;
     z-index: 9999;
     padding: 0.3em 0.5em;
@@ -90,7 +90,7 @@ ul.menu a {
     display: block;
     position: absolute;
     left: 0.5em;
-    top: -8px;
+    top: -5px;
     border-top: 8px solid transparent;
     border-left: 8px solid lightgray;
 }

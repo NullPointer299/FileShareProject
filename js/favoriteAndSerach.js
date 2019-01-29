@@ -43,5 +43,5 @@ function createMainOfUser() {
 
 function charFilterOfUser() {
     showUsers = haveUsers.filter(user => user.myName.indexOf(s) > -1);
-    createMainAtFavorite();
+    createMainOfUser();
 }

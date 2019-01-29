@@ -190,12 +190,10 @@ function showSubmenu(clicked) {
         console.log(clicked);
         const lName = clicked.myLName;
         const fName = clicked.myFName;
-        if (clicked.isFav == "true") {
-            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump(\'Main?req=show_dir&id=" + clicked.myId + "\',\"post\")>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump(\'Main?req=fav_unrecord&id=" + clicked.myId + "\',\'post\')>お気に入り解除</a></li></ul>";
-        } else {
-            submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump(\'Main?req=show_dir&id=" + clicked.myId + "\',\"post\")>ディレクトリを見る</a></li><li><a href=\"#\" onclick=jump(\'Main?req=fav_record&id=" + clicked.myId + "\',\'post\')>お気に入り登録</a></li></ul>";
-        }
-        submenu.style.height = "60px";
+        
+        submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump(\'Main?req=show_dir&id=" + clicked.myId + "\',\"post\")>ディレクトリを見る</a></li></ul>";
+
+        submenu.style.height = "40px";
         submenu.style.width = "130px";
     }
     submenu.style.position = 'absolute';
@@ -231,7 +229,7 @@ function closeNewFolderWindow() {
 }
 
 function submitNewFolder() {
-    if (duplicate("foldername")) {
+    if (duplicateOfFolders("foldername")) {
         alert("名前が重複しています");
     } else {
         document.getElementById("new_folder_form").submit();
@@ -254,7 +252,7 @@ function closeUploadWindow() {
 
 function submitUpload() {
     if (duplicate("upload_filename")) {
-        alert("名前が重複しています");
+        alert("名前が無効か重複しています");
     } else {
         document.getElementById("upload_form").submit();
     }
@@ -317,6 +315,21 @@ function duplicate(target) {
                 flag = true;
                 break;
             }
+        }
+    }
+    return flag;
+}
+
+function deplicateOfFolders(target) {
+    const name = document.getElementById(target).value;
+    let flag = false;
+    for (let f of haveFiles) {
+        if (f.myName == name) {
+            flag = true;
+            break;
+        } else if (name == "") {
+            flag = true;
+            break;
         }
     }
     return flag;
