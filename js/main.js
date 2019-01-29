@@ -190,7 +190,7 @@ function showSubmenu(clicked) {
         console.log(clicked);
         const lName = clicked.myLName;
         const fName = clicked.myFName;
-        
+
         submenu.innerHTML = "<ul><li><h6 class=\"cut\">" + lName + " " + fName + "</h6><li><a href=\"#\" onclick=jump(\'Main?req=show_dir&id=" + clicked.myId + "\',\"post\")>ディレクトリを見る</a></li></ul>";
 
         submenu.style.height = "40px";
@@ -251,10 +251,14 @@ function closeUploadWindow() {
 }
 
 function submitUpload() {
-    if (duplicate("upload_filename")) {
-        alert("名前が無効か重複しています");
+    if (document.getElementById("filePosition").value != "") {
+        if (duplicate("upload_filename")) {
+            alert("名前が無効か重複しています");
+        } else {
+            document.getElementById("upload_form").submit();
+        }
     } else {
-        document.getElementById("upload_form").submit();
+        alert("ファイルが未選択です")
     }
 }
 
@@ -316,6 +320,17 @@ function duplicate(target) {
             }
         }
     }
+    for (let f of haveFolders) {
+        if (f.myName == name) {
+            flag = true;
+            break;
+        } else if (f.myName == "") {
+            if (f.myName == srcName) {
+                flag = true;
+                break;
+            }
+        }
+    }
     return flag;
 }
 
@@ -323,6 +338,15 @@ function duplicateOfFolders(target) {
     const name = document.getElementById(target).value;
     let flag = false;
     for (let f of haveFolders) {
+        if (f.myName == name) {
+            flag = true;
+            break;
+        } else if (name == "") {
+            flag = true;
+            break;
+        }
+    }
+    for (let f of haveFiles) {
         if (f.myName == name) {
             flag = true;
             break;
@@ -343,21 +367,9 @@ function loadBreadcrumb(path) {
     var pathArray = path.split("/");
     var temp = "<ul>";
     var parent = pathArray[0];
-    if (nowPage == "trash") {
-        for (var i = 1; i < pathArray.length; i++) {
-            if (i == 1) {
-                temp += "<li><a href=\"#\" onclick=jump(\'Trash?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
-                parent += "/" + pathArray[i];
-            } else {
-                temp += "<li><a href=\"#\" onclick=jump(\'Trash?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i].slice(0, -3) + "</a></li>";
-                parent += "/" + pathArray[i];
-            }
-        }
-    } else {
-        for (var i = 1; i < pathArray.length; i++) {
-            temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
-            parent += "/" + pathArray[i];
-        }
+    for (var i = 1; i < pathArray.length; i++) {
+        temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
+        parent += "/" + pathArray[i];
     }
     temp += "</ul>";
     target.innerHTML = temp;
