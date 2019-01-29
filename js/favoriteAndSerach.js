@@ -41,7 +41,7 @@ function createMainOfUser() {
     target.innerHTML = temp;
 }
 
-function charFilterOfUser() {
-    showUsers = haveUsers.filter(user => user.myName.indexOf(s) > -1);
+function charFilterOfUser(target) {
+    showUsers = haveUsers.filter(user => user.myId.indexOf(target.value) > -1);
     createMainOfUser();
 }
