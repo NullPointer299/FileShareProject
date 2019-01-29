@@ -367,9 +367,16 @@ function loadBreadcrumb(path) {
     var pathArray = path.split("/");
     var temp = "<ul>";
     var parent = pathArray[0];
-    for (var i = 1; i < pathArray.length; i++) {
-        temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
-        parent += "/" + pathArray[i];
+    if (nowPage == "trash") {
+        for (var i = 1; i < pathArray.length; i++) {
+            temp += "<li><a href=\"#\" onclick=jump(\'Trash?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
+            parent += "/" + pathArray[i];
+        }
+    } else {
+        for (var i = 1; i < pathArray.length; i++) {
+            temp += "<li><a href=\"#\" onclick=jump(\'Main?req=cd&name=" + pathArray[i] + "&path=" + parent + "\',\"post\")>" + pathArray[i] + "</a></li>";
+            parent += "/" + pathArray[i];
+        }
     }
     temp += "</ul>";
     target.innerHTML = temp;
